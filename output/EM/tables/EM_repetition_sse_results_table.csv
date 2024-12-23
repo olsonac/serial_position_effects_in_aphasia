@@ -1,0 +1,4 @@
+"","model","p_accounted_for","model_deviance","diff_CumPres","diff_CumPres+stimlen+log_freq","diff_CumPres+stimlen"
+"1","preserved ~ CumPres",0.580693949881143,5182.07555029567,0,-0.00123312170942957,-0.00543163086001763
+"2","preserved ~ CumPres+stimlen+log_freq",0.581927071590572,5157.19878039712,0.00123312170942957,0,-0.00419850915058806
+"3","preserved ~ CumPres+stimlen",0.58612558074116,5160.96204605207,0.00543163086001763,0.00419850915058806,0

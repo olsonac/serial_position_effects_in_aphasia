@@ -1,0 +1,1015 @@
+---
+header-includes:
+- \usepackage{pdflscape}
+- \newcommand{\blandscape}{\begin{landscape}}
+- \newcommand{\elandscape}{\end{landscape}}
+output: pdf_document
+params:
+  CurPat: "-"
+  CurTask: "-"
+  MinLength: -1
+  MaxLength: -1
+  BestModelIndexL1: 1
+  BestModelIndexL2: 1
+  BestModelIndexL3: 1
+  ReportTitle: "-"
+  RandomSamples: 1
+  DoSimulations: FALSE
+title: "`r params$ReportTitle`" 
+---
+
+```{r setup, include=FALSE}
+require(knitr)
+opts_knit$set(echo = FALSE)
+
+# for testing within this script only
+# Normally configuration isi in the calling R script
+#Sys.setenv(R_CONFIG_ACTIVE = "default") 
+#config <- config::get(file="./src/config.yml")
+#opts_knit$set(root.dir = config$root_dir)
+#RootDir <- config$root_dir
+```
+
+```{r}
+# do this in calling R script
+# library(ggplot2)
+# library(fmsb) # for TestModels
+# library(lme4)
+# library(kableExtra)
+# library(MASS) # for dropterm
+# library(tidyverse)
+# library(dominanceanalysis)
+# library(cowplot) # for multiple plots in one figure
+# library(formatters) # to wrap strings for plot titles
+# library(pals) # for continous color palettes
+```
+
+```{r}
+# load needed functions
+# source(paste0(RootDir,"/src/function_library/sp_functions.R"))
+# do this in the calling R script
+```
+
+```{r}
+# for testing - set by calling script normally
+# ppt_parms <- read.csv(config$patient_param_file)
+# CurPat <- ppt_parms$patient
+# CurTask <- ppt_parms$task
+# MinLength <- ppt_parms$min_length
+# MaxLength <- ppt_parms$max_length
+# RemoveFinalPosition<-ppt_parms$remove_final_position
+```
+
+```{r}
+# create patient directory if it doesn't already exist
+if(!dir.exists(paste0(RootDir,"/output/",CurPat))){
+  dir.create(paste0(RootDir,"/output/",CurPat),showWarnings = TRUE)
+}
+TablesDir <- paste0(RootDir,"/output/",CurPat,"/tables/")
+if(!dir.exists(TablesDir)){
+  dir.create(TablesDir,showWarnings = TRUE)
+}
+FigDir <- paste0(RootDir,"/output/",CurPat,"/fig/")
+if(!dir.exists(FigDir)){
+  dir.create(FigDir,showWarnings = TRUE)
+}
+ReportsDir <- paste0(RootDir,"/output/",CurPat,"/reports/")
+if(!dir.exists(ReportsDir)){
+  dir.create(ReportsDir,showWarnings = TRUE)
+}
+results_report_DF <- data.frame(Description=character(), ParameterValue=double())
+```
+
+```{r}
+ModelDatFilename<-paste0(RootDir,"/data/",CurPat,"/",CurPat,"_",CurTask,"_posdat.csv")
+if(!file.exists(ModelDatFilename)){
+  print("**ERROR** Input data file not found")
+  print(sprintf("\tfile: ",ModelDatFilename))
+  print(sprintf("\troot dir: ",RootDir))
+}
+PosDat<-read.csv(ModelDatFilename)
+```
+
+```{r}
+# may already be done in datafile
+# if(RemoveFinalPosition){
+#   PosDat <- PosDat[PosDat$pos < PosDat$stimlen,] # remove final position
+# }
+PosDat <- PosDat[PosDat$stimlen >= MinLength,] # include only lengths with sufficient N
+PosDat <- PosDat[PosDat$stimlen <= MaxLength,]
+# include only correct and nonword errors (not no response, word or w+nw errors)
+PosDat <- PosDat[(PosDat$err_type == "correct") | (PosDat$err_type == "nonword"), ]
+PosDat <- PosDat[(PosDat$pos) != (PosDat$stimlen), ] 
+# make sure final positions have been removed
+PosDat$stim_number <- NumberStimuli(PosDat)
+PosDat$raw_log_freq <- PosDat$log_freq
+PosDat$log_freq <- PosDat$log_freq - mean(PosDat$log_freq) # centre frequency
+PosDat$CumErr <- CalcCumErrFromPreserved(PosDat)
+```
+
+```{r}
+# plot distribution of complex onsets and codas 
+# across serial position in the stimuli -- do complexities concentrate
+# on one part of the serial position curve?
+# syll_component = 1 is coda
+# syll_component = S is satellite
+
+# get counts of syllable components in different serial positions
+syll_comp_dist_N <- PosDat %>% mutate(pos_factor = as.factor(pos), syll_component_factor = as.factor(syll_component)) %>% count(pos_factor,syll_component_factor) %>% pivot_wider(names_from = syll_component_factor, values_from = n) %>% rowwise() %>% mutate(total=sum(c_across(O:S),na.rm = TRUE)) 
+
+syll_comp_dist_perc <- syll_comp_dist_N %>% ungroup() %>%
+  mutate(across(O:S, ~ . / total))
+
+kable(syll_comp_dist_N)
+kable(syll_comp_dist_perc)
+```
+```{r}
+# get percentages only from summary table
+syll_comp_perc <- syll_comp_dist_perc[,2:(ncol(syll_comp_dist_perc)-1)]
+syll_comp_perc$pos <- as.integer(as.character(syll_comp_dist_perc$pos_factor))
+syll_comp_perc <- syll_comp_perc %>% rename("Coda" ="1","Satellite"="S")
+
+# pivot to long format for plotting
+syll_comp_plot_data <- syll_comp_perc %>% pivot_longer(cols=seq(1:(ncol(syll_comp_perc)-1)),
+            names_to="syll_component", values_to="percent") %>% filter(syll_component %in% c("Coda","Satellite")) 
+# plot satellite and coda occurances across position
+
+syll_comp_plot <- ggplot(syll_comp_plot_data,
+                         aes(x=pos,y=percent,group=syll_component,
+                             color=syll_component,
+                             linetype = syll_component,
+                             shape = syll_component)) + 
+  geom_line() + geom_point() + scale_color_manual(name="Syllable component", values = palette_values) + scale_x_continuous(name = "Word position", breaks = seq(1,9, by = 1))
+syll_comp_plot <- syll_comp_plot + scale_y_continuous(name="Percent of segment types") + scale_linetype_manual(name="Syllable component",values = c("solid","dashed")) +
+  scale_shape_discrete(name="Syllable component")
+ggsave(paste0(FigDir,CurPat,"_",CurTask,"_pos_of_syll_complexities_in_stimuli.png"),plot=syll_comp_plot,device="png",unit="cm",width=15,height=11)
+syll_comp_plot
+```
+
+
+```{r}
+# len/pos table
+pos_len_summary <- PosDat %>% group_by(stimlen,pos) %>% summarise(preserved = mean(preserved))
+min_preserved_raw <- min(as.numeric(unlist(pos_len_summary$preserved)))
+max_preserved_raw <- max(as.numeric(unlist(pos_len_summary$preserved)))
+preserved_range <- (max_preserved_raw - min_preserved_raw)
+min_preserved <- min_preserved_raw - (0.1 * preserved_range)
+max_preserved <- max_preserved_raw + (0.1 * preserved_range)
+pos_len_table <- pos_len_summary %>% pivot_wider(names_from = pos, values_from = preserved)
+write.csv(pos_len_table,paste0(TablesDir,CurPat,"_",CurTask,"_preserved_percentages_by_len_position.csv"))
+pos_len_table
+```
+
+```{r}
+# len/pos table
+pos_len_N <- PosDat %>% group_by(stimlen,pos) %>% summarise(preserved = mean(preserved),N=n()) %>% dplyr::select(-preserved)
+pos_len_N_table <- pos_len_N %>% pivot_wider(names_from = pos, values_from = N)
+write.csv(pos_len_N_table,paste0(TablesDir,CurPat,"_",CurTask,"_N_by_len_position.csv"))
+pos_len_N_table
+```
+
+```{r}
+obs_linetypes <- c("solid","solid","solid","solid",
+                      "solid","solid","solid","solid","solid")
+pred_linetypes <- "dashed"
+pos_len_summary$stimlen<-factor(pos_len_summary$stimlen)
+pos_len_summary$pos<-factor(pos_len_summary$pos)
+# len_pos_plot <- ggplot(pos_len_summary,aes(x=pos,y=preserved,group=stimlen,shape=stimlen,color=stimlen)) + geom_point() + geom_line() + ggtitle(paste0(PosDat$patient[1]))
+len_pos_plot <- plot_len_pos_obs_predicted(PosDat,
+                                           paste0(CurPat), 
+                                           NULL, 
+                                           c(min_preserved,max_preserved),
+                                           palette_values, 
+                                           shape_values,
+                                           obs_linetypes, 
+                                           pred_linetypes)
+ggsave(paste0(FigDir,CurPat,"_",CurTask,"_percent_preserved_by_length_pos.png"),
+       plot=len_pos_plot,device="png",unit="cm",width=15,height=11)
+len_pos_plot
+```
+
+
+Length and position
+```{r}
+# length and position
+
+LPModelEquations<-c("preserved ~ 1",
+            "preserved ~ stimlen",
+            "preserved ~ pos",
+            "preserved ~ stimlen + pos",
+            "preserved ~ stimlen*pos",
+            "preserved ~ I(pos^2)+pos",
+            "preserved ~ stimlen + I(pos^2) + pos",
+            "preserved ~ stimlen * (I(pos^2) + pos)"
+)
+
+LPRes<-TestModels(LPModelEquations,PosDat)
+BestLPModel<-LPRes$ModelResult[[1]]
+BestLPModelFormula<-LPRes$Model[[1]]
+
+LPAICSummary<-data.frame(Model=LPRes$Model,
+                       AIC=LPRes$AIC,
+                       row.names = LPRes$Model)
+LPAICSummary$DeltaAIC<-LPAICSummary$AIC-LPAICSummary$AIC[1]
+LPAICSummary$AICexp<-exp(-0.5*LPAICSummary$DeltaAIC)
+LPAICSummary$AICwt<-LPAICSummary$AICexp/sum(LPAICSummary$AICexp)
+LPAICSummary$NagR2<-LPRes$NagR2
+
+LPAICSummary <- merge(LPAICSummary,LPRes$CoefficientValues, by='row.names',sort=FALSE)
+LPAICSummary <- subset(LPAICSummary, select = -c(Row.names))
+
+write.csv(LPAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_len_pos_model_summary.csv"),row.names = FALSE)
+kable(LPAICSummary)
+```
+
+```{r}
+print(BestLPModelFormula)
+```
+
+```{r}
+print(BestLPModel)
+```
+
+```{r}
+PosDat$LPFitted<-fitted(BestLPModel)
+fitted_len_pos_plot <- plot_len_pos_obs_predicted(PosDat, PosDat$patient[1],
+                          NULL,palette_values=palette_values)
+
+# len/pos table
+fitted_pos_len_summary <- PosDat %>% group_by(stimlen,pos) %>% summarise(fitted = mean(LPFitted))
+fitted_pos_len_table <- fitted_pos_len_summary %>% pivot_wider(names_from = pos, values_from = fitted)
+fitted_pos_len_table
+
+fitted_pos_len_summary$stimlen<-factor(fitted_pos_len_summary$stimlen)
+fitted_pos_len_summary$pos<-factor(fitted_pos_len_summary$pos)
+# fitted_len_pos_plot <- ggplot(pos_len_summary,aes(x=pos,y=preserved,group=stimlen,shape=stimlen,color=stimlen)) + geom_point() + geom_line()
+# fitted_len_pos_plot <- fitted_len_pos_plot + geom_line(data=fitted_pos_len_summary, aes(x=pos,y=fitted,group=stimlen,shape=stimlen),color="black",linetype="dotted") + 
+# geom_point(data=fitted_pos_len_summary,aes(x=pos,y=fitted,group=stimlen,shape=stimlen)) + ggtitle(paste0(PosDat$patient[1]))
+
+fitted_len_pos_plot <- plot_len_pos_obs_predicted(PosDat,
+                                          paste0(PosDat$patient[1]),
+                                          "LPFitted",
+                                          NULL,
+                                          palette_values,
+                                          shape_values,
+                                          obs_linetypes,
+                                          pred_linetypes = c("longdash")
+                                          )
+
+ggsave(paste0(FigDir,CurPat,"_",CurTask,"_percent_preserved_by_length_pos_wfit.png"),plot=fitted_len_pos_plot,device="png",unit="cm",width=15,height=11)
+fitted_len_pos_plot
+```
+
+length and position without fragments to see if this changes position^2 influence
+```{r}
+# first number responses, then count resp with fragments - below we will eliminate fragments
+# and re-run models
+
+# number responses
+resp_num<-0
+prev_pos<-9999 # big number to initialize (so first position is smaller)
+resp_num_array <- integer(length = nrow(PosDat))
+for(i in seq(1,nrow(PosDat))){
+  if(PosDat$pos[i] <= prev_pos){ # equal for resp length 1
+    resp_num <- resp_num + 1
+  }
+  resp_num_array[i]<-resp_num
+  prev_pos <- PosDat$pos[i]
+}
+PosDat$resp_num <- resp_num_array
+```
+
+```{r}
+# count responses with fragments
+resp_with_frag <- PosDat %>% group_by(resp_num) %>% summarise(frag = as.logical(sum(fragment)))
+num_frag <- resp_with_frag %>% summarise(frag_sum = sum(frag), N=n())
+num_frag
+```
+```{r}
+num_frag$percent_with_frag[1] <- (num_frag$frag_sum[1] / num_frag$N[1])*100
+print(sprintf("The number of responses with fragments was %d / %d = %.2f percent",
+              num_frag$frag_sum[1],num_frag$N[1],num_frag$percent_with_frag[1]))
+write.csv(num_frag,paste0(TablesDir,CurPat,"_",CurTask,"_percent_fragments.csv"),row.names = FALSE)
+```
+
+```{r}
+# length and position models for data without fragments
+NoFragData <- PosDat %>% filter(fragment != 1)
+
+NoFrag_LPRes<-TestModels(LPModelEquations,NoFragData)
+NoFragBestLPModel<-NoFrag_LPRes$ModelResult[[1]]
+NoFragBestLPModelFormula<-NoFrag_LPRes$Model[[1]]
+
+NoFragLPAICSummary<-data.frame(Model=NoFrag_LPRes$Model,
+                       AIC=NoFrag_LPRes$AIC,
+                       row.names = NoFrag_LPRes$Model)
+NoFragLPAICSummary$DeltaAIC<-NoFragLPAICSummary$AIC-NoFragLPAICSummary$AIC[1]
+NoFragLPAICSummary$AICexp<-exp(-0.5*NoFragLPAICSummary$DeltaAIC)
+NoFragLPAICSummary$AICwt<-NoFragLPAICSummary$AICexp/sum(NoFragLPAICSummary$AICexp)
+NoFragLPAICSummary$NagR2<-NoFrag_LPRes$NagR2
+
+NoFragLPAICSummary <- merge(NoFragLPAICSummary,NoFrag_LPRes$CoefficientValues, by='row.names',sort=FALSE)
+NoFragLPAICSummary <- subset(NoFragLPAICSummary, select = -c(Row.names))
+
+write.csv(NoFragLPAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_no_fragments_len_pos_model_summary.csv"),row.names = FALSE)
+kable(NoFragLPAICSummary)
+```
+
+```{r}
+# plot no fragment data
+
+NoFragData$LPFitted<-fitted(NoFragBestLPModel)
+nofrag_obs_len_pos_plot <- plot_len_pos_obs_predicted(NoFragData, NoFragData$patient[1],
+                          NULL,palette_values=palette_values)
+
+# len/pos table
+nofrag_fitted_pos_len_summary <- NoFragData %>% group_by(stimlen,pos) %>% summarise(fitted = mean(LPFitted))
+nofrag_fitted_pos_len_table <- nofrag_fitted_pos_len_summary %>% pivot_wider(names_from = pos, values_from = fitted)
+nofrag_fitted_pos_len_table
+
+fitted_pos_len_summary$stimlen<-factor(nofrag_fitted_pos_len_summary$stimlen)
+fitted_pos_len_summary$pos<-factor(nofrag_fitted_pos_len_summary$pos)
+# fitted_len_pos_plot <- ggplot(pos_len_summary,aes(x=pos,y=preserved,group=stimlen,shape=stimlen,color=stimlen)) + geom_point() + geom_line()
+# fitted_len_pos_plot <- fitted_len_pos_plot + geom_line(data=fitted_pos_len_summary, aes(x=pos,y=fitted,group=stimlen,shape=stimlen),color="black",linetype="dotted") + 
+# geom_point(data=fitted_pos_len_summary,aes(x=pos,y=fitted,group=stimlen,shape=stimlen)) + ggtitle(paste0(PosDat$patient[1]))
+
+nofrag_fitted_len_pos_plot <- plot_len_pos_obs_predicted(NoFragData,
+                                          paste0(NoFragData$patient[1]),
+                                          "LPFitted",
+                                          NULL,
+                                          palette_values,
+                                          shape_values,
+                                          obs_linetypes,
+                                          pred_linetypes = c("longdash")
+                                          )
+
+ggsave(paste0(FigDir,CurPat,"_",CurTask,"no_fragments_percent_preserved_by_length_pos_wfit.png"),plot=nofrag_fitted_len_pos_plot,device="png",unit="cm",width=15,height=11)
+nofrag_fitted_len_pos_plot
+```
+
+
+back to full data
+```{r}
+results_report_DF <- AddReportLine(results_report_DF,"min preserved",min_preserved)
+results_report_DF <- AddReportLine(results_report_DF,"max preserved",max_preserved)
+print(sprintf("Min/max preserved range: %.2f - %.2f",min_preserved,max_preserved))
+```
+
+```{r}
+# find the average difference between lengths and the average difference
+# between positions taking the other factor into account
+
+# choose fitted or raw -- we use fitted values because they are smoothed averages
+# that take into account the influence of the other variable
+table_to_use <- fitted_pos_len_table
+# take away column with length information
+table_to_use <- table_to_use[,2:ncol(table_to_use)]
+
+# take averages for positions
+# don't want downward estimates influenced by return upward of U
+# therefore, for downward influence, use only the values before the min
+# take the difference between each value (differences between position proportion correct) **NOTE** proportion or probability, not a percentage
+# average the difference in probabilities
+
+# in case min is close to the end or we are not using a min (for non-U-shaped)
+# functions, we need to get differences _first_ and then average those (e.g.
+# if there is an effect of length and we just average position data, 
+# later positions) will have a lower average (because of the length effect)
+# even if all position functions go upward
+
+table_pos_diffs <- t(diff(t(as.matrix(table_to_use))))
+ncol_pos_diff_matrix <- ncol(table_pos_diffs)
+first_col_mean <- mean(as.numeric(unlist(table_pos_diffs[,1])))
+potential_u_shape <- 0
+if(first_col_mean < 0){ # downward, so potential U-shape
+  # take only negative values from the table
+  filtered_table_pos_diffs<-table_pos_diffs
+  filtered_table_pos_diffs[table_pos_diffs >= 0] <- NA
+  potential_u_shape <- 1
+}else{
+  # upward - use the positive values
+  # take only negative values from the table
+  filtered_table_pos_diffs<-table_pos_diffs
+  filtered_table_pos_diffs[table_pos_diffs <= 0] <- NA
+}
+average_pos_diffs <- apply(filtered_table_pos_diffs,2,mean,na.rm=TRUE)
+OA_mean_pos_diff <- mean(average_pos_diffs,na.rm=TRUE)
+
+table_len_diffs <- diff(as.matrix(table_to_use))
+average_len_diffs <- apply(table_len_diffs,1,mean,na.rm=TRUE)
+OA_mean_len_diff <- mean(average_len_diffs,na.rm=TRUE)
+CurrentLabel<-"mean change in probability for each additional length: "
+print(CurrentLabel)
+print(OA_mean_len_diff)
+results_report_DF <- AddReportLine(results_report_DF, CurrentLabel,OA_mean_len_diff)
+
+CurrentLabel<-"mean change in probability for each additional position (excluding  U-shape): "
+print(CurrentLabel)
+print(OA_mean_pos_diff)
+results_report_DF <- AddReportLine(results_report_DF, CurrentLabel,OA_mean_pos_diff)
+```
+
+```{r}
+if(potential_u_shape){ # downward, so potential U-shape
+  # take only positive values from the table
+  filtered_pos_upward_u<-table_pos_diffs
+  filtered_pos_upward_u[table_pos_diffs <= 0] <- NA
+  average_pos_u_diffs <- apply(filtered_pos_upward_u,
+                               2,mean,na.rm=TRUE)
+  OA_mean_pos_u_diff <- mean(average_pos_u_diffs,na.rm=TRUE)
+  if(is.nan(OA_mean_pos_u_diff) | (OA_mean_pos_u_diff <= 0)){
+    print("No U-shape in this participant")
+    results_report_DF <- AddReportLine(results_report_DF, "U-shape", 0)
+    potential_u_shape <- FALSE
+  }else{
+    results_report_DF <- AddReportLine(results_report_DF, "U-shape", 1)
+
+    CurrentLabel<-"Average upward change after U minimum"
+    print(CurrentLabel)
+    print(OA_mean_pos_u_diff)
+    results_report_DF <- AddReportLine(results_report_DF, CurrentLabel, OA_mean_pos_u_diff)
+    
+    CurrentLabel<-"Proportion of average downward change"
+    prop_ave_down <- abs(OA_mean_pos_u_diff/OA_mean_pos_diff)
+    results_report_DF <- AddReportLine(results_report_DF, CurrentLabel, prop_ave_down)
+  }
+}else{
+  print("No U-shape in this participant")
+  results_report_DF <- AddReportLine(results_report_DF, "U-shape", 0)
+}
+```
+
+```{r}
+if(potential_u_shape){
+  n_rows<-nrow(table_to_use)
+  downward_dist <- numeric(n_rows)
+  upward_dist <- numeric(n_rows)
+  for(i in seq(1,n_rows)){
+    current_row <- as.numeric(unlist(table_to_use[i,1:9]))
+    current_row <- current_row[!is.na(current_row)]
+    current_row_len <- length(current_row)
+    row_min <- min(current_row,na.rm=TRUE)
+    min_pos <- which(current_row == row_min)
+    left_max <- max(current_row[1:min_pos],na.rm=TRUE)
+    right_max <- max(current_row[min_pos:current_row_len])
+    left_diff <- left_max - row_min
+    right_diff <- right_max - row_min
+    downward_dist[i]<-left_diff
+    upward_dist[i]<-right_diff
+  }
+  print("differences from left max to min for each row: ")
+  print(downward_dist)
+  print("differences from min to right max for each row: ")
+  print(upward_dist)
+  
+  # Use the max return upward (min of upward_dist) and then the
+  # downward distance from the left for the same row
+  
+  print(" ")
+  biggest_return_upward_row <- which(upward_dist == max(upward_dist))
+  CurrentLabel <- "row with biggest return upward"
+  print(CurrentLabel)
+  print(biggest_return_upward_row)
+  results_report_DF <- AddReportLine(results_report_DF, CurrentLabel, biggest_return_upward_row)
+  
+  print(" ")
+  CurrentLabel<-"downward distance for row with the largest upward value"
+  print(CurrentLabel)
+  print(downward_dist[biggest_return_upward_row])
+  results_report_DF <- AddReportLine(results_report_DF, CurrentLabel, downward_dist[biggest_return_upward_row])
+  
+  CurrentLabel<-"return upward value"
+  print(upward_dist[biggest_return_upward_row])
+   results_report_DF <- AddReportLine(results_report_DF, 
+                                      CurrentLabel, 
+                                      upward_dist[biggest_return_upward_row])
+   
+  print(" ")
+  # percentage return upward
+  percentage_return_upward <- upward_dist[biggest_return_upward_row]/downward_dist[biggest_return_upward_row]
+  CurrentLabel <- "Return upward as a proportion of the downward distance:"
+  print(CurrentLabel)
+  print(percentage_return_upward)
+  results_report_DF <- AddReportLine(results_report_DF, CurrentLabel,
+                        percentage_return_upward)             
+}else{
+  print("no U-shape in this participant")
+}
+```
+
+```{r}
+FLPModelEquations<-c(
+  # models with log frequency, but no three-way interactions (due to difficulty interpreting and small effects)
+            "preserved ~ stimlen*log_freq",
+            "preserved ~ stimlen+log_freq",
+            "preserved ~ pos*log_freq",
+            "preserved ~ pos+log_freq",
+            "preserved ~ stimlen*log_freq + pos*log_freq",
+            "preserved ~ stimlen*log_freq + pos",
+            "preserved ~ stimlen + pos*log_freq",
+            "preserved ~ stimlen + pos + log_freq",
+            "preserved ~ (I(pos^2)+pos)*log_freq",
+            "preserved ~ stimlen*log_freq + (I(pos^2) + pos)*log_freq",
+            "preserved ~ stimlen*log_freq + I(pos^2) + pos",
+            "preserved ~ stimlen + (I(pos^2) + pos)*log_freq",
+            "preserved ~ stimlen + I(pos^2) + pos + log_freq",
+            
+            # models without frequency
+            "preserved ~ 1",
+            "preserved ~ stimlen",
+            "preserved ~ pos",
+            "preserved ~ stimlen + pos",
+            "preserved ~ stimlen*pos",
+            "preserved ~ I(pos^2)+pos",
+            "preserved ~ stimlen + I(pos^2) + pos",
+            "preserved ~ stimlen * (I(pos^2) + pos)"
+)
+
+FLPRes<-TestModels(FLPModelEquations,PosDat)
+BestFLPModel<-FLPRes$ModelResult[[1]]
+BestFLPModelFormula<-FLPRes$Model[[1]]
+
+FLPAICSummary<-data.frame(Model=FLPRes$Model,
+                       AIC=FLPRes$AIC,row.names=FLPRes$Model)
+FLPAICSummary$DeltaAIC<-FLPAICSummary$AIC-FLPAICSummary$AIC[1]
+FLPAICSummary$AICexp<-exp(-0.5*FLPAICSummary$DeltaAIC)
+FLPAICSummary$AICwt<-FLPAICSummary$AICexp/sum(FLPAICSummary$AICexp)
+FLPAICSummary$NagR2<-FLPRes$NagR2
+
+FLPAICSummary <- merge(FLPAICSummary,FLPRes$CoefficientValues,
+                          by='row.names',sort=FALSE)
+FLPAICSummary <- subset(FLPAICSummary, select = -c(Row.names))
+
+write.csv(FLPAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_freq_len_pos_model_summary.csv"),row.names = FALSE)
+kable(FLPAICSummary)
+```
+
+```{r}
+print(BestFLPModelFormula)
+```
+
+```{r}
+print(BestFLPModel)
+```
+
+
+```{r}
+# do a median split on frequency to plot hf/ls effects (analysis is continuous)
+median_freq <- median(PosDat$log_freq)
+PosDat$freq_bin[PosDat$log_freq >= median_freq]<-"hf"
+PosDat$freq_bin[PosDat$log_freq <  median_freq]<-"lf"
+```
+
+
+```{r}
+PosDat$FLPFitted<-fitted(BestFLPModel)
+
+HFDat <- PosDat[PosDat$freq_bin == "hf",]
+LFDat <- PosDat[PosDat$freq_bin == "lf",]
+
+HF_Plot <- plot_len_pos_obs_predicted(HFDat,paste0(CurPat," - High frequency"),"FLPFitted",c(min_preserved,max_preserved),palette_values,shape_values, obs_linetypes,NULL)
+LF_Plot <- plot_len_pos_obs_predicted(LFDat,paste0(CurPat, " - Low frequency"),"FLPFitted",c(min_preserved,max_preserved),palette_values,shape_values,obs_linetypes,NULL)
+library(ggpubr)
+Both_Plots <- ggarrange(LF_Plot,HF_Plot) # labels=c("LF","HF",ncol=2)
+ggsave(paste0(FigDir,CurPat,"_",CurTask,"_frequency_effect_length_pos_wfit.png"),device="png",unit="cm",width=30,height=11)
+print(Both_Plots)
+```
+
+```{r}
+# only main effects
+MEModelEquations<-c(
+  "preserved ~ CumPres",     
+  "preserved ~ CumErr",      
+  "preserved ~ (I(pos^2)+pos)",  
+  "preserved ~ pos",
+  "preserved ~ stimlen",
+  "preserved ~ 1"
+)             
+MERes<-TestModels(MEModelEquations,PosDat)
+BestMEModel<-MERes$ModelResult[[ BestModelIndexL1 ]]
+BestMEModelFormula<-MERes$Model[[BestModelIndexL1]]
+
+MEAICSummary<-data.frame(Model=MERes$Model,
+                       AIC=MERes$AIC,row.names=MERes$Model)
+MEAICSummary$DeltaAIC<-MEAICSummary$AIC-MEAICSummary$AIC[1]
+MEAICSummary$AICexp<-exp(-0.5*MEAICSummary$DeltaAIC)
+MEAICSummary$AICwt<-MEAICSummary$AICexp/sum(MEAICSummary$AICexp)
+MEAICSummary$NagR2<-MERes$NagR2
+
+MEAICSummary <- merge(MEAICSummary,MERes$CoefficientValues,
+                          by='row.names',sort=FALSE)
+MEAICSummary <- subset(MEAICSummary, select = -c(Row.names))
+
+write.csv(MEAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_main_effects_model_summary.csv"),row.names = FALSE)
+kable(MEAICSummary)
+```
+
+```{r}
+if(DoSimulations){
+      BestMEModelFormulaRnd <- BestMEModelFormula
+    if(grepl("CumPres",BestMEModelFormulaRnd)){
+      BestMEModelFormulaRnd <- gsub("CumPres","RndCumPres",BestMEModelFormulaRnd)
+    }else if(grepl("CumErr",BestMEModelFormulaRnd)){
+      BestMEModelFormulaRnd <- gsub("CumErr","RndCumErr",BestMEModelFormulaRnd)
+    }
+    
+    RndModelAIC<-numeric(length=RandomSamples)
+    for(rindex in seq(1,RandomSamples)){
+    # Shuffle cumulative values
+      PosDat$RndCumPres <- ShuffleWithinWord(PosDat,"CumPres")
+      PosDat$RndCumErr <- ShuffleWithinWord(PosDat,"CumErr")
+      BestModelRnd <- glm(as.formula(BestMEModelFormulaRnd),
+                          family="binomial",data=PosDat)
+      RndModelAIC[rindex] <- BestModelRnd$aic
+    }
+    ModelNames<-c(paste0("***",BestMEModelFormula),
+                  rep(BestMEModelFormulaRnd,RandomSamples))
+    AICValues <- c(BestMEModel$aic,RndModelAIC)
+    BestMEModelRndDF <- data.frame(Name=ModelNames,AIC=AICValues)
+    BestMEModelRndDF <- BestMEModelRndDF %>% arrange(AIC)
+    BestMEModelRndDF <- rbind(BestMEModelRndDF, 
+                              data.frame(Name=c("Random average"),
+                                         AIC=c(mean(RndModelAIC))))
+    BestMEModelRndDF <- rbind(BestMEModelRndDF, 
+                              data.frame(Name=c("Random SD"),
+                                         AIC=c(sd(RndModelAIC))))
+    
+    write.csv(BestMEModelRndDF,
+              paste0(TablesDir,CurPat,"_",CurTask,
+                     "_best_main_effects_model_with_random_cum_term.csv"),
+              row.names = FALSE)
+}
+```
+
+
+```{r}
+syll_component_summary <- PosDat %>%
+  group_by(syll_component) %>% summarise(MeanPres = mean(preserved),
+                                         N = n())
+write.csv(syll_component_summary,paste0(TablesDir,CurPat,"_",CurTask,"_syllable_component_summary.csv"),row.names = FALSE)
+kable(syll_component_summary)
+```
+
+
+```{r}
+#  main effects models for data without satellite positions
+
+keep_components = c("O","V","1")
+OV1Data <- PosDat[PosDat$syll_component %in% keep_components,]
+OV1Data <- OV1Data %>% select(stim_number, 
+                            stimlen,stim,pos,
+                            preserved,syll_component)
+OV1Data$CumPres <- CalcCumPres(OV1Data)
+OV1Data$CumErr <- CalcCumErrFromPreserved(OV1Data)
+
+SimpSyllMEAICSummary <- EvaluateSubsetData(OV1Data,MEModelEquations)
+write.csv(SimpSyllMEAICSummary,
+          paste0(TablesDir,CurPat,"_",CurTask,
+                 "_OV1_main_effects_model_summary.csv"),row.names = FALSE)
+kable(SimpSyllMEAICSummary)
+```
+
+```{r}
+#  main effects models for data without satellite or coda positions
+# (tradeoff -- takes away more complex segments, in addition to satellites, but
+#  also reduces data)
+
+keep_components = c("O","V")
+OVData <- PosDat[PosDat$syll_component %in% keep_components,]
+OVData <- OVData %>% select(stim_number, 
+                            stimlen,stim,pos,
+                            preserved,syll_component)
+OVData$CumPres <- CalcCumPres(OVData)
+OVData$CumErr <- CalcCumErrFromPreserved(OVData)
+
+SimpSyllMEAICSummary2<-EvaluateSubsetData(OVData,MEModelEquations)
+write.csv(SimpSyllMEAICSummary2,
+          paste0(TablesDir,CurPat,"_",CurTask,
+                 "_OV_main_effects_model_summary.csv"),row.names = FALSE)
+kable(SimpSyllMEAICSummary2)
+```
+
+
+```{r} 
+# plot prev err and prev cor plots
+PrevCorPlot<-PlotObsPreviousCorrect(PosDat,palette_values,shape_values)
+print(PrevCorPlot)
+PrevErrPlot<-PlotObsPreviousError(PosDat,palette_values,shape_values)
+print(PrevErrPlot)
+
+PlotName<-paste0(FigDir,CurPat,"_",CurTask,"_PrevCorPlot_Obs")
+ggsave(filename=paste0(PlotName,".tif"),plot=PrevCorPlot,device="tiff",compression = "lzw")
+
+PlotName<-paste0(FigDir,CurPat,"_",CurTask,"_PrevErrPlot_Obs")
+ggsave(filename=paste0(PlotName,".tif"),plot=PrevErrPlot,device="tiff",compression = "lzw")
+```
+
+```{r} 
+# plot prev err and prev cor with predicted values
+MEModel<-MERes$ModelResult[[ BestModelIndexL1 ]]
+PosDat$MEPred<-fitted(MEModel)
+
+PrevCorPlot<-PlotObsPredPreviousCorrect(PosDat,"preserved","MEPred",palette_values,shape_values)
+print(PrevCorPlot)
+PrevErrPlot<-PlotObsPredPreviousError(PosDat,"preserved","MEPred",palette_values,shape_values)
+print(PrevErrPlot)
+
+PlotName<-paste0(FigDir,CurPat,"_",CurTask,"PrevCorPlot_ObsPredME")
+ggsave(filename=paste0(PlotName,".tif"),plot=PrevCorPlot,device="tiff",compression = "lzw")
+
+PlotName<-paste0(FigDir,CurPat,"_",CurTask,"PrevErrPlot_ObsPredME")
+ggsave(filename=paste0(PlotName,".tif"),plot=PrevErrPlot,device="tiff",compression = "lzw")
+```
+
+\newpage
+\blandscape
+
+```{r}
+CumAICSummary <- NULL
+```
+
+```{r}
+########
+# level 2 -- Add position squared (quadratic with position) 
+########
+
+# After establishing the primary variable, see about additions
+
+BestMEFactor<-BestMEModelFormula
+OtherFactor<-"I(pos^2) + pos"
+OtherFactorName<-"quadratic_by_pos"
+
+if(!grepl("pos",BestMEFactor,fixed = TRUE)){ # if best model does not include pos
+  AICSummary<-TestLevel2Models(PosDat,BestMEFactor,OtherFactor,OtherFactorName)
+  CumAICSummary <- AICSummary
+  kable(AICSummary)
+}
+```
+\elandscape
+\newpage
+
+```{r}
+########
+# level 2 -- Add length 
+########
+
+BestMEFactor<-BestMEModelFormula
+OtherFactor<-"stimlen"
+
+if(!grepl(OtherFactor,BestMEFactor,fixed = TRUE)){
+  AICSummary<-TestLevel2Models(PosDat,BestMEFactor,OtherFactor)
+  CumAICSummary <- ConcatAndAddMissingColumns(CumAICSummary,AICSummary)
+  kable(AICSummary)
+}
+```
+
+```{r}
+########
+# level 2 -- add cumulative preserved
+########
+
+BestMEFactor<-BestMEModelFormula
+OtherFactor<-"CumPres"
+
+if(!grepl(OtherFactor,BestMEFactor,fixed = TRUE)){
+  AICSummary<-TestLevel2Models(PosDat,BestMEFactor,OtherFactor)
+  CumAICSummary <- ConcatAndAddMissingColumns(CumAICSummary,AICSummary)  
+  kable(AICSummary)
+}
+```
+
+```{r}
+########
+# level 2 -- Add linear position (NOT quadratic)
+########
+
+BestMEFactor<-BestMEModelFormula
+OtherFactor<-"pos"
+
+if(!grepl(OtherFactor,BestMEFactor,fixed = TRUE)){
+  AICSummary<-TestLevel2Models(PosDat,BestMEFactor,OtherFactor)
+  CumAICSummary <- ConcatAndAddMissingColumns(CumAICSummary,AICSummary)  
+  kable(AICSummary)
+}
+```
+
+```{r}
+CumAICSummary <- CumAICSummary %>% arrange(AIC)
+BestModelFormulaL2 <- CumAICSummary$Model[BestModelIndexL2]
+write.csv(CumAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_main_effects_plus_one_model_summary.csv"),row.names = FALSE)
+kable(CumAICSummary)
+```
+
+
+```{r}
+# explore influence of frequency and length
+
+if(grepl("stimlen",BestModelFormulaL2)){ # if length is already in the formula
+  Level3ModelEquations<-c(
+      BestModelFormulaL2, # best model from level 2
+    "preserved ~ 1", # null model
+      paste0(BestModelFormulaL2," + log_freq")
+  )
+}else if(grepl("log_freq",BestModelFormulaL2)){ # if log_freq is already in the formula
+    Level3ModelEquations<-c(
+      BestModelFormulaL2, # best model from level 2
+    "preserved ~ 1", # null model
+      paste0(BestModelFormulaL2," + stimlen")
+  )
+}else{
+  Level3ModelEquations<-c(
+      BestModelFormulaL2, # best model from level 2
+    "preserved ~ 1", # null model
+      paste0(BestModelFormulaL2," + log_freq"),
+      paste0(BestModelFormulaL2," + stimlen"),
+      paste0(BestModelFormulaL2," + stimlen + log_freq")
+  )
+}
+
+Level3Res<-TestModels(Level3ModelEquations,PosDat)
+BestModelL3<-Level3Res$ModelResult[[ BestModelIndexL3 ]]
+BestModelFormulaL3<-Level3Res$Model[[BestModelIndexL3]]
+
+AICSummary<-data.frame(Model=Level3Res$Model,
+                       AIC=Level3Res$AIC,
+                       row.names = Level3Res$Model)
+AICSummary$DeltaAIC<-AICSummary$AIC-AICSummary$AIC[1]
+AICSummary$AICexp<-exp(-0.5*AICSummary$DeltaAIC)
+AICSummary$AICwt<-AICSummary$AICexp/sum(AICSummary$AICexp)
+AICSummary$NagR2<-Level3Res$NagR2
+
+AICSummary <- merge(AICSummary,Level3Res$CoefficientValues,
+                          by='row.names',sort=FALSE)
+AICSummary <- subset(AICSummary, select = -c(Row.names))
+
+write.csv(AICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_main_effects_plus_one_len_freq_summary.csv"),row.names = FALSE)
+
+kable(AICSummary)
+```
+
+
+```{r}
+# BestModelIndex is set by the parameter file and is used to choose
+# a model that is essentially equivalent to the lowest AIC model, but
+# simpler (and with a slightly higher AIC value, so not in first position)
+BestModelL3<-Level3Res$ModelResult[[ BestModelIndexL3 ]]
+BestModelFormulaL3<-Level3Res$Model[BestModelIndexL3]
+
+BestModel<-BestModelL3
+BestModelDeletions<-arrange(dropterm(BestModel),desc(AIC))
+# order by terms that increase AIC the most when they are the one dropped
+BestModelDeletions
+```
+
+```{r}
+################################
+# Single deletions from best model
+################################
+
+write.csv(BestModelDeletions,paste0(TablesDir,CurPat,"_",CurTask,"_best_model_single_term_deletions.csv"),row.names = TRUE)
+```
+
+```{r} 
+# plot prev err and prev cor with predicted values
+PosDat$OAPred<-fitted(BestModel)
+
+PrevCorPlot<-PlotObsPredPreviousCorrect(PosDat,"preserved","OAPred",palette_values,shape_values)
+print(PrevCorPlot)
+PrevErrPlot<-PlotObsPredPreviousError(PosDat,"preserved","OAPred",palette_values,shape_values)
+print(PrevErrPlot)
+
+PlotName<-paste0(FigDir,CurPat,"_",CurTask,"_ObsPred_BestFullModel")
+ggsave(filename=paste(PlotName,"_prev_correct.tif",sep=""),plot=PrevCorPlot,device="tiff",compression = "lzw")
+
+ggsave(filename=paste(PlotName,"_prev_error.tif",sep=""),plot=PrevErrPlot,device="tiff",compression = "lzw")
+```
+
+
+```{r}
+if(DoSimulations){
+  BestModelFormulaL3Rnd <- BestModelFormulaL3
+  if(grepl("CumPres",BestModelFormulaL3Rnd)){
+    BestModelFormulaL3Rnd <- gsub("CumPres","RndCumPres",BestModelFormulaL3Rnd)
+  }
+  if(grepl("CumErr",BestModelFormulaL3Rnd)){
+    BestModelFormulaL3Rnd <- gsub("CumErr","RndCumErr",BestModelFormulaL3Rnd)
+  }
+  
+  RndModelAIC<-numeric(length=RandomSamples)
+  for(rindex in seq(1,RandomSamples)){
+  # Shuffle cumulative values
+    PosDat$RndCumPres <- ShuffleWithinWord(PosDat,"CumPres")
+    PosDat$RndCumErr <- ShuffleWithinWord(PosDat,"CumErr")
+    BestModelRnd <- glm(as.formula(BestModelFormulaL3Rnd),
+                        family="binomial",data=PosDat)
+    RndModelAIC[rindex] <- BestModelRnd$aic
+  }
+  ModelNames<-c(paste0("***",BestModelFormulaL3),
+                rep(BestModelFormulaL3Rnd,RandomSamples))
+  AICValues <- c(BestModelL3$aic,RndModelAIC)
+  BestModelRndDF <- data.frame(Name=ModelNames,AIC=AICValues)
+  BestModelRndDF <- BestModelRndDF %>% arrange(AIC)
+  BestModelRndDF <- rbind(BestModelRndDF, 
+                          data.frame(Name=c("Random average"),
+                                     AIC=c(mean(RndModelAIC))))
+  BestModelRndDF <- rbind(BestModelRndDF, 
+                          data.frame(Name=c("Random SD"),
+                                     AIC=c(sd(RndModelAIC))))
+  write.csv(BestModelRndDF,paste0(TablesDir,CurPat,"_",CurTask,
+                                  "_best_model_with_random_cum_term.csv"),
+            row.names = FALSE)
+}
+```
+
+
+```{r}
+# plot influence factors
+num_models <- nrow(BestModelDeletions) - 1
+# minus 1 because last 
+# model is always <none> and we don't want to include that
+
+if(num_models > 4){
+  last_model_num <- 4
+}else{
+  last_model_num <- num_models 
+}
+
+FinalModelSet<-ModelSetFromDeletions(BestModelFormulaL3,
+                                     BestModelDeletions,
+                                     last_model_num)
+
+PlotName<-paste0(FigDir,CurPat,"_",CurTask,"_FactorPlots")
+
+FactorPlot<-PlotModelSetWithFreq(PosDat,FinalModelSet,
+                                 palette_values,FinalModelSet,PptID=CurPat)
+ggsave(paste0(PlotName,".tif"),plot=FactorPlot,width = 360,height=400,units="mm",device="tiff",compression = "lzw")
+# use \blandscape and \elandscape to make markdown plots landscape if needed
+FactorPlot
+```
+
+
+```{r}
+DA.Result<-dominanceAnalysis(BestModel)
+DAContributionAverage<-ConvertDominanceResultToTable(DA.Result)
+write.csv(DAContributionAverage,paste0(TablesDir,CurPat,"_",CurTask,"_dominance_analysis_table.csv"),row.names = TRUE)
+kable(DAContributionAverage)
+```
+
+\newpage
+\blandscape
+
+
+```{r}
+deviance_differences_df<-GetDevianceSet(FinalModelSet,PosDat)
+write.csv(deviance_differences_df,paste0(TablesDir,CurPat,"_",CurTask,"_deviance_differences_table.csv"),row.names = FALSE)
+deviance_differences_df
+```
+
+```{r}
+kable(deviance_differences_df[,2:3], format="latex", booktabs=TRUE) %>% 
+  kable_styling(latex_options="scale_down")
+```
+
+
+```{r}
+kable(deviance_differences_df[,c(4:6)], format="latex", booktabs=TRUE) %>% 
+  kable_styling(latex_options="scale_down")
+```
+
+
+```{r}
+NagContributions <- t(DAContributionAverage[3,])
+NagTotal<-sum(NagContributions)
+NagPercents <- NagContributions / NagTotal
+NagResultTable <- data.frame(NagContributions = NagContributions, NagPercents = NagPercents)
+names(NagResultTable)<-c("NagContributions","NagPercents")
+write.csv(NagResultTable,paste0(TablesDir,CurPat,"_",CurTask,"_nagelkerke_contributions_table.csv"),row.names = TRUE)
+NagPercents
+```
+
+
+
+
+```{r}
+sse_results_list<-compare_SS_accounted_for(FinalModelSet,"preserved ~ 1",PosDat,N_cutoff=10)
+sse_table<-sse_results_table(sse_results_list)
+write.csv(sse_table,paste0(TablesDir,CurPat,"_",CurTask,"_sse_results_table.csv"),row.names = TRUE)
+sse_table
+```
+
+```{r}
+kable(sse_table[,1:3], format="latex", booktabs=TRUE) %>% 
+  kable_styling(latex_options="scale_down")
+```
+
+```{r}
+write.csv(results_report_DF,paste0(TablesDir,CurPat,"_",CurTask,"_results_report_df.csv"),row.names = FALSE)
+```
+
+
+```{r}
+kable(sse_table[,c(1,4:6)], format="latex", booktabs=TRUE) %>% 
+  kable_styling(latex_options="scale_down")
+```
+
+\elandscape

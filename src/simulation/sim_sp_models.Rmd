@@ -1,0 +1,390 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r setup, include=FALSE}
+library(config)
+require(knitr)
+opts_knit$set(echo = FALSE)
+
+config <- config::get(file="./src/config.yml")
+RootDir <- config$root_dir
+source(paste0(RootDir,"/src/function_library/sp_functions.R"))
+
+RootDir <- paste0(RootDir,"/src/simulation")
+
+opts_knit$set(root.dir = RootDir)
+```
+
+```{r}
+library(tidyverse)
+library(lme4)
+library(ggpubr)
+library(kableExtra)
+
+# theme_set(
+#   theme_bw() +
+#     theme(legend.position = "top")
+#   )
+```
+
+```{r}
+palette_values <- c(
+  "#000000","#9b6f02", "#B13401", "#6a0b86","#8862F5", "#0038ae", "#175c12",
+  "#339701", "#5dee14", "#DEB604", "#Ee6a14")
+
+shape_values <- c(15,19,17,18,20,3,4,8,10,6)
+```
+
+```{r}
+word_lengths <- c(4,5,6,7,8,9,10)
+words_per_length <- c(55,  84, 110, 109, 149,  90,  84)
+# can be found in pos_len_N_table in template analysis script
+# will vary slightly among ppts
+```
+
+```{r}
+setup_sim_dataset <- function(word_lengths, words_per_length, reps){
+  datalist <- vector("list",length = length(word_lengths)*reps)
+  
+  for(j in seq(1,reps)){ # can do several datasets
+    for(length_index in seq(1,length(word_lengths))){ # loop for one dataset
+      temp_word_position <- seq(1,word_lengths[length_index])
+      word_position <- rep(temp_word_position,times=words_per_length[length_index])
+      word_length <- rep(word_lengths[length_index],
+                         times=word_lengths[length_index]*
+                           words_per_length[length_index])
+      word_num_this_length <- rep(seq(1,words_per_length[length_index]),
+                                  each=word_lengths[length_index])
+      sim_data_one_length <- data.frame(word_num_this_length = word_num_this_length,
+                                        word_length = word_length, 
+                                        word_position = word_position,
+                                        rep = j)
+      datalist[[length_index + (j-1)*length(word_lengths)]] <- sim_data_one_length
+    }
+  }
+  
+  sim_data <- do.call(rbind,datalist)
+  sim_data$word_num <- seq(1,length(sim_data$word_length))
+  return(sim_data)
+}
+```
+
+
+```{r}
+# calculate probability for this segment then roll dice to see if cor/error
+p_cor_function <- function(p_cor_start,prev_cor,cor_beta,
+                           prev_err,err_beta,pos,pos_beta){
+  prev_cor_param <- prev_cor*cor_beta
+  prev_err_param <- prev_err*err_beta
+  pos_param <- pos*pos_beta
+  p_cor_current <- p_cor_start + prev_cor_param + prev_err_param + pos_param
+  if(p_cor_current < 0){
+    print("**WARNING** probability value is < 0")
+    p_cor_current <- 0
+  }
+  return(p_cor_current)
+}
+
+simulate_data <- function(p_cor_start, cor_beta, err_beta, pos_beta, 
+                          word_lengths, words_per_length, reps){
+  sim_data <- setup_sim_dataset(word_lengths, words_per_length, reps)
+  # setup words, lengths and positions in skeleton dataset
+  
+  for(i in seq(1,length(sim_data$word_position))){ # could be any of the sim_data columns
+    if(sim_data$word_position[i] == 1){
+      prev_cor <- 0
+      prev_err <- 0
+    }
+    
+    current_p_cor <- p_cor_function(p_cor_start,
+                                prev_cor,
+                                cor_beta,
+                                prev_err,
+                                err_beta,
+                                sim_data$word_position[i],
+                                pos_beta)
+    sim_data$p_correct_theory[i]<-current_p_cor
+    rand_num <- runif(1)
+    correct <- (rand_num < current_p_cor)
+    if(correct){
+      sim_data$prev_cor[i] <- prev_cor
+      sim_data$prev_err[i] <- prev_err
+      sim_data$correct[i] <- 1
+      prev_cor <- prev_cor + 1
+    }else{
+      sim_data$prev_cor[i] <- prev_cor
+      sim_data$prev_err[i] <- prev_err
+      sim_data$correct[i] <- 0
+      prev_err <- prev_err + 1
+    }
+  }
+  return(sim_data)
+}
+```
+
+```{r}
+p_cor_start <- 0.9
+cor_beta <- 0
+err_beta <- -0.1
+pos_beta <- 0
+
+reps <- 1
+
+sim_prev_err <- simulate_data(p_cor_start, cor_beta, err_beta, pos_beta,
+                              word_lengths, words_per_length, reps)
+```
+
+```{r}
+p_cor_start <- 0.5
+cor_beta <- 0.05
+err_beta <- 0
+pos_beta <- 0
+
+reps <- 1
+
+sim_prev_cor <- simulate_data(p_cor_start, cor_beta, err_beta, pos_beta,
+                              word_lengths, words_per_length, reps)
+```
+
+```{r}
+p_cor_start <- 0.9
+cor_beta <- 0
+err_beta <- 0
+pos_beta <- -0.07
+
+reps <- 1
+
+sim_pos <- simulate_data(p_cor_start, cor_beta, err_beta, pos_beta,
+                              word_lengths, words_per_length, reps)
+```
+
+
+```{r}
+plot_result<-function(sim_data,factor_name,theory_dep_var_name,dep_var_limit,
+                      palette_values,shape_values,legend_name){
+  summary_data <- sim_data %>% 
+    group_by_at(c("word_position",factor_name)) %>% 
+    summarise_at(c(theory_dep_var_name,"correct"),mean)
+  summary_data <- summary_data %>% filter((!!as.symbol(factor_name)) < dep_var_limit)
+  summary_data[factor_name] <- factor(as.integer(unlist(summary_data[factor_name])))
+  summary_data$word_position <- factor(summary_data$word_position)
+  theory_plot <- ggplot(summary_data, aes(x=word_position,
+                                   y=(!!as.symbol(theory_dep_var_name)),
+                                   color=.data[[factor_name]],
+                                   shape=.data[[factor_name]],
+                                   group=.data[[factor_name]]))+
+    geom_point() + geom_line() + 
+    labs(x ="Word position", y = "p(preserved)")
+  theory_plot <- theory_plot + scale_color_manual(name=legend_name,values = palette_values)
+  theory_plot <- theory_plot + scale_shape_manual(name=legend_name,values = shape_values)
+  data_plot <- ggplot(summary_data, aes(x=word_position,
+                                   y=correct,
+                                   color=.data[[factor_name]],
+                                   shape=.data[[factor_name]],
+                                   group=.data[[factor_name]])) +
+  geom_point() + geom_line() + 
+    labs(x ="Word position", y = "p(preserved)")
+  data_plot <- data_plot + scale_color_manual(name=legend_name,values = palette_values)
+  data_plot <- data_plot + scale_shape_manual(name=legend_name,values = shape_values)  
+  return(list(theory_plot,data_plot))
+}
+
+# my_plots<-plot_result(sim_data,"prev_err","p_correct_theory",4)
+
+plot_sim_data<-function(sim_data,legend_position = FALSE){ 
+  # legend_position = FALSE means no legend
+  # len x pos plots
+  my_len_plots<-plot_result(sim_data,"word_length","p_correct_theory",10,
+                            palette_values,shape_values,"word length")
+  len_theory_plot <- my_len_plots[[1]]
+  len_data_plot <- my_len_plots[[2]]
+  
+  # previous error plots
+  my_prev_err_plots<-plot_result(sim_data,"prev_err","p_correct_theory",5,
+                                 palette_values,shape_values,"num prev error")
+  prev_err_theory_plot <- my_prev_err_plots[[1]]
+  prev_err_data_plot <- my_prev_err_plots[[2]]
+  
+  # previous correct plots
+  my_prev_cor_plots<-plot_result(sim_data,"prev_cor","p_correct_theory",10,
+                                 palette_values,shape_values,"num prev correct")
+  prev_cor_theory_plot <- my_prev_cor_plots[[1]]
+  prev_cor_data_plot <- my_prev_cor_plots[[2]]
+  
+  # for paper we only include plots by prev_err and prev_cor
+  # below could be used to plot by word length as well
+  
+  # my_figure_theory <- ggarrange(len_theory_plot,
+  #                        prev_err_theory_plot,
+  #                        prev_cor_theory_plot,
+  #                        labels = c("A","B","C"),
+  #                        ncol=3,
+  #                        nrow=1,
+  #                        common.legend = TRUE)
+  # 
+  # my_figure_data <- ggarrange(len_data_plot,
+  #                        prev_err_data_plot,
+  #                        prev_cor_data_plot,
+  #                        labels = c("A","B","C"), 
+  #                        ncol=3, 
+  #                        nrow=1,
+  #                        common.legend = TRUE)
+  
+  my_figure_theory <- ggarrange(prev_err_theory_plot,NULL, 
+                                # NULL column to add spacing between plots
+                         prev_cor_theory_plot,
+                         # labels = c("A","","B"),
+                         ncol=3,
+                         nrow=1,
+                         widths = c(1,0.1,1),
+                         common.legend = FALSE,
+                         legend=legend_position)
+
+  my_figure_data <- ggarrange(prev_err_data_plot,NULL,
+                         prev_cor_data_plot,
+                         # labels = c("A","","B"),
+                         ncol=3,
+                         nrow=1,
+                         widths = c(1,0.1,1),
+                         common.legend = FALSE,
+                         legend = legend_position)
+  return(list(my_figure_theory,my_figure_data))
+}
+```
+
+```{r}
+plots<-plot_sim_data(sim_prev_err,legend_position = "right")
+my_figure_theory_prev_err <- plots[[1]]
+my_figure_data_prev_err <- plots[[2]]
+ggsave(paste0(RootDir,"/theory_prev_error.tif"),
+       plot=my_figure_theory_prev_err,
+       device="tif",unit="cm",width=30,height=11)
+print(my_figure_theory_prev_err)
+```
+
+```{r}
+ggsave(paste0(RootDir,"/simulated_data_prev_error.tif"),
+       plot=my_figure_data_prev_err,
+       device="tif",unit="cm",width=30,height=11)
+print(my_figure_data_prev_err)
+```
+
+```{r}
+plots<-plot_sim_data(sim_prev_cor,legend_position = FALSE)
+my_figure_theory_prev_cor <- plots[[1]]
+my_figure_data_prev_cor <- plots[[2]]
+
+ggsave(paste0(RootDir,"/theory_prev_cor.tif"),
+       plot=my_figure_theory_prev_cor,
+       device="tif",unit="cm",width=30,height=11)
+print(my_figure_theory_prev_cor)
+```
+
+```{r}
+ggsave(paste0(RootDir,"/simulated_data_prev_cor.tif"),
+       plot=my_figure_data_prev_cor,
+       device="tif",unit="cm",width=30,height=11)
+print(my_figure_data_prev_cor)
+```
+
+```{r}
+plots<-plot_sim_data(sim_pos,legend_position = FALSE)
+my_figure_theory_pos <- plots[[1]]
+my_figure_data_pos <- plots[[2]]
+
+ggsave(paste0(RootDir,"/theory_pos.tif"),
+       plot=my_figure_theory_pos,
+       device="tif",unit="cm",width=30,height=11)
+print(my_figure_theory_pos)
+```
+
+```{r}
+ggsave(paste0(RootDir,"/simulated_data_pos.tif"),
+       plot=my_figure_data_pos,
+       device="tif",unit="cm",width=30,height=11)
+print(my_figure_data_pos)
+```
+
+```{r}
+write.csv(sim_prev_err,paste0(RootDir,"/simulated_data_for_previous_error_model.csv"))
+write.csv(sim_prev_cor,paste0(RootDir,"/simulated_data_for_previous_cor_model.csv"))
+write.csv(sim_pos,paste0(RootDir,"/simulated_data_for_position_model.csv"))
+```
+
+Test models
+
+```{r}
+# change data here to examine different simulated datasets
+# **NOTE** should be adjusted to do by rep so that reps can be generated and
+# a set of model reps analyzed without doing different reps by hand
+sim_data <- sim_prev_cor
+```
+
+```{r}
+data_matrix <- sim_data %>% group_by(word_length,word_position) %>% summarise(correct = mean(correct)) %>% pivot_wider(names_from=word_length, values_from = correct)
+data_matrix
+```
+
+```{r}
+data_matrix <- sim_data %>% group_by(prev_err, word_position) %>% summarise(correct = mean(correct)) %>% pivot_wider(names_from=word_position, values_from = correct)
+data_matrix
+```
+
+```{r}
+data_matrix <- sim_data %>% group_by(prev_err, word_position) %>% summarise(correct=mean(correct), N=n()) %>% select(-correct) %>% pivot_wider(names_from=word_position, values_from = N)
+data_matrix
+```
+
+```{r}
+Level1ModelEquations<-c(
+  "correct ~ prev_cor*prev_err*word_position",
+  "correct ~ prev_cor*word_position + prev_err*word_position",
+  "correct ~ prev_cor*word_position + prev_err",
+  "correct ~ prev_cor*prev_err+word_position",
+  "correct ~ prev_err*word_position + prev_cor",
+  "correct ~ prev_cor+prev_err+word_position",
+  "correct ~ prev_err+word_position",
+  "correct ~ prev_cor+word_position",
+  "correct ~ prev_cor+prev_err",
+  "correct ~ prev_cor",
+  "correct ~ prev_err",
+  "correct ~ word_position",
+  "correct ~ 1")
+Level1Res<-TestModels(Level1ModelEquations,sim_data)
+```
+
+```{r}
+BestModel<-Level1Res$ModelResult[[ 1 ]]
+BestModelFormula<-Level1ModelEquations[1]
+print(BestModelFormula)
+```
+
+```{r}
+AICSummary<-data.frame(Model=Level1Res$Model[Level1Res$AICOrder],
+  AIC=Level1Res$AIC[Level1Res$AICOrder])
+AICSummary$DeltaAIC<-AICSummary$AIC-AICSummary$AIC[1]
+AICSummary$AICexp<-exp(-0.5*AICSummary$DeltaAIC)
+AICSummary$AICwt<-AICSummary$AICexp/sum(AICSummary$AICexp)
+AICSummary %>% kbl(caption = "AIC summary for all models", booktabs = T) %>% kable_classic(full_width = F, html_font = "Cambria") %>% kable_styling(bootstrap_options = c("striped"), latex_options = "striped")
+```
+
+```{r}
+TestModelResult<-glm(correct ~ prev_cor*word_position*prev_err,
+                                  family="binomial",data=sim_data)
+sim_data$fitted <- fitted(TestModelResult)
+```
+
+```{r}
+cor_err_interaction_plots<-plot_result(sim_data,"prev_err","fitted",5)
+```
+
+```{r}
+print(cor_err_interaction_plots[[1]])
+```
+
+
+
+
+

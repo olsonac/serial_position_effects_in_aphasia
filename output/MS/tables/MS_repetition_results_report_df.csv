@@ -1,0 +1,12 @@
+"Description","ParameterValue"
+"min preserved",0.727669306809111
+"max preserved",1.00687358015595
+"mean change in probability for each additional length: ",-0.0174579622032113
+"mean change in probability for each additional position (excluding  U-shape): ",-0.016015456451664
+"U-shape",1
+"Average upward change after U minimum",0.00961673181171149
+"Proportion of average downward change",0.600465671442808
+"row with biggest return upward",7
+"downward distance for row with the largest upward value",0.139455459648307
+"return upward value",0.0195182213614217
+"Return upward as a proportion of the downward distance:",0.139960252618612

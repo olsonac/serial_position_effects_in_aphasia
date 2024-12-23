@@ -1,0 +1,59 @@
+---
+title: "error_types_from_cr12_data"
+author: "Andrew Olson"
+date: "2024-08-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+rm(list=ls())
+library(tidyverse) # for data manipulation and plotting
+
+#Sys.setenv(R_CONFIG_ACTIVE = "test")  # uncomment to test
+#Sys.setenv(R_CONFIG_ACTIVE = "naming")
+Sys.setenv(R_CONFIG_ACTIVE = "default") 
+
+config <- config::get(file="./src/config.yml")
+RootDir <- config$root_dir
+opts_knit$set(root.dir = config$root_dir)
+```
+
+```{r}
+EData <- read.csv(paste0(RootDir,"/data/etype_from_repetition_all_patients_12cr.csv"))
+head(EData)
+```
+```{r}
+etype_summary <- EData %>% group_by(ppt,subgroup,etype) %>% summarise(N=n()) 
+etype_summary_totals <- etype_summary %>% filter(etype == "")
+etype_summary_N <- etype_summary %>% filter(etype != "") %>% filter(etype != "?") %>% 
+  pivot_wider(values_from = N,names_from = etype,id_cols=c(ppt,subgroup),values_fill=0) %>% 
+  mutate(total = rowSums(across(where(is.numeric)),na.rm=TRUE))
+# %>% pivot_wider(names_from = etype, values_from = N)
+etype_summary_N <- etype_summary_N %>% arrange(desc(subgroup),ppt)
+etype_summary_N <- etype_summary_N %>% rename(pseudo_sub = "pseudo-sub")
+etype_summary_N
+```
+
+```{r}
+write.csv(etype_summary_N,file=paste0(RootDir,"/output/error_type_N_summary.csv"))
+```
+
+
+```{r}
+etype_summary_perc <- etype_summary_N %>% mutate(del = (del/total)*100, 
+                                                 ins=(ins/total)*100,
+                                                 mov=(mov/total)*100,
+                                                 pseudo_sub=(pseudo_sub/total)*100,
+                                                 sub=(sub/total)*100,
+                                                 total = (total/total)*100)
+etype_summary_perc <- etype_summary_perc %>% select(ppt, subgroup, sub, del, ins, mov, pseudo_sub,total)
+etype_summary_perc
+```
+
+```{r}
+write.csv(etype_summary_perc,file=paste0(RootDir,"/output/error_type_percent_summary.csv"))
+```

@@ -1,0 +1,18 @@
+default:
+  root_dir: "/Users/Olsonac-admin/Documents/current/neuropsych/Italian_patients/serial_position_project/serial_position_analysis"
+  patient_param_file: "./src/patient_list.csv"
+  best_model_default_index_L1: 1
+  best_model_default_index_L2: 1
+  best_model_default_index_L3: 1
+  random_samples: 100
+  do_simulations: FALSE
+  
+test:
+  patient_param_file: "./src/one_patient_parm_file.csv"
+  random_samples: 100
+  do_simulations: FALSE
+  
+naming:
+  patient_param_file: "./src/naming_patient_list.csv"
+  random_samples: 100
+  do_simulations: FALSE

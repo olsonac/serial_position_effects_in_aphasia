@@ -1,0 +1,8 @@
+patient,min_length,max_length,task
+RM,4,10,naming
+DS,4,10,naming
+TC,4,10,naming
+VS,4,10,naming
+OB,4,10,naming
+AV,4,10,naming
+GC,4,10,naming

@@ -1,0 +1,406 @@
+,patient,task,word,phonemes,resp,err_type,surf_freq,plen,num_sylls,stressed_syll,syll_components,syll_numbers,phon_only,resp_phon_only,stim,stimlen,correct,LCSpres,log_freq,freq_bin,fragment
+1,TC,naming,acquario,ak.kwa.rjo,akkwarjo,correct,31,8,3,2,V1OSVOSV,11222333,akkwarjo,akkwarjo,akkwarjo,8,1,8,3.433987204,2,0
+2,TC,naming,aereo,a.E.re.o,aEreo,correct,123,5,4,2,VVOVV,12334,aEreo,aEreo,aEreo,5,1,5,4.812184355,3,0
+3,TC,naming,ago,a.Go,aGo,correct,45,3,2,1,VOV,122,aGo,aGo,aGo,3,1,3,3.80666249,2,0
+4,TC,naming,ala,a.la,ale,nonword,97,3,2,1,VOV,122,ala,ale,ala,3,0,2,4.574710979,3,0
+5,TC,naming,albero,al.be.ro,albero,correct,133,6,3,1,V1OVOV,112233,albero,albero,albero,6,1,6,4.890349128,3,0
+6,TC,naming,alce,al.ce,cErve,nonword,2,4,2,1,V1OV,1122,alce,cErve,alce,4,0,2,0.693147181,1,0
+7,TC,naming,alluce,al.lu.ce,dito,word,6,6,3,1,V1OVOV,112233,alluce,dito,alluce,6,0,0,1.791759469,1,0
+8,TC,naming,altalena,al.ta.le.na,NA,no response,15,8,4,3,V1OVOVOV,11223344,altalena,NA,altalena,8,0,0,2.708050201,2,0
+9,TC,naming,amaca,a.ma.ka,amaka,correct,6,5,3,2,VOVOV,12233,amaka,amaka,amaka,5,1,5,1.791759469,1,0
+10,TC,naming,ananas,a.na.nas,ananas,correct,15,6,3,1,VOVOV1,122333,ananas,ananas,ananas,6,1,6,2.708050201,2,0
+11,TC,naming,ancora,an.ko.ra,a,nonword,4013,6,3,2,V1OVOV,112233,ankora,a,ankora,6,0,1,8.29729437,4,1
+12,TC,naming,anello,a.nEl.lo,anEllo,correct,55,6,3,2,VOV1OV,122233,anEllo,anEllo,anEllo,6,1,6,4.007333185,2,0
+13,TC,naming,ape,a.pe,moska,correct,25,3,2,1,VOV,122,ape,moska,ape,3,1,1,3.218875825,2,0
+14,TC,naming,aquila,a.kwi.la,akkwa,word,31,6,3,1,VOSVOV,122233,akwila,akkwa,akwila,6,0,4,3.433987204,2,1
+15,TC,naming,aquilone,a.kwi.lo.ne,akwol,nonword,5,8,4,3,VOSVOVOV,12223344,akwilone,akwol,akwilone,8,0,4,1.609437912,1,1
+16,TC,naming,arachide,a.ra.ki.de,arakide,correct,0,7,4,2,VOVOVOV,1223344,arakide,arakide,arakide,7,1,7,0,1,0
+17,TC,naming,aragosta,a.ra.Gos.ta,krostato,nonword,6,8,4,3,VOVOV1OV,12233344,araGosta,krostato,araGosta,8,0,5,1.791759469,1,0
+18,TC,naming,arancia,a.ran.ca,arancala,w+nonword,38,6,3,2,VOV1OV,122233,aranca,arancala,aranca,6,0,6,3.63758616,2,0
+19,TC,naming,arcobaleno,ar.ko.ba.le.no,akwilone,word,9,10,5,4,V1OVOVOVOV,1122334455,arkobaleno,akwilone,arkobaleno,10,0,4,2.197224577,2,0
+20,TC,naming,armadio,ar.ma.djo,armadjo,correct,51,7,3,2,V1OVOSV,1122333,armadjo,armadjo,armadjo,7,1,7,3.931825633,2,0
+21,TC,naming,arpa,ar.pa,arka,word,3,4,2,1,V1OV,1122,arpa,arka,arpa,4,0,3,1.098612289,1,0
+22,TC,naming,ascia,aS.Sa,NA,no response,20,4,2,1,V1OV,1122,aSSa,NA,aSSa,4,0,0,2.995732274,2,0
+23,TC,naming,asino,a.si.no,asino,correct,12,5,3,1,VOVOV,12233,asino,asino,asino,5,1,5,2.48490665,2,0
+24,TC,naming,asparago,as.pa.ra.Go,leNo,word,0,8,4,2,V1OVOVOV,11223344,asparaGo,leNo,asparaGo,8,0,1,0,1,0
+25,TC,naming,autobus,aw.to.bus,awtobus,correct,92,7,3,1,V1OVOV1,1122333,awtobus,awtobus,awtobus,7,1,7,4.521788577,3,0
+26,TC,naming,balcone,bal.ko.ne,balkone,correct,39,7,3,2,OV1OVOV,1112233,balkone,balkone,balkone,7,1,7,3.663561646,2,0
+27,TC,naming,balena,ba.le.na,balena,correct,28,6,3,2,OVOVOV,112233,balena,balena,balena,6,1,6,3.33220451,2,0
+28,TC,naming,bambola,bam.bo.la,bambola,correct,23,7,3,1,OV1OVOV,1112233,bambola,bambola,bambola,7,1,7,3.135494216,2,0
+29,TC,naming,banana,ba.na.na,banana,correct,18,6,3,2,OVOVOV,112233,banana,banana,banana,6,1,6,2.890371758,2,0
+30,TC,naming,bandiera,ban.djE.ra,bandjere,word,114,8,3,2,OV1OSVOV,11122233,bandjEra,bandjere,bandjEra,8,0,6,4.736198448,3,0
+31,TC,naming,barba,bar.ba,barba,correct,88,5,2,1,OV1OV,11122,barba,barba,barba,5,1,5,4.477336814,3,0
+32,TC,naming,barca,bar.ka,nave,word,134,5,2,1,OV1OV,11122,barka,nave,barka,5,0,1,4.8978398,3,0
+33,TC,naming,bastone,bas.to.ne,bastone,correct,38,7,3,2,OV1OVOV,1112233,bastone,bastone,bastone,7,1,7,3.63758616,2,0
+34,TC,naming,baule,ba.u.le,kwo,nonword,9,5,3,2,OVVOV,11233,baule,kwo,baule,5,0,0,2.197224577,2,0
+35,TC,naming,biberon,bi.be.rOn,bimbo,nonword,6,7,3,3,OVOVOV1,1122333,biberOn,bimbo,biberOn,7,0,3,1.791759469,1,1
+36,TC,naming,bicchiere,bik.kjE.re,bikkjEra,nonword,111,8,3,2,OV1OSVOV,11122233,bikkjEre,bikkjEra,bikkjEre,8,0,7,4.709530201,3,0
+37,TC,naming,bicicletta,bi.ci.klet.ta,bicikletta,correct,65,10,4,3,OVOVOSV1OV,1122333344,bicikletta,bicikletta,bicikletta,10,1,10,4.17438727,3,0
+38,TC,naming,binocolo,bi.nO.ko.lo,binOkolo,correct,14,8,4,2,OVOVOVOV,11223344,binOkolo,binOkolo,binOkolo,8,1,8,2.63905733,2,0
+39,TC,naming,bomba,bom.ba,bomba,correct,128,5,2,1,OV1OV,11122,bomba,bomba,bomba,5,1,5,4.852030264,3,0
+40,TC,naming,borsa,bor.sa,borsa,correct,193,5,2,1,OV1OV,11122,borsa,borsa,borsa,5,1,5,5.262690189,3,0
+41,TC,naming,botte,bot.te,NA,no response,46,5,2,1,OV1OV,11122,botte,NA,botte,5,0,0,3.828641396,2,0
+42,TC,naming,bottiglia,bot.tiL.La,bottiLLa,correct,64,8,3,2,OV1OV1OV,11122233,bottiLLa,bottiLLa,bottiLLa,8,1,8,4.158883083,3,0
+43,TC,naming,bottone,bot.to.ne,bottone,correct,16,7,3,2,OV1OVOV,1112233,bottone,bottone,bottone,7,1,7,2.772588722,2,0
+44,TC,naming,braccio,brac.co,mano,word,271,6,2,1,OSV1OV,111122,bracco,mano,bracco,6,0,2,5.602118821,3,0
+45,TC,naming,burro,bur.ro,burro,correct,92,5,2,1,OV1OV,11122,burro,burro,burro,5,1,5,4.521788577,3,0
+46,TC,naming,busta,bus.ta,busta,correct,65,5,2,1,OV1OV,11122,busta,busta,busta,5,1,5,4.17438727,3,0
+47,TC,naming,cactus,kak.tus,NA,no response,10,6,2,1,OV1OV1,111222,kaktus,NA,kaktus,6,0,0,2.302585093,2,0
+48,TC,naming,calamita,ka.la.mi.ta,kama,nonword,9,8,4,3,OVOVOVOV,11223344,kalamita,kama,kalamita,8,0,4,2.197224577,2,1
+49,TC,naming,calzino,kal.Zi.no,NA,no response,1,7,3,2,OV1OVOV,1112233,kalZino,NA,kalZino,7,0,0,0,1,0
+50,TC,naming,cameriere,ka.me.rjE.re,kamerjEre,correct,36,9,4,3,OVOVOSVOV,112233344,kamerjEre,kamerjEre,kamerjEre,9,1,9,3.583518938,2,0
+51,TC,naming,camicia,ka.mi.ca,kamica,correct,104,6,3,2,OVOVOV,112233,kamica,kamica,kamica,6,1,6,4.644390899,3,0
+52,TC,naming,camion,ka.mjon,kamjon,correct,60,6,2,1,OVOSV1,112222,kamjon,kamjon,kamjon,6,1,6,4.094344562,2,0
+53,TC,naming,cammello,kam.mEl.lo,droGjEre,word,13,8,3,2,OV1OV1OV,11122233,kammEllo,droGjEre,kammEllo,8,0,1,2.564949357,2,0
+54,TC,naming,campana,kam.pa.na,kampanile,word,47,7,3,2,OV1OVOV,1112233,kampana,kampanile,kampana,7,0,6,3.850147602,2,0
+55,TC,naming,cancello,kan.cEl.lo,kancEllo,correct,64,8,3,2,OV1OV1OV,11122233,kancEllo,kancEllo,kancEllo,8,1,8,4.158883083,3,0
+56,TC,naming,candela,kan.de.la,kandela,correct,43,7,3,2,OV1OVOV,1112233,kandela,kandela,kandela,7,1,7,3.761200116,2,0
+57,TC,naming,cane,ka.ne,kane,correct,182,4,2,1,OVOV,1122,kane,kane,kane,4,1,4,5.204006687,3,0
+58,TC,naming,canguro,kan.Gu.ro,kanGuro,correct,8,7,3,2,OV1OVOV,1112233,kanGuro,kanGuro,kanGuro,7,1,7,2.079441542,2,0
+59,TC,naming,cannone,kan.no.ne,kan,nonword,22,7,3,2,OV1OVOV,1112233,kannone,kan,kannone,7,0,3,3.091042453,2,1
+60,TC,naming,canoa,ka.nO.a,NA,no response,29,5,3,2,OVOVV,11223,kanOa,NA,kanOa,5,0,0,3.36729583,2,0
+61,TC,naming,capelli,ka.pel.li,kapelli,correct,415,7,3,2,OVOV1OV,1122233,kapelli,kapelli,kapelli,7,1,7,6.02827852,3,0
+62,TC,naming,cappello,kap.pEl.lo,kappEllo,correct,95,8,3,2,OV1OV1OV,11122233,kappEllo,kappEllo,kappEllo,8,1,8,4.553876892,3,0
+63,TC,naming,cappotto,kap.pOt.to,kappe,nonword,32,8,3,2,OV1OV1OV,11122233,kappOtto,kappe,kappOtto,8,0,4,3.465735903,2,1
+64,TC,naming,capra,ka.pra,krapa,nonword,29,5,2,1,OVOSV,11222,kapra,krapa,kapra,5,0,4,3.36729583,2,0
+65,TC,naming,carciofo,kar.cO.fo,ka,nonword,6,7,3,2,OV1OVOV,1112233,karcOfo,ka,karcOfo,7,0,2,1.791759469,1,1
+66,TC,naming,carota,ka.rO.ta,karOta,correct,22,6,3,2,OVOVOV,112233,karOta,karOta,karOta,6,1,6,3.091042453,2,0
+67,TC,naming,carriola,kar.rjO.la,va,nonword,1,8,4,3,OV1OSVOV,11122233,karrjOla,va,karrjOla,8,0,1,0,1,0
+68,TC,naming,carrozzina,kar.roZ.Zi.na,karroZZina,correct,9,10,4,3,OV1OV1OVOV,1112223344,karroZZina,karroZZina,karroZZina,10,1,10,2.197224577,2,0
+69,TC,naming,casa,ka.sa,kasa,correct,2885,4,2,1,OVOV,1122,kasa,kasa,kasa,4,1,4,7.967280179,4,0
+70,TC,naming,casco,kas.ko,Ga,nonword,18,5,2,1,OV1OV,11122,kasko,Ga,kasko,5,0,1,2.890371758,2,0
+71,TC,naming,cassetta,kas.set.ta,kassetta,correct,43,8,3,2,OV1OV1OV,11122233,kassetta,kassetta,kassetta,8,1,8,3.761200116,2,0
+72,TC,naming,cassetto,kas.set.to,kassetto,correct,40,8,3,2,OV1OV1OV,11122233,kassetto,kassetto,kassetto,8,1,8,3.688879454,2,0
+73,TC,naming,cassettone,kas.set.to.ne,kar,nonword,12,10,4,3,OV1OV1OVOV,1112223344,kassettone,kar,kassettone,10,0,2,2.48490665,2,1
+74,TC,naming,castello,kas.tEl.lo,kastEllo,correct,166,8,3,2,OV1OV1OV,11122233,kastEllo,kastEllo,kastEllo,8,1,8,5.111987788,3,0
+75,TC,naming,castoro,kas.tO.ro,_,no response,0,7,3,2,OV1OVOV,1112233,kastOro,_,kastOro,7,0,0,0,1,0
+76,TC,naming,catena,ka.te.na,katena,correct,95,6,3,2,OVOVOV,112233,katena,katena,katena,6,1,6,4.553876892,3,0
+77,TC,naming,cavaliere,ka.va.ljE.re,kavaljEre,correct,139,9,4,3,OVOVOSVOV,112233344,kavaljEre,kavaljEre,kavaljEre,9,1,9,4.934473933,3,0
+78,TC,naming,cavalletta,ka.val.let.ta,kavale,nonword,1,10,4,3,OVOV1OV1OV,1122233344,kavalletta,kavale,kavalletta,10,0,6,0,1,1
+79,TC,naming,cavallo,ka.val.lo,kavallo,correct,214,7,3,2,OVOV1OV,1122233,kavallo,kavallo,kavallo,7,1,7,5.365976015,3,0
+80,TC,naming,cerniera,cer.njE.ra,NA,no response,3,8,3,2,OV1OSVOV,11122233,cernjEra,NA,cernjEra,8,0,0,1.098612289,1,0
+81,TC,naming,cerotto,ce.rOt.to,cerOtto,correct,4,7,3,2,OVOV1OV,1122233,cerOtto,cerOtto,cerOtto,7,1,7,1.386294361,1,0
+82,TC,naming,cervo,cEr.vo,cErvo,correct,14,5,2,1,OV1OV,11122,cErvo,cErvo,cErvo,5,1,5,2.63905733,2,0
+83,TC,naming,cesto,ces.to,cesto,correct,12,5,2,1,OV1OV,11122,cesto,cesto,cesto,5,1,5,2.48490665,2,0
+84,TC,naming,chiave,kja.ve,kjave,correct,192,5,2,1,OSVOV,11122,kjave,kjave,kjave,5,1,5,5.257495372,3,0
+85,TC,naming,chiesa,kjE.sa,kjEsa,correct,583,5,2,1,OSVOV,11122,kjEsa,kjEsa,kjEsa,5,1,5,6.368187186,4,0
+86,TC,naming,chiodo,kjO.do,kjOdo,correct,25,5,2,1,OSVOV,11122,kjOdo,kjOdo,kjOdo,5,1,5,3.218875825,2,0
+87,TC,naming,chitarra,ki.tar.ra,kja,nonword,39,7,3,2,OVOV1OV,1122233,kitarra,kja,kitarra,7,0,2,3.663561646,2,1
+88,TC,naming,cigno,ciN.No,ciNNa,nonword,13,5,2,1,OV1OV,11122,ciNNo,ciNNa,ciNNo,5,0,4,2.564949357,2,0
+89,TC,naming,ciliegia,ci.ljE.ga,ciljEge,word,2,7,3,2,OVOSVOV,1122233,ciljEga,ciljEge,ciljEga,7,0,6,0.693147181,1,0
+90,TC,naming,cintura,cin.tu.ra,cintura,correct,44,7,3,2,OV1OVOV,1112233,cintura,cintura,cintura,7,1,7,3.784189634,2,0
+91,TC,naming,ciotola,cO.to.la,NA,no response,21,6,3,1,OVOVOV,112233,cOtola,NA,cOtola,6,0,0,3.044522438,2,0
+92,TC,naming,cipolla,ci.pol.la,cipolla,correct,49,7,3,2,OVOV1OV,1122233,cipolla,cipolla,cipolla,7,1,7,3.891820298,2,0
+93,TC,naming,civetta,ci.vet.ta,Gupo,nonword,5,7,3,2,OVOV1OV,1122233,civetta,Gupo,civetta,7,0,0,1.609437912,1,0
+94,TC,naming,coccodrillo,kok.ko.dril.lo,NA,no response,11,11,4,3,OV1OVOSV1OV,11122333344,kokkodrillo,NA,kokkodrillo,11,0,0,2.397895273,2,0
+95,TC,naming,coda,ko.da,kOd,nonword,125,4,2,1,OVOV,1122,koda,kOd,koda,4,0,2,4.828313737,3,0
+96,TC,naming,collana,kol.la.na,NA,no response,30,7,3,2,OV1OVOV,1112233,kollana,NA,kollana,7,0,0,3.401197382,2,0
+97,TC,naming,collo,kOl.lo,kOllo,correct,177,5,2,1,OV1OV,11122,kOllo,kOllo,kOllo,5,1,5,5.176149733,3,0
+98,TC,naming,colonna,ko.lOn.na,kapitEllo,word,83,7,3,2,OVOV1OV,1122233,kolOnna,kapitEllo,kolOnna,7,0,2,4.418840608,3,0
+99,TC,naming,coltello,kol.tEl.lo,koltEllo,correct,78,8,3,2,OV1OV1OV,11122233,koltEllo,koltEllo,koltEllo,8,1,8,4.356708827,3,0
+100,TC,naming,comignolo,ko.miN.No.lo,komminnolo,nonword,3,9,4,2,OVOV1OVOV,112223344,komiNNolo,komminnolo,komiNNolo,9,0,7,1.098612289,1,0
+101,TC,naming,conchiglia,kon.kiL.La,kava,nonword,10,8,3,2,OV1OV1OV,11122233,konkiLLa,kava,konkiLLa,8,0,2,2.302585093,2,1
+102,TC,naming,coniglio,ko.niL.Lo,NA,no response,23,7,3,2,OVOV1OV,1122233,koniLLo,NA,koniLLo,7,0,0,3.135494216,2,0
+103,TC,naming,coppa,kOp.pa,kOppa,correct,479,5,2,1,OV1OV,11122,kOppa,kOppa,kOppa,5,1,5,6.171700597,3,0
+104,TC,naming,corda,kOr.da,nOda,w+nonword,74,5,2,1,OV1OV,11122,kOrda,nOda,kOrda,5,0,3,4.304065093,3,0
+105,TC,naming,corna,kOr.na,kOrni,word,24,5,2,1,OV1OV,11122,kOrna,kOrni,kOrna,5,0,4,3.17805383,2,0
+106,TC,naming,corona,ko.ro.na,krOmo,word,76,6,3,2,OVOVOV,112233,korona,krOmo,korona,6,0,3,4.33073334,3,1
+107,TC,naming,cravatta,kra.vat.ta,kravatta,correct,42,8,3,2,OSVOV1OV,11122233,kravatta,kravatta,kravatta,8,1,8,3.737669618,2,0
+108,TC,naming,croce,kro.ce,kro,nonword,142,5,2,1,OSVOV,11122,kroce,kro,kroce,5,0,3,4.955827058,3,1
+109,TC,naming,cubo,ku.bo,kubo,correct,13,4,2,1,OVOV,1122,kubo,kubo,kubo,4,1,4,2.564949357,2,0
+110,TC,naming,cucchiaio,kuk.kja.jo,kukkjajo,correct,78,8,3,2,OV1OSVOV,11122233,kukkjajo,kukkjajo,kukkjajo,8,1,8,4.356708827,3,0
+111,TC,naming,cucina,ku.ci.na,formo,nonword,271,6,3,2,OVOVOV,112233,kucina,formo,kucina,6,0,0,5.602118821,3,0
+112,TC,naming,cuore,kwO.re,kwOre,correct,820,5,2,1,OSVOV,11122,kwOre,kwOre,kwOre,5,1,5,6.70930434,4,0
+113,TC,naming,cuscino,kuS.Si.no,kuSSino,correct,27,7,3,2,OV1OVOV,1112233,kuSSino,kuSSino,kuSSino,7,1,7,3.295836866,2,0
+114,TC,naming,dado,da.do,dito,word,7,4,2,1,OVOV,1122,dado,dito,dado,4,0,2,1.945910149,1,0
+115,TC,naming,delfino,del.fi.no,delfine,nonword,24,7,3,2,OV1OVOV,1112233,delfino,delfine,delfino,7,0,6,3.17805383,2,0
+116,TC,naming,denti,dEn.ti,dEnti,correct,152,5,2,1,OV1OV,11122,dEnti,dEnti,dEnti,5,1,5,5.023880521,3,0
+117,TC,naming,dentista,den.tis.ta,dentista,correct,17,8,3,2,OV1OV1OV,11122233,dentista,dentista,dentista,8,1,8,2.833213344,2,0
+118,TC,naming,dinosauro,di.no.saw.ro,Goddilla,nonword,6,9,4,3,OVOVOV1OV,112233344,dinosawro,Goddilla,dinosawro,9,0,3,1.791759469,1,0
+119,TC,naming,dirigibile,di.ri.gi.bi.le,NA,no response,8,10,5,3,OVOVOVOVOV,1122334455,dirigibile,NA,dirigibile,10,0,0,2.079441542,2,0
+120,TC,naming,ditale,di.ta.le,ditone,word,0,6,3,2,OVOVOV,112233,ditale,ditone,ditale,6,0,4,0,1,0
+121,TC,naming,dito,di.to,dito,correct,90,4,2,1,OVOV,1122,dito,dito,dito,4,1,4,4.49980967,3,0
+122,TC,naming,divano,di.va.no,divane,nonword,64,6,3,2,OVOVOV,112233,divano,divane,divano,6,0,5,4.158883083,3,0
+123,TC,naming,drago,dra.Go,draGo,correct,25,5,2,1,OSVOV,11122,draGo,draGo,draGo,5,1,5,3.218875825,2,0
+124,TC,naming,elefante,e.le.fan.te,elefante,correct,36,8,4,3,VOVOV1OV,12233344,elefante,elefante,elefante,8,1,8,3.583518938,2,0
+125,TC,naming,elicottero,e.li.kOt.te.ro,elikOttero,correct,71,10,5,3,VOVOV1OVOV,1223334455,elikOttero,elikOttero,elikOttero,10,1,10,4.262679877,3,0
+126,TC,naming,fantasma,fan.tas.ma,fantasma,correct,67,8,3,2,OV1OV1OV,11122233,fantasma,fantasma,fantasma,8,1,8,4.204692619,3,0
+127,TC,naming,farfalla,far.fal.la,farfallino,word,25,8,3,2,OV1OV1OV,11122233,farfalla,farfallino,farfalla,8,0,7,3.218875825,2,0
+128,TC,naming,faro,fa.ro,faro,correct,30,4,2,1,OVOV,1122,faro,faro,faro,4,1,4,3.401197382,2,0
+129,TC,naming,fiammifero,fjam.mi.fe.ro,fjammiferino,word,8,10,4,2,OSV1OVOVOV,1111223344,fjammifero,fjammiferino,fjammifero,10,0,10,2.079441542,2,0
+130,TC,naming,fiasco,fjas.ko,fisketta,nonword,17,6,2,1,OSV1OV,111122,fjasko,fisketta,fjasko,6,0,3,2.833213344,2,0
+131,TC,naming,finestra,fi.nEs.tra,finEstra,correct,183,8,3,2,OVOV1OSV,11222333,finEstra,finEstra,finEstra,8,1,8,5.209486153,3,0
+132,TC,naming,fiocco,fjOk.ko,nastro,word,11,6,2,1,OSV1OV,111122,fjOkko,nastro,fjOkko,6,0,1,2.397895273,2,0
+133,TC,naming,fiore,fjo.re,fjore,correct,119,5,2,1,OSVOV,11122,fjore,fjore,fjore,5,1,5,4.779123493,3,0
+134,TC,naming,fisarmonica,fi.sar.mO.ni.ka,filasar,nonword,13,11,5,3,OVOV1OVOVOV,11222334455,fisarmOnika,filasar,fisarmOnika,11,0,5,2.564949357,2,1
+135,TC,naming,flauto,flaw.to,fucile,word,12,6,2,1,OSV1OV,111122,flawto,fucile,flawto,6,0,2,2.48490665,2,0
+136,TC,naming,foca,fO.ka,fOka,correct,6,4,2,1,OVOV,1122,fOka,fOka,fOka,4,1,4,1.791759469,1,0
+137,TC,naming,fogli,fOL.Li,pagi,nonword,51,5,2,1,OV1OV,11122,fOLLi,pagi,fOLLi,5,0,1,3.931825633,2,0
+138,TC,naming,foglia,fOL.La,fjori,word,40,5,2,1,OV1OV,11122,fOLLa,fjori,fOLLa,5,0,1,3.688879454,2,0
+139,TC,naming,forbici,fOr.bi.ci,fi,nonword,18,7,3,1,OV1OVOV,1112233,fOrbici,fi,fOrbici,7,0,2,2.890371758,2,1
+140,TC,naming,forchetta,for.ket.ta,forkette,word,19,8,3,2,OV1OV1OV,11122233,forketta,forkette,forketta,8,0,7,2.944438979,2,0
+141,TC,naming,forcone,for.ko.ne,NA,no response,0,7,3,2,OV1OVOV,1112233,forkone,NA,forkone,7,0,0,0,1,0
+142,TC,naming,formaggio,for.mag.go,NA,no response,59,8,3,2,OV1OV1OV,11122233,formaggo,NA,formaggo,8,0,0,4.077537444,2,0
+143,TC,naming,formica,for.mi.ka,NA,no response,24,7,3,1,OV1OVOV,1112233,formika,NA,formika,7,0,0,3.17805383,2,0
+144,TC,naming,fragola,fra.Go.la,fraGola,correct,6,7,3,1,OSVOVOV,1112233,fraGola,fraGola,fraGola,7,1,7,1.791759469,1,0
+145,TC,naming,freccia,frec.ca,fran,nonword,31,6,2,1,OSV1OV,111122,frecca,fran,frecca,6,0,3,3.433987204,2,0
+146,TC,naming,frigorifero,fri.Go.ri.fe.ro,friGarifero,nonword,26,11,5,3,OSVOVOVOVOV,11122334455,friGorifero,friGarifero,friGorifero,11,0,10,3.258096538,2,0
+147,TC,naming,frullatore,frul.la.to.re,NA,no response,2,10,4,3,OSV1OVOVOV,1111223344,frullatore,NA,frullatore,10,0,0,0.693147181,1,0
+148,TC,naming,frusta,frus.ta,NA,no response,10,6,2,1,OSV1OV,111122,frusta,NA,frusta,6,0,0,2.302585093,2,0
+149,TC,naming,fucile,fu.ci.le,fucile,correct,60,6,3,2,OVOVOV,112233,fucile,fucile,fucile,6,1,6,4.094344562,2,0
+150,TC,naming,fulmine,ful.mi.ne,lu,nonword,47,7,3,1,OV1OVOV,1112233,fulmine,lu,fulmine,7,0,1,3.850147602,2,1
+151,TC,naming,fumo,fu.mo,fumo,correct,137,4,2,1,OVOV,1122,fumo,fumo,fumo,4,1,4,4.919980926,3,0
+152,TC,naming,fungo,fun.Go,funGo,correct,10,5,2,1,OV1OV,11122,funGo,funGo,funGo,5,1,5,2.302585093,2,0
+153,TC,naming,fuoco,fwO.ko,fwOko,correct,573,5,2,1,OSVOV,11122,fwOko,fwOko,fwOko,5,1,5,6.350885717,4,0
+154,TC,naming,gabbia,Gab.bja,Gabbja,correct,42,6,2,1,OV1OSV,111222,Gabbja,Gabbja,Gabbja,6,1,6,3.737669618,2,0
+155,TC,naming,gallo,Gal.lo,Gallo,correct,56,5,2,1,OV1OV,11122,Gallo,Gallo,Gallo,5,1,5,4.025351691,2,0
+156,TC,naming,gamba,Gam.ba,Gambo,word,122,5,2,1,OV1OV,11122,Gamba,Gambo,Gamba,5,0,4,4.804021045,3,0
+157,TC,naming,gancio,Gan.co,NA,no response,6,5,2,1,OV1OV,11122,Ganco,NA,Ganco,5,0,0,1.791759469,1,0
+158,TC,naming,gatto,Gat.to,Gatto,correct,125,5,2,1,OV1OV,11122,Gatto,Gatto,Gatto,5,1,5,4.828313737,3,0
+159,TC,naming,gelato,ge.la.to,gelaso,nonword,46,6,3,2,OVOVOV,112233,gelato,gelaso,gelato,6,0,5,3.828641396,2,0
+160,TC,naming,genio,gE.njo,bElzebu,word,77,5,2,1,OVOSV,11222,gEnjo,bElzebu,gEnjo,5,0,1,4.343805422,3,0
+161,TC,naming,ghianda,Gjan.da,GjanGja,nonword,2,6,2,1,OSV1OV,111122,Gjanda,GjanGja,Gjanda,6,0,5,0.693147181,1,0
+162,TC,naming,giostra,gOs.tra,gosta,nonword,18,6,2,1,OV1OSV,111222,gOstra,gosta,gOstra,6,0,4,2.890371758,2,0
+163,TC,naming,giraffa,gi.raf.fa,ZEbra,word,3,7,3,2,OVOV1OV,1122233,giraffa,ZEbra,giraffa,7,0,2,1.098612289,1,0
+164,TC,naming,giubbetto,gub.bet.to,NA,no response,3,8,3,2,OV1OV1OV,11122233,gubbetto,NA,gubbetto,8,0,0,1.098612289,1,0
+165,TC,naming,gonna,Gon.na,Gonna,correct,42,5,2,1,OV1OV,11122,Gonna,Gonna,Gonna,5,1,5,3.737669618,2,0
+166,TC,naming,gorilla,Go.ril.la,Simpjone,nonword,20,7,3,2,OVOV1OV,1122233,Gorilla,Simpjone,Gorilla,7,0,1,2.995732274,2,0
+167,TC,naming,granchio,Gran.kjo,Grankjo,correct,3,7,2,1,OSV1OSV,1111222,Grankjo,Grankjo,Grankjo,7,1,7,1.098612289,1,0
+168,TC,naming,grano,Gra.no,ski,nonword,28,5,2,1,OSVOV,11122,Grano,ski,Grano,5,0,0,3.33220451,2,0
+169,TC,naming,guanto,Gwan.to,Gwa,nonword,14,6,2,1,OSV1OV,111122,Gwanto,Gwa,Gwanto,6,0,3,2.63905733,2,1
+170,TC,naming,hamburger,am.bur.Ger,amburger,correct,13,8,3,3,V1OV1OV1,11222333,amburGer,amburger,amburGer,8,1,7,2.564949357,2,0
+171,TC,naming,iguana,i.Gwa.na,lucErtolo,nonword,4,6,3,2,VOSVOV,122233,iGwana,lucErtolo,iGwana,6,0,0,1.386294361,1,0
+172,TC,naming,imbuto,im.bu.to,imbuto,correct,9,6,3,2,V1OVOV,112233,imbuto,imbuto,imbuto,6,1,6,2.197224577,2,0
+173,TC,naming,incudine,in.ku.di.ne,NA,no response,1,8,4,2,V1OVOVOV,11223344,inkudine,NA,inkudine,8,0,0,0,1,0
+174,TC,naming,infermiera,in.fer.mjE.ra,infermjere,word,23,10,4,3,V1OV1OSVOV,1122233344,infermjEra,infermjere,infermjEra,10,0,8,3.135494216,2,0
+175,TC,naming,innaffiatoio,in.naf.fja.to.jo,NA,no response,0,12,5,4,V1OV1OSVOVOV,1.12223E+11,innaffjatojo,NA,innaffjatojo,12,0,0,0,1,0
+176,TC,naming,interruttore,in.ter.rut.to.re,accendini,word,6,12,5,4,V1OV1OV1OVOV,1.12223E+11,interruttore,accendini,interruttore,12,0,2,1.791759469,1,0
+177,TC,naming,ippopotamo,ip.po.pO.ta.mo,ranoceronte,w+nonword,2,10,5,3,V1OVOVOVOV,1122334455,ippopOtamo,ranoceronte,ippopOtamo,10,0,2,0.693147181,1,0
+178,TC,naming,lacrima,la.kri.ma,lu,nonword,15,7,3,1,OVOSVOV,1122233,lakrima,lu,lakrima,7,0,1,2.708050201,2,1
+179,TC,naming,lama,la.ma,pEkora,word,56,4,2,1,OVOV,1122,lama,pEkora,lama,4,0,1,4.025351691,2,0
+180,TC,naming,lampada,lam.pa.da,lampo,word,52,7,3,1,OV1OVOV,1112233,lampada,lampo,lampada,7,0,4,3.951243719,2,1
+181,TC,naming,lampadina,lam.pa.di.na,lampadina,correct,14,9,4,3,OV1OVOVOV,111223344,lampadina,lampadina,lampadina,9,1,9,2.63905733,2,0
+182,TC,naming,lattina,lat.ti.na,NA,no response,7,7,3,2,OV1OVOV,1112233,lattina,NA,lattina,7,0,0,1.945910149,1,0
+183,TC,naming,lavandino,la.van.di.no,lavandino,correct,11,9,4,3,OVOV1OVOV,112223344,lavandino,lavandino,lavandino,9,1,9,2.397895273,2,0
+184,TC,naming,lavatrice,la.va.tri.ce,lavatrice,correct,8,9,4,3,OVOVOSVOV,112233344,lavatrice,lavatrice,lavatrice,9,1,9,2.079441542,2,0
+185,TC,naming,leone,le.o.ne,leone,correct,129,5,3,2,OVVOV,11233,leone,leone,leone,5,1,5,4.859812404,3,0
+186,TC,naming,leopardo,le.o.par.do,tiGri,word,11,8,4,3,OVVOV1OV,11233344,leopardo,tiGri,leopardo,8,0,1,2.397895273,2,0
+187,TC,naming,lettera,lEt.te.ra,lEttera,correct,403,7,3,1,OV1OVOV,1112233,lEttera,lEttera,lEttera,7,1,7,5.998936562,3,0
+188,TC,naming,letto,lEt.to,lEtto,correct,759,5,2,1,OV1OV,11122,lEtto,lEtto,lEtto,5,1,5,6.632001777,4,0
+189,TC,naming,libro,li.bro,libro,correct,648,5,2,1,OVOSV,11222,libro,libro,libro,5,1,5,6.473890696,4,0
+190,TC,naming,lucchetto,luk.ket.to,NA,no response,5,8,3,2,OV1OV1OV,11122233,lukketto,NA,lukketto,8,0,0,1.609437912,1,0
+191,TC,naming,lumaca,lu.ma.ka,NA,no response,14,6,3,2,OVOVOV,112233,lumaka,NA,lumaka,6,0,0,2.63905733,2,0
+192,TC,naming,luna,lu.na,luna,correct,236,4,2,1,OVOV,1122,luna,luna,luna,4,1,4,5.463831805,3,0
+193,TC,naming,macchina,mak.ki.na,makkina,correct,522,7,3,1,OV1OVOV,1112233,makkina,makkina,makkina,7,1,7,6.257667588,4,0
+194,TC,naming,maggiolino,mag.go.li.no,NA,no response,3,9,4,3,OV1OVOVOV,111223344,maggolino,NA,maggolino,9,0,0,1.098612289,1,0
+195,TC,naming,maiale,ma.ja.le,mje,nonword,33,6,3,2,OVOVOV,112233,majale,mje,majale,6,0,3,3.496507561,2,1
+196,TC,naming,manette,ma.net.te,mane,nonword,56,7,3,2,OVOV1OV,1122233,manette,mane,manette,7,0,4,4.025351691,2,1
+197,TC,naming,mano,ma.no,mano,correct,1226,4,2,1,OVOV,1122,mano,mano,mano,4,1,4,7.111512116,4,0
+198,TC,naming,marinaio,ma.ri.na.jo,marinaro,word,23,8,4,3,OVOVOVOV,11223344,marinajo,marinaro,marinajo,8,0,7,3.135494216,2,0
+199,TC,naming,martello,mar.tEl.lo,martEllo,correct,26,8,3,2,OV1OV1OV,11122233,martEllo,martEllo,martEllo,8,1,8,3.258096538,2,0
+200,TC,naming,maschera,mas.ke.ra,maska,nonword,73,7,3,1,OV1OVOV,1112233,maskera,maska,maskera,7,0,5,4.290459441,3,1
+201,TC,naming,matita,ma.ti.ta,matita,correct,38,6,3,2,OVOVOV,112233,matita,matita,matita,6,1,6,3.63758616,2,0
+202,TC,naming,mattarello,mat.ta.rEl.lo,ma,nonword,2,10,4,3,OV1OVOV1OV,1112233344,mattarEllo,ma,mattarEllo,10,0,2,0.693147181,1,1
+203,TC,naming,medaglia,me.daL.La,ma,nonword,56,7,3,2,OVOV1OV,1122233,medaLLa,ma,medaLLa,7,0,2,4.025351691,2,1
+204,TC,naming,mela,me.la,mela,correct,47,4,2,1,OVOV,1122,mela,mela,mela,4,1,4,3.850147602,2,0
+205,TC,naming,mestolo,mes.to.lo,kukkjaino,word,5,7,3,1,OV1OVOV,1112233,mestolo,kukkjaino,mestolo,7,0,1,1.609437912,1,0
+206,TC,naming,microfono,mi.krO.fo.no,mikrOfono,correct,35,9,4,2,OVOSVOVOV,112223344,mikrOfono,mikrOfono,mikrOfono,9,1,9,3.555348061,2,0
+207,TC,naming,microscopio,mi.kro.skO.pjo,NA,no response,23,11,4,3,OVOSVPOVOSV,11222333444,mikroskOpjo,NA,mikroskOpjo,11,0,0,3.135494216,2,0
+208,TC,naming,molletta,mol.let.ta,NA,no response,0,8,3,2,OV1OV1OV,11122233,molletta,NA,molletta,8,0,0,0,1,0
+209,TC,naming,moneta,mo.ne.ta,sOldi,word,107,6,3,2,OVOVOV,112233,moneta,sOldi,moneta,6,0,0,4.672828834,3,0
+210,TC,naming,montagna,mon.taN.Na,montaNNa,correct,227,8,3,2,OV1OV1OV,11122233,montaNNa,montaNNa,montaNNa,8,1,8,5.424950017,3,0
+211,TC,naming,morsetto,mor.set.to,NA,no response,0,8,3,2,OV1OV1OV,11122233,morsetto,NA,morsetto,8,0,0,0,1,0
+212,TC,naming,mosca,mos.ka,moska,correct,213,5,2,1,OV1OV,11122,moska,moska,moska,5,1,5,5.361292166,3,0
+213,TC,naming,motocicletta,mO.to.ci.klet.ta,mOtocikletta,correct,20,12,5,4,OVOVOVOSV1OV,1.12233E+11,mOtocikletta,mOtocikletta,mOtocikletta,12,1,12,2.995732274,2,0
+214,TC,naming,mucca,muk.ka,mukka,correct,4,5,2,1,OV1OV,11122,mukka,mukka,mukka,5,1,5,1.386294361,1,0
+215,TC,naming,muro,mu.ro,muro,correct,214,4,2,1,OVOV,1122,muro,muro,muro,4,1,4,5.365976015,3,0
+216,TC,naming,naso,na.so,naso,correct,125,4,2,1,OVOV,1122,naso,naso,naso,4,1,4,4.828313737,3,0
+217,TC,naming,nave,na.ve,nave,correct,126,4,2,1,OVOV,1122,nave,nave,nave,4,1,4,4.836281907,3,0
+218,TC,naming,nido,ni.do,no,nonword,44,4,2,1,OVOV,1122,nido,no,nido,4,0,2,3.784189634,2,1
+219,TC,naming,noce,no.ce,noce,correct,40,4,2,1,OVOV,1122,noce,noce,noce,4,1,4,3.688879454,2,0
+220,TC,naming,nodo,nO.do,nOdo,correct,50,4,2,1,OVOV,1122,nOdo,nOdo,nOdo,4,1,4,3.912023005,2,0
+221,TC,naming,nuvola,nu.vo.la,nuvelo,nonword,28,6,3,1,OVOVOV,112233,nuvola,nuvelo,nuvola,6,0,4,3.33220451,2,0
+222,TC,naming,occhiali,ok.kja.li,okkjali,correct,82,7,3,2,V1OSVOV,1122233,okkjali,okkjali,okkjali,7,1,7,4.406719247,3,0
+223,TC,naming,occhio,Ok.kjo,Okkjo,correct,345,5,2,1,V1OSV,11222,Okkjo,Okkjo,Okkjo,5,1,5,5.843544417,3,0
+224,TC,naming,ombrello,om.brEl.lo,ombretto,word,21,8,3,2,V1OSV1OV,11222233,ombrEllo,ombretto,ombrEllo,8,0,5,3.044522438,2,0
+225,TC,naming,orecchia,o.rek.kja,orekkja,correct,1,7,3,2,VOV1OSV,1222333,orekkja,orekkja,orekkja,7,1,7,0,1,0
+226,TC,naming,orecchino,o.rek.ki.no,orekkino,correct,7,8,4,3,VOV1OVOV,12223344,orekkino,orekkino,orekkino,8,1,8,1.945910149,1,0
+227,TC,naming,orologio,o.ro.lO.go,orolOgo,correct,105,7,4,3,VOVOVOV,1223344,orolOgo,orolOgo,orolOgo,7,1,7,4.65396035,3,0
+228,TC,naming,orso,or.so,orso,correct,54,4,2,1,V1OV,1122,orso,orso,orso,4,1,4,3.988984047,2,0
+229,TC,naming,osso,Os.so,ossa,word,29,4,2,1,V1OV,1122,Osso,ossa,Osso,4,0,2,3.36729583,2,0
+230,TC,naming,pacco,pak.ko,NA,no response,25,5,2,1,OV1OV,11122,pakko,NA,pakko,5,0,0,3.218875825,2,0
+231,TC,naming,padella,pa.dEl.la,padElla,correct,38,7,3,2,OVOV1OV,1122233,padElla,padElla,padElla,7,1,7,3.63758616,2,0
+232,TC,naming,pagliaccio,paL.Lac.co,paLLacco,correct,6,8,3,2,OV1OV1OV,11122233,paLLacco,paLLacco,paLLacco,8,1,8,1.791759469,1,0
+233,TC,naming,pala,pa.la,Zappa,word,8,4,2,1,OVOV,1122,pala,Zappa,pala,4,0,2,2.079441542,2,0
+234,TC,naming,palla,pal.la,palla,correct,133,5,2,1,OV1OV,11122,palla,palla,palla,5,1,5,4.890349128,3,0
+235,TC,naming,palloncino,pal.lon.ci.no,pallino,word,3,10,4,3,OV1OV1OVOV,1112223344,palloncino,pallino,palloncino,10,0,7,1.098612289,1,0
+236,TC,naming,palma,pal.ma,palma,correct,60,5,2,1,OV1OV,11122,palma,palma,palma,5,1,5,4.094344562,2,0
+237,TC,naming,panchina,pan.ki.na,NA,no response,87,7,3,2,OV1OVOV,1112233,pankina,NA,pankina,7,0,0,4.465908119,3,0
+238,TC,naming,panda,pan.da,orso,word,36,5,2,1,OV1OV,11122,panda,orso,panda,5,0,0,3.583518938,2,0
+239,TC,naming,pannocchia,pan.nOk.kja,pa,nonword,2,9,3,2,OV1OV1OSV,111222333,pannOkkja,pa,pannOkkja,9,0,2,0.693147181,1,1
+240,TC,naming,pantaloni,pan.ta.lo.ni,pantaloni,correct,112,9,4,3,OV1OVOVOV,111223344,pantaloni,pantaloni,pantaloni,9,1,9,4.718498871,3,0
+241,TC,naming,pantofola,pan.tO.fo.la,NA,no response,3,9,4,2,OV1OVOVOV,111223344,pantOfola,NA,pantOfola,9,0,0,1.098612289,1,0
+242,TC,naming,papera,pa.pe.ra,Oka,correct,8,6,3,1,OVOVOV,112233,papera,Oka,papera,6,1,1,2.079441542,2,0
+243,TC,naming,pappagallo,pap.pa.Gal.lo,pal,nonword,8,10,4,3,OV1OVOV1OV,1112233344,pappaGallo,pal,pappaGallo,10,0,3,2.079441542,2,1
+244,TC,naming,parrucca,par.ruk.ka,NA,no response,14,8,3,2,OV1OV1OV,11122233,parrukka,NA,parrukka,8,0,0,2.63905733,2,0
+245,TC,naming,passeggino,pas.seg.gi.no,passeggino,correct,3,10,4,3,OV1OV1OVOV,1112223344,passeggino,passeggino,passeggino,10,1,10,1.098612289,1,0
+246,TC,naming,pattino,pat.ti.no,NA,no response,6,7,3,1,OV1OVOV,1112233,pattino,NA,pattino,7,0,0,1.791759469,1,0
+247,TC,naming,pavimento,pa.vi.men.to,terraZZo,word,84,9,4,3,OVOVOV1OV,112233344,pavimento,terraZZo,pavimento,9,0,2,4.430816799,3,0
+248,TC,naming,pavone,pa.vo.ne,NA,no response,14,6,3,2,OVOVOV,112233,pavone,NA,pavone,6,0,0,2.63905733,2,0
+249,TC,naming,pecora,pE.ko.ra,fEkora,nonword,38,6,3,1,OVOVOV,112233,pEkora,fEkora,pEkora,6,0,5,3.63758616,2,0
+250,TC,naming,pellicano,pel.li.ka.no,NA,no response,1,9,4,3,OV1OVOVOV,111223344,pellikano,NA,pellikano,9,0,0,0,1,0
+251,TC,naming,penna,pen.na,penna,correct,54,5,2,1,OV1OV,11122,penna,penna,penna,5,1,5,3.988984047,2,0
+252,TC,naming,pennello,pen.nEl.lo,pennEllo,correct,21,8,3,2,OV1OV1OV,11122233,pennEllo,pennEllo,pennEllo,8,1,8,3.044522438,2,0
+253,TC,naming,pentola,pEn.to.la,_,circumlocution,35,7,3,1,OV1OVOV,1112233,pEntola,_,pEntola,7,0,0,3.555348061,2,0
+254,TC,naming,pera,pe.ra,pera,correct,26,4,2,1,OVOV,1122,pera,pera,pera,4,1,4,3.258096538,2,0
+255,TC,naming,pesca,pEs.ka,pEska,word,107,5,2,1,OV1OV,11122,pEska,pEska,pEska,5,0,5,4.672828834,3,0
+256,TC,naming,pesce,peS.Se,peSSe,correct,190,5,2,1,OV1OV,11122,peSSe,peSSe,peSSe,5,1,5,5.247024072,3,0
+257,TC,naming,pettine,pEt.ti.ne,NA,no response,19,7,3,1,OV1OVOV,1112233,pEttine,NA,pEttine,7,0,0,2.944438979,2,0
+258,TC,naming,piatto,pjat.to,pjatto,correct,160,6,2,1,OSV1OV,111122,pjatto,pjatto,pjatto,6,1,6,5.075173815,3,0
+259,TC,naming,piccione,pic.co.ne,NA,no response,7,7,3,2,OV1OVOV,1112233,piccone,NA,piccone,7,0,0,1.945910149,1,0
+260,TC,naming,piede,pjE.de,dito,word,159,5,2,1,OSVOV,11122,pjEde,dito,pjEde,5,0,1,5.068904202,3,0
+261,TC,naming,pietra,pjE.tra,masso,correct,135,6,2,1,OSVOSV,111222,pjEtra,masso,pjEtra,6,1,1,4.905274778,3,0
+262,TC,naming,pinguino,pin.Gwi.no,foGa,w+nonword,0,8,3,2,OV1OSVOV,11122233,pinGwino,foGa,pinGwino,8,0,1,0,1,0
+263,TC,naming,pinze,pin.Ze,NA,no response,7,5,2,1,OV1OV,11122,pinZe,NA,pinZe,5,0,0,1.945910149,1,0
+264,TC,naming,pinzette,pin.Zet.te,pinZette,correct,1,8,3,2,OV1OV1OV,11122233,pinZette,pinZette,pinZette,8,1,8,0,1,0
+265,TC,naming,pioggia,pjOg.ga,pjOgge,word,161,6,2,1,OSV1OV,111122,pjOgga,pjOgge,pjOgga,6,0,5,5.081404365,3,0
+266,TC,naming,pipa,pi.pa,pipa,correct,17,4,2,1,OVOV,1122,pipa,pipa,pipa,4,1,4,2.833213344,2,0
+267,TC,naming,pipistrello,pi.pis.trEl.lo,pipistrEllo,correct,11,11,4,3,OVOV1OSV1OV,11222333344,pipistrEllo,pipistrEllo,pipistrEllo,11,1,11,2.397895273,2,0
+268,TC,naming,pirata,pi.ra.ta,korsEro,nonword,20,6,3,2,OVOVOV,112233,pirata,korsEro,pirata,6,0,1,2.995732274,2,0
+269,TC,naming,piscina,piS.Si.na,piSSina,correct,60,7,3,2,OV1OVOV,1112233,piSSina,piSSina,piSSina,7,1,7,4.094344562,2,0
+270,TC,naming,piselli,pi.sEl.li,pisEllo,correct,11,7,3,2,OVOV1OV,1122233,pisElli,pisEllo,pisElli,7,1,6,2.397895273,2,0
+271,TC,naming,pistola,pis.tO.la,pistOla,correct,215,7,3,1,OV1OVOV,1112233,pistOla,pistOla,pistOla,7,1,7,5.370638028,3,0
+272,TC,naming,piuma,pju.ma,fjuma,nonword,11,5,2,1,OSVOV,11122,pjuma,fjuma,pjuma,5,0,4,2.397895273,2,0
+273,TC,naming,polipo,pO.li.po,NA,no response,2,6,3,1,OVOVOV,112233,pOlipo,NA,pOlipo,6,0,0,0.693147181,1,0
+274,TC,naming,pollice,pOl.li.ce,pOllice,correct,28,7,3,1,OV1OVOV,1112233,pOllice,pOllice,pOllice,7,1,7,3.33220451,2,0
+275,TC,naming,pollo,pol.lo,pollo,correct,26,5,2,1,OV1OV,11122,pollo,pollo,pollo,5,1,5,3.258096538,2,0
+276,TC,naming,pomodoro,po.mo.dO.ro,pomodOro,correct,47,8,4,3,OVOVOVOV,11223344,pomodOro,pomodOro,pomodOro,8,1,8,3.850147602,2,0
+277,TC,naming,pompiere,pom.pjE.re,vigiledafwoko,word,1,8,3,2,OV1OSVOV,11122233,pompjEre,vigiledafwoko,pompjEre,8,0,1,0,1,0
+278,TC,naming,ponte,pon.te,ponte,correct,202,5,2,1,OV1OV,11122,ponte,ponte,ponte,5,1,5,5.308267697,3,0
+279,TC,naming,porcospino,pOr.ko.spi.no,_,circumlocution,2,10,4,3,OV1OVPOVOV,1112233344,pOrkospino,_,pOrkospino,10,0,0,0.693147181,1,0
+280,TC,naming,porta,pOr.ta,pOrta,correct,1030,5,2,1,OV1OV,11122,pOrta,pOrta,pOrta,5,1,5,6.937314081,4,0
+281,TC,naming,prete,prE.te,prEte,correct,80,5,2,1,OSVOV,11122,prEte,prEte,prEte,5,1,5,4.382026635,3,0
+282,TC,naming,puzzola,puZ.Zo.la,puZZola,correct,1,7,3,1,OV1OVOV,1112233,puZZola,puZZola,puZZola,7,1,7,0,1,0
+283,TC,naming,quadrato,kwa.dra.to,kwadrato,correct,36,8,3,2,OSVOSVOV,11122233,kwadrato,kwadrato,kwadrato,8,1,8,3.583518938,2,0
+284,TC,naming,quadro,kwa.dro,kwadro,correct,285,6,2,1,OSVOSV,111222,kwadro,kwadro,kwadro,6,1,6,5.65248918,3,0
+285,TC,naming,racchetta,rak.ket.ta,rakketta,correct,17,8,3,2,OV1OV1OV,11122233,rakketta,rakketta,rakketta,8,1,8,2.833213344,2,0
+286,TC,naming,ragnatela,raN.Na.te.la,raGanElla,word,12,9,4,3,OV1OVOVOV,111223344,raNNatela,raGanElla,raNNatela,9,0,5,2.48490665,2,0
+287,TC,naming,ragno,raN.No,raNNo,correct,34,5,2,1,OV1OV,11122,raNNo,raNNo,raNNo,5,1,5,3.526360525,2,0
+288,TC,naming,ramo,ra.mo,ramo,correct,39,4,2,1,OVOV,1122,ramo,ramo,ramo,4,1,4,3.663561646,2,0
+289,TC,naming,rana,ra.na,rana,correct,15,4,2,1,OVOV,1122,rana,rana,rana,4,1,4,2.708050201,2,0
+290,TC,naming,rasoio,ra.so.jo,lametta,correct,18,6,3,2,OVOVOV,112233,rasojo,lametta,rasojo,6,1,1,2.890371758,2,0
+291,TC,naming,rastrello,ras.trEl.lo,NA,no response,3,9,3,2,OV1OSV1OV,111222233,rastrEllo,NA,rastrEllo,9,0,0,1.098612289,1,0
+292,TC,naming,ravanello,ra.va.nEl.lo,rapa,nonword,2,9,4,3,OVOVOV1OV,112233344,ravanEllo,rapa,ravanEllo,9,0,3,0.693147181,1,1
+293,TC,naming,razzo,raz.zo,NA,no response,32,5,2,1,OV1OV,11122,razzo,NA,razzo,5,0,0,3.465735903,2,0
+294,TC,naming,re,re,re,correct,461,2,1,1,OV,11,re,re,re,2,1,2,6.133398043,3,0
+295,TC,naming,regalo,re.Ga.lo,reGalo,correct,96,6,3,2,OVOVOV,112233,reGalo,reGalo,reGalo,6,1,6,4.564348191,3,0
+296,TC,naming,regina,re.gi.na,reNNa,word,283,6,3,2,OVOVOV,112233,regina,reNNa,regina,6,0,3,5.645446898,3,0
+297,TC,naming,registratore,re.gis.tra.to.re,radjo,correct,15,12,5,4,OVOV1OSVOVOV,1.12223E+11,registratore,radjo,registratore,12,1,3,2.708050201,2,1
+298,TC,naming,retino,re.ti.no,rede,nonword,4,6,3,2,OVOVOV,112233,retino,rede,retino,6,0,2,1.386294361,1,1
+299,TC,naming,righello,ri.GEl.lo,riGEllo,correct,1,7,3,2,OVOV1OV,1122233,riGEllo,riGEllo,riGEllo,7,1,7,0,1,0
+300,TC,naming,rinoceronte,ri.no.ce.ron.te,rinoceronte,correct,3,11,5,4,OVOVOVOV1OV,11223344455,rinoceronte,rinoceronte,rinoceronte,11,1,11,1.098612289,1,0
+301,TC,naming,rocchetto,rok.ket.to,filo,correct,3,8,3,2,OV1OV1OV,11122233,rokketto,filo,rokketto,8,1,1,1.098612289,1,0
+302,TC,naming,rosa,rO.sa,rOsa,correct,426,4,2,1,OVOV,1122,rOsa,rOsa,rOsa,4,1,4,6.054439346,3,0
+303,TC,naming,rossetto,ros.set.to,rossetto,correct,16,8,3,2,OV1OV1OV,11122233,rossetto,rossetto,rossetto,8,1,8,2.772588722,2,0
+304,TC,naming,rubinetto,ru.bi.net.to,rubino,word,14,9,4,3,OVOVOV1OV,112233344,rubinetto,rubino,rubinetto,9,0,6,2.63905733,2,1
+305,TC,naming,ruota,rwO.ta,rwOta,correct,122,5,2,1,OSVOV,11122,rwOta,rwOta,rwOta,5,1,5,4.804021045,3,0
+306,TC,naming,ruota,rwO.ta,rwOta,correct,122,5,2,1,OSVOV,11122,rwOta,rwOta,rwOta,5,1,5,4.804021045,3,0
+307,TC,naming,saliera,sa.ljE.ra,saljere,nonword,0,7,3,2,OVOSVOV,1122233,saljEra,saljere,saljEra,7,0,5,0,1,0
+308,TC,naming,salvadanaio,sal.va.da.na.jo,sarda,nonword,5,11,5,4,OV1OVOVOVOV,11122334455,salvadanajo,sarda,salvadanajo,11,0,4,1.609437912,1,1
+309,TC,naming,sassofono,sas.sO.fo.no,sassOfono,correct,6,9,4,2,OV1OVOVOV,111223344,sassOfono,sassOfono,sassOfono,9,1,9,1.791759469,1,0
+310,TC,naming,scala,ska.la,skala,correct,263,5,2,1,POVOV,11122,skala,skala,skala,5,1,5,5.572154032,3,0
+311,TC,naming,scarpa,skar.pa,skarpa,correct,30,6,2,1,POV1OV,111122,skarpa,skarpa,skarpa,6,1,6,3.401197382,2,0
+312,TC,naming,scatola,ska.to.la,pakko,word,69,7,3,1,POVOVOV,1112233,skatola,pakko,skatola,7,0,2,4.234106505,3,0
+313,TC,naming,scheletro,skE.le.tro,skEletro,correct,15,8,3,1,POVOVOSV,11122333,skEletro,skEletro,skEletro,8,1,8,2.708050201,2,0
+314,TC,naming,sci,Si,Si,correct,93,2,1,1,OV,11,Si,Si,Si,2,1,2,4.532599493,3,0
+315,TC,naming,sciarpa,Sar.pa,NA,no response,14,5,2,1,OV1OV,11122,Sarpa,NA,Sarpa,5,0,0,2.63905733,2,0
+316,TC,naming,scimmia,Sim.mja,Simmja,correct,24,6,2,1,OV1OSV,111222,Simmja,Simmja,Simmja,6,1,6,3.17805383,2,0
+317,TC,naming,scivolo,Si.vo.lo,Savolino,nonword,2,6,3,1,OVOVOV,112233,Sivolo,Savolino,Sivolo,6,0,5,0.693147181,1,0
+318,TC,naming,scoiattolo,sko.jat.to.lo,sk,nonword,4,10,4,2,POVOV1OVOV,1112223344,skojattolo,sk,skojattolo,10,0,2,1.386294361,1,1
+319,TC,naming,scopa,sko.pa,skopa,correct,9,5,2,1,POVOV,11122,skopa,skopa,skopa,5,1,5,2.197224577,2,0
+320,TC,naming,scorpione,skor.pjo.ne,_,circumlocution,21,9,3,2,POV1OSVOV,111122233,skorpjone,_,skorpjone,9,0,0,3.044522438,2,0
+321,TC,naming,scrivania,skri.va.ni.a,screvanja,nonword,67,9,4,3,POSVOVOVV,111122334,skrivania,screvanja,skrivania,9,0,6,4.204692619,3,0
+322,TC,naming,secchio,sek.kjo,spaZZolina,word,6,6,2,1,OV1OSV,111222,sekkjo,spaZZolina,sekkjo,6,0,2,1.791759469,1,0
+323,TC,naming,secchio,sek.kjo,NA,no response,6,6,2,1,OV1OSV,111222,sekkjo,NA,sekkjo,6,0,0,1.791759469,1,0
+324,TC,naming,sedano,sE.da.no,sEdano,correct,15,6,3,1,OVOVOV,112233,sEdano,sEdano,sEdano,6,1,6,2.708050201,2,0
+325,TC,naming,sedia,sE.dja,sEdja,correct,83,5,2,1,OVOSV,11222,sEdja,sEdja,sEdja,5,1,5,4.418840608,3,0
+326,TC,naming,sega,se.Ga,seGa,correct,9,4,2,1,OVOV,1122,seGa,seGa,seGa,4,1,4,2.197224577,2,0
+327,TC,naming,seggiolone,seg.go.lo.ne,NA,no response,3,9,4,3,OV1OVOVOV,111223344,seggolone,NA,seggolone,9,0,0,1.098612289,1,0
+328,TC,naming,sella,sEl.la,NA,no response,59,5,2,1,OV1OV,11122,sElla,NA,sElla,5,0,0,4.077537444,2,0
+329,TC,naming,serpente,ser.pEn.te,serpEnte,correct,27,8,3,2,OV1OV1OV,11122233,serpEnte,serpEnte,serpEnte,8,1,8,3.295836866,2,0
+330,TC,naming,sgabello,sGa.bEl.lo,NA,no response,7,8,3,2,POVOV1OV,11122233,sGabEllo,NA,sGabEllo,8,0,0,1.945910149,1,0
+331,TC,naming,sigaretta,si.Ga.ret.ta,siGaretta,correct,69,9,4,3,OVOVOV1OV,112233344,siGaretta,siGaretta,siGaretta,9,1,9,4.234106505,3,0
+332,TC,naming,siringa,si.rin.Ga,siGarette,word,19,7,3,2,OVOV1OV,1122233,sirinGa,siGarette,sirinGa,7,0,4,2.944438979,2,0
+333,TC,naming,soldato,sol.da.to,kaccatori,word,71,7,3,2,OV1OVOV,1112233,soldato,kaccatori,soldato,7,0,3,4.262679877,3,0
+334,TC,naming,sole,so.le,sole,correct,627,4,2,1,OVOV,1122,sole,sole,sole,4,1,4,6.440946541,4,0
+335,TC,naming,spada,spa.da,NA,no response,52,5,2,1,POVOV,11122,spada,NA,spada,5,0,0,3.951243719,2,0
+336,TC,naming,spaghetti,spa.Get.ti,spaGetti,correct,41,8,3,2,POVOV1OV,11122233,spaGetti,spaGetti,spaGetti,8,1,8,3.713572067,2,0
+337,TC,naming,spalla,spal.la,NA,no response,84,6,2,1,POV1OV,111122,spalla,NA,spalla,6,0,0,4.430816799,3,0
+338,TC,naming,spatola,spa.to.la,NA,no response,2,7,3,1,POVOVOV,1112233,spatola,NA,spatola,7,0,0,0.693147181,1,0
+339,TC,naming,spazzola,spaZ.Zo.la,ske,nonword,9,8,3,1,POV1OVOV,11112233,spaZZola,ske,spaZZola,8,0,1,2.197224577,2,1
+340,TC,naming,spazzola,spaZ.Zo.la,ske,nonword,9,8,3,1,POV1OVOV,11112233,spaZZola,ske,spaZZola,8,0,1,2.197224577,2,1
+341,TC,naming,spazzolino,spaZ.Zo.li.no,dentifrico,word,4,10,4,3,POV1OVOVOV,1111223344,spaZZolino,dentifrico,spaZZolino,10,0,2,1.386294361,1,0
+342,TC,naming,specchio,spEk.kjo,spEkkjo,correct,118,7,2,1,POV1OSV,1111222,spEkkjo,spEkkjo,spEkkjo,7,1,7,4.770684624,3,0
+343,TC,naming,spilla,spil.la,NA,no response,4,6,2,1,POV1OV,111122,spilla,NA,spilla,6,0,0,1.386294361,1,0
+344,TC,naming,spina,spi.na,spina,correct,40,5,2,1,POVOV,11122,spina,spina,spina,5,1,5,3.688879454,2,0
+345,TC,naming,sposa,spO.sa,sposata,word,125,5,2,1,POVOV,11122,spOsa,sposata,spOsa,5,0,4,4.828313737,3,0
+346,TC,naming,staccionata,stac.co.na.ta,NA,no response,1,10,4,3,POV1OVOVOV,1111223344,stacconata,NA,stacconata,10,0,0,0,1,0
+347,TC,naming,stampella,stam.pEl.la,NA,no response,5,9,3,2,POV1OV1OV,111122233,stampElla,NA,stampElla,9,0,0,1.609437912,1,0
+348,TC,naming,statua,sta.twa,marmo,word,53,6,3,1,POVOSV,111222,statwa,marmo,statwa,6,0,1,3.970291914,2,0
+349,TC,naming,stetoscopio,ste.to.skO.pjo,NA,no response,0,11,4,3,POVOVPOVOSV,11122333444,stetoskOpjo,NA,stetoskOpjo,11,0,0,0,1,0
+350,TC,naming,stivale,sti.va.le,kavilla,w+nonword,10,7,3,2,POVOVOV,1112233,stivale,kavilla,stivale,7,0,2,2.302585093,2,0
+351,TC,naming,strada,stra.da,straGa,nonword,1020,6,2,1,POSVOV,111122,strada,straGa,strada,6,0,5,6.927557906,4,0
+352,TC,naming,strega,stre.Ga,streGe,word,38,6,2,1,POSVOV,111122,streGa,streGe,streGa,6,0,5,3.63758616,2,0
+353,TC,naming,struzzo,struZ.Zo,NA,no response,9,7,2,1,POSV1OV,1111122,struZZo,NA,struZZo,7,0,0,2.197224577,2,0
+354,TC,naming,tacchino,tak.ki.no,faragano,nonword,13,7,3,2,OV1OVOV,1112233,takkino,faragano,takkino,7,0,3,2.564949357,2,0
+355,TC,naming,tacco,tak.ko,takko,correct,11,5,2,1,OV1OV,11122,takko,takko,takko,5,1,5,2.397895273,2,0
+356,TC,naming,tamburo,tam.bu.ro,tamtam,word,15,7,3,2,OV1OVOV,1112233,tamburo,tamtam,tamburo,7,0,3,2.708050201,2,0
+357,TC,naming,tappeto,tap.pe.to,tappeto,correct,82,7,3,2,OV1OVOV,1112233,tappeto,tappeto,tappeto,7,1,7,4.406719247,3,0
+358,TC,naming,tappo,tap.po,suGo,nonword,18,5,2,1,OV1OV,11122,tappo,suGo,tappo,5,0,1,2.890371758,2,0
+359,TC,naming,tartaruga,tar.ta.ru.Ga,tar,nonword,22,9,4,3,OV1OVOVOV,111223344,tartaruGa,tar,tartaruGa,9,0,3,3.091042453,2,1
+360,TC,naming,tavolo,ta.vo.lo,tavolo,correct,271,6,3,1,OVOVOV,112233,tavolo,tavolo,tavolo,6,1,6,5.602118821,3,0
+361,TC,naming,tazza,taZ.Za,taZZina,word,42,5,2,1,OV1OV,11122,taZZa,taZZina,taZZa,5,0,5,3.737669618,2,0
+362,TC,naming,teiera,te.jE.ra,tejata,nonword,3,6,3,2,OVOVOV,112233,tejEra,tejata,tejEra,6,0,4,1.098612289,1,0
+363,TC,naming,telefono,te.lE.fo.no,telEfono,correct,300,8,4,2,OVOVOVOV,11223344,telEfono,telEfono,telEfono,8,1,8,5.703782475,3,0
+364,TC,naming,telescopio,te.le.skO.pjo,NA,no response,9,10,4,3,OVOVPOVOSV,1122333444,teleskOpjo,NA,teleskOpjo,10,0,0,2.197224577,2,0
+365,TC,naming,televisione,te.le.vi.sjo.ne,tele,nonword,294,11,5,4,OVOVOVPOVOV,11223344455,televisjone,tele,televisjone,11,0,4,5.683579767,3,1
+366,TC,naming,tenda,tEn.da,tEnda,correct,60,5,2,1,OV1OV,11122,tEnda,tEnda,tEnda,5,1,5,4.094344562,2,0
+367,TC,naming,tetto,tet.to,tetto,correct,121,5,2,1,OV1OV,11122,tetto,tetto,tetto,5,1,5,4.795790546,3,0
+368,TC,naming,thermos,tEr.mos,tErmos,correct,0,6,2,1,OV1OV1,111222,tErmos,tErmos,tErmos,6,1,6,0,1,0
+369,TC,naming,tigre,ti.Gre,tiGra,nonword,33,5,2,1,OVOSV,11222,tiGre,tiGra,tiGre,5,0,4,3.496507561,2,0
+370,TC,naming,tomba,tom.ba,NA,no response,153,5,2,1,OV1OV,11122,tomba,NA,tomba,5,0,0,5.030437921,3,0
+371,TC,naming,topo,tO.po,tOpo,correct,35,4,2,1,OVOV,1122,tOpo,tOpo,tOpo,4,1,4,3.555348061,2,0
+372,TC,naming,torcia,tOr.ca,NA,no response,14,5,2,1,OV1OV,11122,tOrca,NA,tOrca,5,0,0,2.63905733,2,0
+373,TC,naming,torta,tor.ta,torta,correct,56,5,2,1,OV1OV,11122,torta,torta,torta,5,1,5,4.025351691,2,0
+374,TC,naming,tramezzino,tra.mez.zi.no,tOstapane,word,2,10,4,3,OSVOV1OVOV,1112223344,tramezzino,tOstapane,tramezzino,10,0,3,0.693147181,1,0
+375,TC,naming,trapano,tra.pa.no,fra,nonword,8,7,3,1,OSVOVOV,1112233,trapano,fra,trapano,7,0,2,2.079441542,2,1
+376,TC,naming,trappola,trap.po.la,ZaZara,word,55,8,3,1,OSV1OVOV,11112233,trappola,ZaZara,trappola,8,0,2,4.007333185,2,0
+377,TC,naming,trattore,trat.to.re,tu,nonword,2,8,3,2,OSV1OVOV,11112233,trattore,tu,trattore,8,0,1,0.693147181,1,1
+378,TC,naming,treno,trE.no,trEno,correct,191,5,2,1,OSVOV,11122,trEno,trEno,trEno,5,1,5,5.252273428,3,0
+379,TC,naming,triangolo,tri.an.Go.lo,trianGolo,correct,32,9,3,2,OSVV1OVOV,111223344,trianGolo,trianGolo,trianGolo,9,1,9,3.465735903,2,0
+380,TC,naming,tricheco,tri.kE.ko,trakeko,nonword,0,7,3,2,OSVOVOV,1112233,trikEko,trakeko,trikEko,7,0,5,0,1,0
+381,TC,naming,tripode,tri.pO.de,NA,no response,0,7,3,2,OSVOVOV,1112233,tripOde,NA,tripOde,7,0,0,0,1,0
+382,TC,naming,tromba,trom.ba,tromba,correct,18,6,2,1,OSV1OV,111122,tromba,tromba,tromba,6,1,6,2.890371758,2,0
+383,TC,naming,tronco,tron.ko,leNNo,correct,36,6,2,1,OSV1OV,111122,tronko,leNNo,tronko,6,1,1,3.583518938,2,0
+384,TC,naming,trottola,trOt.to.la,NA,no response,6,8,3,1,OSV1OVOV,11112233,trOttola,NA,trOttola,8,0,0,1.791759469,1,0
+385,TC,naming,uccello,uc.cEl.lo,ucci,nonword,44,7,3,2,V1OV1OV,1122233,uccEllo,ucci,uccEllo,7,0,3,3.784189634,2,1
+386,TC,naming,unicorno,u.ni.kOr.no,koli,nonword,0,8,4,3,VOVOV1OV,12233344,unikOrno,koli,unikOrno,8,0,2,0,1,0
+387,TC,naming,uovo,wO.vo,wOvo,correct,49,4,2,1,OVOV,1122,wOvo,wOvo,wOvo,4,1,4,3.891820298,2,0
+388,TC,naming,uva,u.va,wo,nonword,25,3,2,1,VOV,122,uva,wo,uva,3,0,0,3.218875825,2,0
+389,TC,naming,valigia,va.li.ga,valige,word,56,6,3,2,OVOVOV,112233,valiga,valige,valiga,6,0,5,4.025351691,2,0
+390,TC,naming,vasca,vas.ka,vaska,correct,54,5,2,1,OV1OV,11122,vaska,vaska,vaska,5,1,5,3.988984047,2,0
+391,TC,naming,vaso,va.so,vaso,correct,54,4,2,1,OVOV,1122,vaso,vaso,vaso,4,1,4,3.988984047,2,0
+392,TC,naming,ventilatore,ven.ti.la.to.re,vo,nonword,5,11,5,4,OV1OVOVOVOV,11122334455,ventilatore,vo,ventilatore,11,0,2,1.609437912,1,1
+393,TC,naming,vestito,ves.ti.to,vestito,correct,144,7,3,2,OV1OVOV,1112233,vestito,vestito,vestito,7,1,7,4.9698133,3,0
+394,TC,naming,violino,vjo.li.no,fjori,nonword,29,7,3,3,OSVOVOV,1112233,vjolino,fjori,vjolino,7,0,3,3.36729583,2,1
+395,TC,naming,vite,vi.te,NA,no response,101,4,2,1,OVOV,1122,vite,NA,vite,4,0,0,4.615120517,3,0
+396,TC,naming,volante,vo.lan.te,volante,correct,114,7,3,2,OVOV1OV,1122233,volante,volante,volante,7,1,7,4.736198448,3,0
+397,TC,naming,volpe,vol.pe,volpe,correct,22,5,2,1,OV1OV,11122,volpe,volpe,volpe,5,1,5,3.091042453,2,0
+398,TC,naming,vulcano,vul.ka.no,volkano,nonword,31,7,3,2,OV1OVOV,1112233,vulkano,volkano,vulkano,7,0,6,3.433987204,2,0
+399,TC,naming,zaino,zaj.no,zajno,correct,12,5,3,1,OV1OV,11122,zajno,zajno,zajno,5,1,5,2.48490665,2,0
+400,TC,naming,zanzara,zan.za.ra,zanzara,correct,10,7,3,2,OV1OVOV,1112233,zanzara,zanzara,zanzara,7,1,7,2.302585093,2,0
+401,TC,naming,zebra,zE.bra,zEbra,correct,3,5,2,1,OVOSV,11222,zEbra,zEbra,zEbra,5,1,5,1.098612289,1,0
+402,TC,naming,zoccolo,ZOk.ko.lo,Zampa,word,15,7,3,1,OV1OVOV,1112233,ZOkkolo,Zampa,ZOkkolo,7,0,1,2.708050201,2,0
+403,TC,naming,zucca,Zuk.ka,Zukka,correct,27,5,2,1,OV1OV,11122,Zukka,Zukka,Zukka,5,1,5,3.295836866,2,0
+,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,43

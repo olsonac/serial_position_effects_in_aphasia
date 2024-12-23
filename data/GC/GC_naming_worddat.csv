@@ -1,0 +1,413 @@
+"","patient","task","word","phonemes","resp","err_type","surf_freq","plen","num_sylls","stressed_syll","syll_components","syll_numbers","phon_only","resp_phon_only","stim","stimlen","correct","LCSpres","log_freq","freq_bin","fragment"
+"1","GC","naming","acquario","ak.kwa.rjo",NA,"no response",31,8,3,2,"V1OSVOSV",11222333,"akkwarjo",NA,"akkwarjo",8,0,0,3.43398720448515,2,0
+"2","GC","naming","aereo","a.E.re.o","ajroplano","nonword",123,5,4,2,"VVOVV",12334,"aEreo","ajroplano","aEreo",5,0,3,4.81218435537242,3,0
+"3","GC","naming","ago","a.Go","ako","nonword",45,3,2,1,"VOV",122,"aGo","ako","aGo",3,0,2,3.80666248977032,2,0
+"4","GC","naming","ala","a.la",NA,"no response",97,3,2,1,"VOV",122,"ala",NA,"ala",3,0,0,4.57471097850338,3,0
+"5","GC","naming","albero","al.be.ro","albero","correct",133,6,3,1,"V1OVOV",112233,"albero","albero","albero",6,1,6,4.89034912822175,3,0
+"6","GC","naming","alce","al.ce","acce","nonword",2,4,2,1,"V1OV",1122,"alce","acce","alce",4,0,3,0.693147180559945,1,0
+"7","GC","naming","alluce","al.lu.ce","pOllice","word",6,6,3,1,"V1OVOV",112233,"alluce","pOllice","alluce",6,0,4,1.79175946922805,1,0
+"8","GC","naming","altalena","al.ta.le.na",NA,"no response",15,8,4,3,"V1OVOVOV",11223344,"altalena",NA,"altalena",8,0,0,2.70805020110221,2,0
+"9","GC","naming","amaca","a.ma.ka",NA,"no response",6,5,3,2,"VOVOV",12233,"amaka",NA,"amaka",5,0,0,1.79175946922805,1,0
+"10","GC","naming","ananas","a.na.nas","ananas","correct",15,6,3,1,"VOVOV1",122333,"ananas","ananas","ananas",6,1,6,2.70805020110221,2,0
+"11","GC","naming","ancora","an.ko.ra",NA,"no response",4013,6,3,2,"V1OVOV",112233,"ankora",NA,"ankora",6,0,0,8.29729437026692,4,0
+"12","GC","naming","anello","a.nEl.lo",NA,"no response",55,6,3,2,"VOV1OV",122233,"anEllo",NA,"anEllo",6,0,0,4.00733318523247,2,0
+"13","GC","naming","ape","a.pe","ape","correct",25,3,2,1,"VOV",122,"ape","ape","ape",3,1,3,3.2188758248682,2,0
+"14","GC","naming","aquila","a.kwi.la",NA,"no response",31,6,3,1,"VOSVOV",122233,"akwila",NA,"akwila",6,0,0,3.43398720448515,2,0
+"15","GC","naming","aquilone","a.kwi.lo.ne",NA,"no response",5,8,4,3,"VOSVOVOV",12223344,"akwilone",NA,"akwilone",8,0,0,1.6094379124341,1,0
+"16","GC","naming","arachide","a.ra.ki.de","loccoline","nonword",0,7,4,2,"VOVOVOV",1223344,"arakide","loccoline","arakide",7,0,2,0,1,0
+"17","GC","naming","aragosta","a.ra.Gos.ta",NA,"no response",6,8,4,3,"VOVOV1OV",12233344,"araGosta",NA,"araGosta",8,0,0,1.79175946922805,1,0
+"18","GC","naming","arancia","a.ran.ca","aranca","correct",38,6,3,2,"VOV1OV",122233,"aranca","aranca","aranca",6,1,6,3.63758615972639,2,0
+"19","GC","naming","arcobaleno","ar.ko.ba.le.no","al","nonword",9,10,5,4,"V1OVOVOVOV",1122334455,"arkobaleno","al","arkobaleno",10,0,2,2.19722457733622,2,1
+"20","GC","naming","armadio","ar.ma.djo",NA,"no response",51,7,3,2,"V1OVOSV",1122333,"armadjo",NA,"armadjo",7,0,0,3.93182563272433,2,0
+"21","GC","naming","arpa","ar.pa",NA,"no response",3,4,2,1,"V1OV",1122,"arpa",NA,"arpa",4,0,0,1.09861228866811,1,0
+"22","GC","naming","ascia","aS.Sa",NA,"no response",20,4,2,1,"V1OV",1122,"aSSa",NA,"aSSa",4,0,0,2.99573227355399,2,0
+"23","GC","naming","asino","a.si.no","aZZino","nonword",12,5,3,1,"VOVOV",12233,"asino","aZZino","asino",5,0,4,2.484906649788,2,0
+"24","GC","naming","asparago","as.pa.ra.Go",NA,"no response",0,8,4,2,"V1OVOVOV",11223344,"asparaGo",NA,"asparaGo",8,0,0,0,1,0
+"25","GC","naming","autobus","aw.to.bus","awtobus","correct",92,7,3,1,"V1OVOV1",1122333,"awtobus","awtobus","awtobus",7,1,7,4.52178857704904,3,0
+"26","GC","naming","balcone","bal.ko.ne","palkone","nonword",39,7,3,2,"OV1OVOV",1112233,"balkone","palkone","balkone",7,0,6,3.66356164612965,2,0
+"27","GC","naming","balena","ba.le.na","peSe","word",28,6,3,2,"OVOVOV",112233,"balena","peSe","balena",6,0,1,3.33220451017520,2,0
+"28","GC","naming","bambola","bam.bo.la","pambola","nonword",23,7,3,1,"OV1OVOV",1112233,"bambola","pambola","bambola",7,0,6,3.13549421592915,2,0
+"29","GC","naming","banana","ba.na.na","panana","nonword",18,6,3,2,"OVOVOV",112233,"banana","panana","banana",6,0,5,2.89037175789616,2,0
+"30","GC","naming","bandiera","ban.djE.ra","bandjEra","correct",114,8,3,2,"OV1OSVOV",11122233,"bandjEra","bandjEra","bandjEra",8,1,8,4.7361984483945,3,0
+"31","GC","naming","barattolo","ba.rat.to.lo",NA,"no response",14,9,4,2,"OVOV1OVOV",112223344,"barattolo",NA,"barattolo",9,0,0,2.63905732961526,2,0
+"32","GC","naming","barba","bar.ba","parba","nonword",88,5,2,1,"OV1OV",11122,"barba","parba","barba",5,0,4,4.47733681447821,3,0
+"33","GC","naming","barca","bar.ka",NA,"no response",134,5,2,1,"OV1OV",11122,"barka",NA,"barka",5,0,0,4.89783979995091,3,0
+"34","GC","naming","bastone","bas.to.ne",NA,"no response",38,7,3,2,"OV1OVOV",1112233,"bastone",NA,"bastone",7,0,0,3.63758615972639,2,0
+"35","GC","naming","baule","ba.u.le",NA,"no response",9,5,3,2,"OVVOV",11233,"baule",NA,"baule",5,0,0,2.19722457733622,2,0
+"36","GC","naming","biberon","bi.be.rOn",NA,"no response",6,7,3,3,"OVOVOV1",1122333,"biberOn",NA,"biberOn",7,0,0,1.79175946922805,1,0
+"37","GC","naming","bicchiere","bik.kjE.re","pikkjEre","nonword",111,8,3,2,"OV1OSVOV",11122233,"bikkjEre","pikkjEre","bikkjEre",8,0,7,4.70953020131233,3,0
+"38","GC","naming","bicicletta","bi.ci.klet.ta","picikletta","nonword",65,10,4,3,"OVOVOSV1OV",1122333344,"bicikletta","picikletta","bicikletta",10,0,9,4.17438726989564,3,0
+"39","GC","naming","binocolo","bi.nO.ko.lo",NA,"no response",14,8,4,2,"OVOVOVOV",11223344,"binOkolo",NA,"binOkolo",8,0,0,2.63905732961526,2,0
+"40","GC","naming","bomba","bom.ba",NA,"no response",128,5,2,1,"OV1OV",11122,"bomba",NA,"bomba",5,0,0,4.85203026391962,3,0
+"41","GC","naming","borsa","bor.sa","borsa","correct",193,5,2,1,"OV1OV",11122,"borsa","borsa","borsa",5,1,5,5.26269018890489,3,0
+"42","GC","naming","botte","bot.te","botticElla","word",46,5,2,1,"OV1OV",11122,"botte","botticElla","botte",5,0,4,3.82864139648910,2,0
+"43","GC","naming","bottiglia","bot.tiL.La","pottiLLa","nonword",64,8,3,2,"OV1OV1OV",11122233,"bottiLLa","pottiLLa","bottiLLa",8,0,7,4.15888308335967,3,0
+"44","GC","naming","bottone","bot.to.ne",NA,"no response",16,7,3,2,"OV1OVOV",1112233,"bottone",NA,"bottone",7,0,0,2.77258872223978,2,0
+"45","GC","naming","braccio","brac.co","bracco","correct",271,6,2,1,"OSV1OV",111122,"bracco","bracco","bracco",6,1,6,5.6021188208797,3,0
+"46","GC","naming","burro","bur.ro","purro","nonword",92,5,2,1,"OV1OV",11122,"burro","purro","burro",5,0,4,4.52178857704904,3,0
+"47","GC","naming","busta","bus.ta","busta","correct",65,5,2,1,"OV1OV",11122,"busta","busta","busta",5,1,5,4.17438726989564,3,0
+"48","GC","naming","cactus","kak.tus",NA,"no response",10,6,2,1,"OV1OV1",111222,"kaktus",NA,"kaktus",6,0,0,2.30258509299405,2,0
+"49","GC","naming","calamita","ka.la.mi.ta",NA,"no response",9,8,4,3,"OVOVOVOV",11223344,"kalamita",NA,"kalamita",8,0,0,2.19722457733622,2,0
+"50","GC","naming","calzino","kal.Zi.no","pigama","word",1,7,3,2,"OV1OVOV",1112233,"kalZino","pigama","kalZino",7,0,1,0,1,0
+"51","GC","naming","cameriere","ka.me.rjE.re","kamerere","nonword",36,9,4,3,"OVOVOSVOV",112233344,"kamerjEre","kamerere","kamerjEre",9,0,7,3.58351893845611,2,0
+"52","GC","naming","camicia","ka.mi.ca","kamica","correct",104,6,3,2,"OVOVOV",112233,"kamica","kamica","kamica",6,1,6,4.64439089914137,3,0
+"53","GC","naming","camion","ka.mjon","kamjon","correct",60,6,2,1,"OVOSV1",112222,"kamjon","kamjon","kamjon",6,1,6,4.0943445622221,2,0
+"54","GC","naming","cammello","kam.mEl.lo","tromedarjo","nonword",13,8,3,2,"OV1OV1OV",11122233,"kammEllo","tromedarjo","kammEllo",8,0,2,2.56494935746154,2,0
+"55","GC","naming","campana","kam.pa.na","kampana","correct",47,7,3,2,"OV1OVOV",1112233,"kampana","kampana","kampana",7,1,7,3.85014760171006,2,0
+"56","GC","naming","cancello","kan.cEl.lo",NA,"no response",64,8,3,2,"OV1OV1OV",11122233,"kancEllo",NA,"kancEllo",8,0,0,4.15888308335967,3,0
+"57","GC","naming","candela","kan.de.la",NA,"no response",43,7,3,2,"OV1OVOV",1112233,"kandela",NA,"kandela",7,0,0,3.76120011569356,2,0
+"58","GC","naming","cane","ka.ne",NA,"no response",182,4,2,1,"OVOV",1122,"kane",NA,"kane",4,0,0,5.2040066870768,3,0
+"59","GC","naming","canguro","kan.Gu.ro",NA,"no response",8,7,3,2,"OV1OVOV",1112233,"kanGuro",NA,"kanGuro",7,0,0,2.07944154167984,2,0
+"60","GC","naming","cannone","kan.no.ne",NA,"no response",22,7,3,2,"OV1OVOV",1112233,"kannone",NA,"kannone",7,0,0,3.09104245335832,2,0
+"61","GC","naming","canoa","ka.nO.a",NA,"no response",29,5,3,2,"OVOVV",11223,"kanOa",NA,"kanOa",5,0,0,3.36729582998647,2,0
+"62","GC","naming","capelli","ka.pel.li",NA,"no response",415,7,3,2,"OVOV1OV",1122233,"kapelli",NA,"kapelli",7,0,0,6.0282785202307,3,0
+"63","GC","naming","cappello","kap.pEl.lo","kappEllo","correct",95,8,3,2,"OV1OV1OV",11122233,"kappEllo","kappEllo","kappEllo",8,1,8,4.55387689160054,3,0
+"64","GC","naming","cappotto","kap.pOt.to","cakka","nonword",32,8,3,2,"OV1OV1OV",11122233,"kappOtto","cakka","kappOtto",8,0,2,3.46573590279973,2,0
+"65","GC","naming","capra","ka.pra","kapra","correct",29,5,2,1,"OVOSV",11222,"kapra","kapra","kapra",5,1,5,3.36729582998647,2,0
+"66","GC","naming","carciofo","kar.cO.fo","karcOfo","correct",6,7,3,2,"OV1OVOV",1112233,"karcOfo","karcOfo","karcOfo",7,1,7,1.79175946922805,1,0
+"67","GC","naming","carota","ka.rO.ta",NA,"no response",22,6,3,2,"OVOVOV",112233,"karOta",NA,"karOta",6,0,0,3.09104245335832,2,0
+"68","GC","naming","carriola","kar.rjO.la",NA,"no response",1,8,4,3,"OV1OSVOV",11122233,"karrjOla",NA,"karrjOla",8,0,0,0,1,0
+"69","GC","naming","carrozzina","kar.roZ.Zi.na","karroZZina","correct",9,10,4,3,"OV1OV1OVOV",1112223344,"karroZZina","karroZZina","karroZZina",10,1,10,2.19722457733622,2,0
+"70","GC","naming","casa","ka.sa","kasa","correct",2885,4,2,1,"OVOV",1122,"kasa","kasa","kasa",4,1,4,7.9672801789422,4,0
+"71","GC","naming","casco","kas.ko","kasko","correct",18,5,2,1,"OV1OV",11122,"kasko","kasko","kasko",5,1,5,2.89037175789616,2,0
+"72","GC","naming","cassetta","kas.set.ta",NA,"no response",43,8,3,2,"OV1OV1OV",11122233,"kassetta",NA,"kassetta",8,0,0,3.76120011569356,2,0
+"73","GC","naming","cassetto","kas.set.to","kassetto","correct",40,8,3,2,"OV1OV1OV",11122233,"kassetto","kassetto","kassetto",8,1,8,3.68887945411394,2,0
+"74","GC","naming","cassettone","kas.set.to.ne",NA,"no response",12,10,4,3,"OV1OV1OVOV",1112223344,"kassettone",NA,"kassettone",10,0,0,2.484906649788,2,0
+"75","GC","naming","castello","kas.tEl.lo","kastEllo","correct",166,8,3,2,"OV1OV1OV",11122233,"kastEllo","kastEllo","kastEllo",8,1,8,5.11198778835654,3,0
+"76","GC","naming","castoro","kas.tO.ro",NA,"no response",0,7,3,2,"OV1OVOV",1112233,"kastOro",NA,"kastOro",7,0,0,0,1,0
+"77","GC","naming","catena","ka.te.na","katena","correct",95,6,3,2,"OVOVOV",112233,"katena","katena","katena",6,1,6,4.55387689160054,3,0
+"78","GC","naming","cavaliere","ka.va.ljE.re",NA,"no response",139,9,4,3,"OVOVOSVOV",112233344,"kavaljEre",NA,"kavaljEre",9,0,0,4.93447393313069,3,0
+"79","GC","naming","cavalletta","ka.val.let.ta",NA,"no response",1,10,4,3,"OVOV1OV1OV",1122233344,"kavalletta",NA,"kavalletta",10,0,0,0,1,0
+"80","GC","naming","cavallo","ka.val.lo","kavallo","correct",214,7,3,2,"OVOV1OV",1122233,"kavallo","kavallo","kavallo",7,1,7,5.36597601502185,3,0
+"81","GC","naming","cerniera","cer.njE.ra",NA,"no response",3,8,3,2,"OV1OSVOV",11122233,"cernjEra",NA,"cernjEra",8,0,0,1.09861228866811,1,0
+"82","GC","naming","cerotto","ce.rOt.to",NA,"no response",4,7,3,2,"OVOV1OV",1122233,"cerOtto",NA,"cerOtto",7,0,0,1.38629436111989,1,0
+"83","GC","naming","cervo","cEr.vo","cEffo","nonword",14,5,2,1,"OV1OV",11122,"cErvo","cEffo","cErvo",5,0,3,2.63905732961526,2,0
+"84","GC","naming","cesto","ces.to",NA,"no response",12,5,2,1,"OV1OV",11122,"cesto",NA,"cesto",5,0,0,2.484906649788,2,0
+"85","GC","naming","chiave","kja.ve",NA,"no response",192,5,2,1,"OSVOV",11122,"kjave",NA,"kjave",5,0,0,5.25749537202778,3,0
+"86","GC","naming","chiesa","kjE.sa","kjEsa","correct",583,5,2,1,"OSVOV",11122,"kjEsa","kjEsa","kjEsa",5,1,5,6.36818718635049,4,0
+"87","GC","naming","chiodo","kjO.do","kOto","nonword",25,5,2,1,"OSVOV",11122,"kjOdo","kOto","kjOdo",5,0,3,3.2188758248682,2,0
+"88","GC","naming","chitarra","ki.tar.ra","kitarra","correct",39,7,3,2,"OVOV1OV",1122233,"kitarra","kitarra","kitarra",7,1,7,3.66356164612965,2,0
+"89","GC","naming","cigno","ciN.No",NA,"no response",13,5,2,1,"OV1OV",11122,"ciNNo",NA,"ciNNo",5,0,0,2.56494935746154,2,0
+"90","GC","naming","ciliegia","ci.ljE.ga",NA,"no response",2,7,3,2,"OVOSVOV",1122233,"ciljEga",NA,"ciljEga",7,0,0,0.693147180559945,1,0
+"91","GC","naming","cintura","cin.tu.ra","cittura","nonword",44,7,3,2,"OV1OVOV",1112233,"cintura","cittura","cintura",7,0,6,3.78418963391826,2,0
+"92","GC","naming","ciotola","cO.to.la",NA,"no response",21,6,3,1,"OVOVOV",112233,"cOtola",NA,"cOtola",6,0,0,3.04452243772342,2,0
+"93","GC","naming","cipolla","ci.pol.la","cipolla","correct",49,7,3,2,"OVOV1OV",1122233,"cipolla","cipolla","cipolla",7,1,7,3.89182029811063,2,0
+"94","GC","naming","civetta","ci.vet.ta",NA,"no response",5,7,3,2,"OVOV1OV",1122233,"civetta",NA,"civetta",7,0,0,1.6094379124341,1,0
+"95","GC","naming","coccodrillo","kok.ko.dril.lo","kokkotrillo","nonword",11,11,4,3,"OV1OVOSV1OV",11122333344,"kokkodrillo","kokkotrillo","kokkodrillo",11,0,10,2.39789527279837,2,0
+"96","GC","naming","coda","ko.da",NA,"no response",125,4,2,1,"OVOV",1122,"koda",NA,"koda",4,0,0,4.8283137373023,3,0
+"97","GC","naming","collana","kol.la.na","kollana","correct",30,7,3,2,"OV1OVOV",1112233,"kollana","kollana","kollana",7,1,7,3.40119738166216,2,0
+"98","GC","naming","collo","kOl.lo","kOllo","correct",177,5,2,1,"OV1OV",11122,"kOllo","kOllo","kOllo",5,1,5,5.17614973257383,3,0
+"99","GC","naming","colonna","ko.lOn.na",NA,"no response",83,7,3,2,"OVOV1OV",1122233,"kolOnna",NA,"kolOnna",7,0,0,4.4188406077966,3,0
+"100","GC","naming","coltello","kol.tEl.lo","kukkjajo","word",78,8,3,2,"OV1OV1OV",11122233,"koltEllo","kukkjajo","koltEllo",8,0,2,4.35670882668959,3,0
+"101","GC","naming","comignolo","ko.miN.No.lo",NA,"no response",3,9,4,2,"OVOV1OVOV",112223344,"komiNNolo",NA,"komiNNolo",9,0,0,1.09861228866811,1,0
+"102","GC","naming","conchiglia","kon.kiL.La",NA,"no response",10,8,3,2,"OV1OV1OV",11122233,"konkiLLa",NA,"konkiLLa",8,0,0,2.30258509299405,2,0
+"103","GC","naming","coniglio","ko.niL.Lo","koniLLo","correct",23,7,3,2,"OVOV1OV",1122233,"koniLLo","koniLLo","koniLLo",7,1,7,3.13549421592915,2,0
+"104","GC","naming","coppa","kOp.pa","kOppa","correct",479,5,2,1,"OV1OV",11122,"kOppa","kOppa","kOppa",5,1,5,6.17170059741091,3,0
+"105","GC","naming","corda","kOr.da","komena","nonword",74,5,2,1,"OV1OV",11122,"kOrda","komena","kOrda",5,0,2,4.30406509320417,3,0
+"106","GC","naming","corna","kOr.na","cEvvo","w+nonword",24,5,2,1,"OV1OV",11122,"kOrna","cEvvo","kOrna",5,0,0,3.17805383034795,2,0
+"107","GC","naming","corona","ko.ro.na",NA,"no response",76,6,3,2,"OVOVOV",112233,"korona",NA,"korona",6,0,0,4.33073334028633,3,0
+"108","GC","naming","cravatta","kra.vat.ta",NA,"no response",42,8,3,2,"OSVOV1OV",11122233,"kravatta",NA,"kravatta",8,0,0,3.73766961828337,2,0
+"109","GC","naming","croce","kro.ce",NA,"no response",142,5,2,1,"OSVOV",11122,"kroce",NA,"kroce",5,0,0,4.95582705760126,3,0
+"110","GC","naming","cubo","ku.bo",NA,"no response",13,4,2,1,"OVOV",1122,"kubo",NA,"kubo",4,0,0,2.56494935746154,2,0
+"111","GC","naming","cucchiaio","kuk.kja.jo","kukkjajo","correct",78,8,3,2,"OV1OSVOV",11122233,"kukkjajo","kukkjajo","kukkjajo",8,1,8,4.35670882668959,3,0
+"112","GC","naming","cucina","ku.ci.na",NA,"no response",271,6,3,2,"OVOVOV",112233,"kucina",NA,"kucina",6,0,0,5.6021188208797,3,0
+"113","GC","naming","cuore","kwO.re","kwOre","correct",820,5,2,1,"OSVOV",11122,"kwOre","kwOre","kwOre",5,1,5,6.7093043402583,4,0
+"114","GC","naming","cuscino","kuS.Si.no",NA,"no response",27,7,3,2,"OV1OVOV",1112233,"kuSSino",NA,"kuSSino",7,0,0,3.29583686600433,2,0
+"115","GC","naming","dado","da.do",NA,"no response",7,4,2,1,"OVOV",1122,"dado",NA,"dado",4,0,0,1.94591014905531,1,0
+"116","GC","naming","delfino","del.fi.no","delfino","correct",24,7,3,2,"OV1OVOV",1112233,"delfino","delfino","delfino",7,1,7,3.17805383034795,2,0
+"117","GC","naming","denti","dEn.ti",NA,"no response",152,5,2,1,"OV1OV",11122,"dEnti",NA,"dEnti",5,0,0,5.02388052084628,3,0
+"118","GC","naming","dentista","den.tis.ta","tentista","nonword",17,8,3,2,"OV1OV1OV",11122233,"dentista","tentista","dentista",8,0,7,2.83321334405622,2,0
+"119","GC","naming","dinosauro","di.no.saw.ro",NA,"no response",6,9,4,3,"OVOVOV1OV",112233344,"dinosawro",NA,"dinosawro",9,0,0,1.79175946922805,1,0
+"120","GC","naming","dirigibile","di.ri.gi.bi.le","diri","nonword",8,10,5,3,"OVOVOVOVOV",1122334455,"dirigibile","diri","dirigibile",10,0,4,2.07944154167984,2,1
+"121","GC","naming","ditale","di.ta.le",NA,"no response",0,6,3,2,"OVOVOV",112233,"ditale",NA,"ditale",6,0,0,0,1,0
+"122","GC","naming","dito","di.to","tito","nonword",90,4,2,1,"OVOV",1122,"dito","tito","dito",4,0,3,4.49980967033027,3,0
+"123","GC","naming","divano","di.va.no","divano","correct",64,6,3,2,"OVOVOV",112233,"divano","divano","divano",6,1,6,4.15888308335967,3,0
+"124","GC","naming","doccia","doc.ca","tocca","nonword",49,5,2,1,"OV1OV",11122,"docca","tocca","docca",5,0,4,3.89182029811063,2,0
+"125","GC","naming","drago","dra.Go",NA,"no response",25,5,2,1,"OSVOV",11122,"draGo",NA,"draGo",5,0,0,3.2188758248682,2,0
+"126","GC","naming","elefante","e.le.fan.te","elefante","correct",36,8,4,3,"VOVOV1OV",12233344,"elefante","elefante","elefante",8,1,8,3.58351893845611,2,0
+"127","GC","naming","elicottero","e.li.kOt.te.ro","elikOttero","correct",71,10,5,3,"VOVOV1OVOV",1223334455,"elikOttero","elikOttero","elikOttero",10,1,10,4.26267987704132,3,0
+"128","GC","naming","fantasma","fan.tas.ma",NA,"no response",67,8,3,2,"OV1OV1OV",11122233,"fantasma",NA,"fantasma",8,0,0,4.20469261939097,3,0
+"129","GC","naming","farfalla","far.fal.la",NA,"no response",25,8,3,2,"OV1OV1OV",11122233,"farfalla",NA,"farfalla",8,0,0,3.2188758248682,2,0
+"130","GC","naming","faro","fa.ro",NA,"no response",30,4,2,1,"OVOV",1122,"faro",NA,"faro",4,0,0,3.40119738166216,2,0
+"131","GC","naming","fiammifero","fjam.mi.fe.ro","fjammifero","correct",8,10,4,2,"OSV1OVOVOV",1111223344,"fjammifero","fjammifero","fjammifero",10,1,10,2.07944154167984,2,0
+"132","GC","naming","fiasco","fjas.ko",NA,"no response",17,6,2,1,"OSV1OV",111122,"fjasko",NA,"fjasko",6,0,0,2.83321334405622,2,0
+"133","GC","naming","finestra","fi.nEs.tra","finEstra","correct",183,8,3,2,"OVOV1OSV",11222333,"finEstra","finEstra","finEstra",8,1,8,5.20948615284142,3,0
+"134","GC","naming","fiocco","fjOk.ko",NA,"no response",11,6,2,1,"OSV1OV",111122,"fjOkko",NA,"fjOkko",6,0,0,2.39789527279837,2,0
+"135","GC","naming","fiore","fjo.re","fjore","correct",119,5,2,1,"OSVOV",11122,"fjore","fjore","fjore",5,1,5,4.77912349311153,3,0
+"136","GC","naming","fisarmonica","fi.sar.mO.ni.ka",NA,"no response",13,11,5,3,"OVOV1OVOVOV",11222334455,"fisarmOnika",NA,"fisarmOnika",11,0,0,2.56494935746154,2,0
+"137","GC","naming","fischietto","fis.kjet.to","fiskjo","correct",9,9,3,2,"OV1OSV1OV",111222233,"fiskjetto","fiskjo","fiskjetto",9,1,6,2.19722457733622,2,1
+"138","GC","naming","flauto","flaw.to",NA,"no response",12,6,2,1,"OSV1OV",111122,"flawto",NA,"flawto",6,0,0,2.484906649788,2,0
+"139","GC","naming","foca","fO.ka","fOka","correct",6,4,2,1,"OVOV",1122,"fOka","fOka","fOka",4,1,4,1.79175946922805,1,0
+"140","GC","naming","fogli","fOL.Li",NA,"no response",51,5,2,1,"OV1OV",11122,"fOLLi",NA,"fOLLi",5,0,0,3.93182563272433,2,0
+"141","GC","naming","foglia","fOL.La","fjore","word",40,5,2,1,"OV1OV",11122,"fOLLa","fjore","fOLLa",5,0,1,3.68887945411394,2,0
+"142","GC","naming","fontana","fon.ta.na",NA,"no response",73,7,3,2,"OV1OVOV",1112233,"fontana",NA,"fontana",7,0,0,4.29045944114839,3,0
+"143","GC","naming","forbici","fOr.bi.ci","fOrbici","correct",18,7,3,1,"OV1OVOV",1112233,"fOrbici","fOrbici","fOrbici",7,1,7,2.89037175789616,2,0
+"144","GC","naming","forchetta","for.ket.ta",NA,"no response",19,8,3,2,"OV1OV1OV",11122233,"forketta",NA,"forketta",8,0,0,2.94443897916644,2,0
+"145","GC","naming","forcone","for.ko.ne","forketta","word",0,7,3,2,"OV1OVOV",1112233,"forkone","forketta","forkone",7,0,5,0,1,0
+"146","GC","naming","formaggio","for.mag.go","Eppental","nonword",59,8,3,2,"OV1OV1OV",11122233,"formaggo","Eppental","formaggo",8,0,1,4.07753744390572,2,0
+"147","GC","naming","formica","for.mi.ka","formika","correct",24,7,3,1,"OV1OVOV",1112233,"formika","formika","formika",7,1,7,3.17805383034795,2,0
+"148","GC","naming","fragola","fra.Go.la","frakola","nonword",6,7,3,1,"OSVOVOV",1112233,"fraGola","frakola","fraGola",7,0,6,1.79175946922805,1,0
+"149","GC","naming","freccia","frec.ca",NA,"no response",31,6,2,1,"OSV1OV",111122,"frecca",NA,"frecca",6,0,0,3.43398720448515,2,0
+"150","GC","naming","frigorifero","fri.Go.ri.fe.ro",NA,"no response",26,11,5,3,"OSVOVOVOVOV",11122334455,"friGorifero",NA,"friGorifero",11,0,0,3.25809653802148,2,0
+"151","GC","naming","frullatore","frul.la.to.re",NA,"no response",2,10,4,3,"OSV1OVOVOV",1111223344,"frullatore",NA,"frullatore",10,0,0,0.693147180559945,1,0
+"152","GC","naming","frusta","frus.ta","frusta","correct",10,6,2,1,"OSV1OV",111122,"frusta","frusta","frusta",6,1,6,2.30258509299405,2,0
+"153","GC","naming","fucile","fu.ci.le",NA,"no response",60,6,3,2,"OVOVOV",112233,"fucile",NA,"fucile",6,0,0,4.0943445622221,2,0
+"154","GC","naming","fulmine","ful.mi.ne","fummine","nonword",47,7,3,1,"OV1OVOV",1112233,"fulmine","fummine","fulmine",7,0,6,3.85014760171006,2,0
+"155","GC","naming","fumo","fu.mo","kamino","word",137,4,2,1,"OVOV",1122,"fumo","kamino","fumo",4,0,2,4.91998092582813,3,0
+"156","GC","naming","fungo","fun.Go",NA,"no response",10,5,2,1,"OV1OV",11122,"funGo",NA,"funGo",5,0,0,2.30258509299405,2,0
+"157","GC","naming","fuoco","fwO.ko","fwOko","correct",573,5,2,1,"OSVOV",11122,"fwOko","fwOko","fwOko",5,1,5,6.35088571671474,4,0
+"158","GC","naming","gabbia","Gab.bja",NA,"no response",42,6,2,1,"OV1OSV",111222,"Gabbja",NA,"Gabbja",6,0,0,3.73766961828337,2,0
+"159","GC","naming","gallo","Gal.lo","kallo","nonword",56,5,2,1,"OV1OV",11122,"Gallo","kallo","Gallo",5,0,4,4.02535169073515,2,0
+"160","GC","naming","gamba","Gam.ba","kamba","nonword",122,5,2,1,"OV1OV",11122,"Gamba","kamba","Gamba",5,0,4,4.80402104473326,3,0
+"161","GC","naming","gancio","Gan.co",NA,"no response",6,5,2,1,"OV1OV",11122,"Ganco",NA,"Ganco",5,0,0,1.79175946922805,1,0
+"162","GC","naming","gatto","Gat.to","katto","nonword",125,5,2,1,"OV1OV",11122,"Gatto","katto","Gatto",5,0,4,4.8283137373023,3,0
+"163","GC","naming","gelato","ge.la.to","celato","nonword",46,6,3,2,"OVOVOV",112233,"gelato","celato","gelato",6,0,5,3.82864139648910,2,0
+"164","GC","naming","genio","gE.njo","cenjo","nonword",77,5,2,1,"OVOSV",11222,"gEnjo","cenjo","gEnjo",5,0,3,4.34380542185368,3,0
+"165","GC","naming","ghianda","Gjan.da","kjanta","nonword",2,6,2,1,"OSV1OV",111122,"Gjanda","kjanta","Gjanda",6,0,4,0.693147180559945,1,0
+"166","GC","naming","giostra","gOs.tra","gOstra","correct",18,6,2,1,"OV1OSV",111222,"gOstra","gOstra","gOstra",6,1,6,2.89037175789616,2,0
+"167","GC","naming","giraffa","gi.raf.fa","giraffa","correct",3,7,3,2,"OVOV1OV",1122233,"giraffa","giraffa","giraffa",7,1,7,1.09861228866811,1,0
+"168","GC","naming","giubbetto","gub.bet.to",NA,"no response",3,8,3,2,"OV1OV1OV",11122233,"gubbetto",NA,"gubbetto",8,0,0,1.09861228866811,1,0
+"169","GC","naming","gonna","Gon.na","Gonna","correct",42,5,2,1,"OV1OV",11122,"Gonna","Gonna","Gonna",5,1,5,3.73766961828337,2,0
+"170","GC","naming","gorilla","Go.ril.la",NA,"no response",20,7,3,2,"OVOV1OV",1122233,"Gorilla",NA,"Gorilla",7,0,0,2.99573227355399,2,0
+"171","GC","naming","granchio","Gran.kjo",NA,"no response",3,7,2,1,"OSV1OSV",1111222,"Grankjo",NA,"Grankjo",7,0,0,1.09861228866811,1,0
+"172","GC","naming","grano","Gra.no","spika","nonword",28,5,2,1,"OSVOV",11122,"Grano","spika","Grano",5,0,1,3.33220451017520,2,0
+"173","GC","naming","guanto","Gwan.to","Gwanto","correct",14,6,2,1,"OSV1OV",111122,"Gwanto","Gwanto","Gwanto",6,1,6,2.63905732961526,2,0
+"174","GC","naming","hamburger","am.bur.Ger",NA,"no response",13,8,3,3,"V1OV1OV1",11222333,"amburGer",NA,"amburGer",8,0,0,2.56494935746154,2,0
+"175","GC","naming","iguana","i.Gwa.na","ipwana","nonword",4,6,3,2,"VOSVOV",122233,"iGwana","ipwana","iGwana",6,0,5,1.38629436111989,1,0
+"176","GC","naming","imbuto","im.bu.to","imbuto","correct",9,6,3,2,"V1OVOV",112233,"imbuto","imbuto","imbuto",6,1,6,2.19722457733622,2,0
+"177","GC","naming","incudine","in.ku.di.ne",NA,"no response",1,8,4,2,"V1OVOVOV",11223344,"inkudine",NA,"inkudine",8,0,0,0,1,0
+"178","GC","naming","infermiera","in.fer.mjE.ra",NA,"no response",23,10,4,3,"V1OV1OSVOV",1122233344,"infermjEra",NA,"infermjEra",10,0,0,3.13549421592915,2,0
+"179","GC","naming","innaffiatoio","in.naf.fja.to.jo",NA,"no response",0,12,5,4,"V1OV1OSVOVOV",112223334455,"innaffjatojo",NA,"innaffjatojo",12,0,0,0,1,0
+"180","GC","naming","interruttore","in.ter.rut.to.re",NA,"no response",6,12,5,4,"V1OV1OV1OVOV",112223334455,"interruttore",NA,"interruttore",12,0,0,1.79175946922805,1,0
+"181","GC","naming","ippopotamo","ip.po.pO.ta.mo","rinoceronte","word",2,10,5,3,"V1OVOVOVOV",1122334455,"ippopOtamo","rinoceronte","ippopOtamo",10,0,3,0.693147180559945,1,0
+"182","GC","naming","lacrima","la.kri.ma","lakrima","correct",15,7,3,1,"OVOSVOV",1122233,"lakrima","lakrima","lakrima",7,1,7,2.70805020110221,2,0
+"183","GC","naming","lama","la.ma","lama","correct",56,4,2,1,"OVOV",1122,"lama","lama","lama",4,1,4,4.02535169073515,2,0
+"184","GC","naming","lampada","lam.pa.da",NA,"no response",52,7,3,1,"OV1OVOV",1112233,"lampada",NA,"lampada",7,0,0,3.95124371858143,2,0
+"185","GC","naming","lampadina","lam.pa.di.na","lampada","word",14,9,4,3,"OV1OVOVOV",111223344,"lampadina","lampada","lampadina",9,0,7,2.63905732961526,2,1
+"186","GC","naming","lattina","lat.ti.na",NA,"no response",7,7,3,2,"OV1OVOV",1112233,"lattina",NA,"lattina",7,0,0,1.94591014905531,1,0
+"187","GC","naming","lavandino","la.van.di.no","lapandino","nonword",11,9,4,3,"OVOV1OVOV",112223344,"lavandino","lapandino","lavandino",9,0,8,2.39789527279837,2,0
+"188","GC","naming","lavatrice","la.va.tri.ce","lavatrice","correct",8,9,4,3,"OVOVOSVOV",112233344,"lavatrice","lavatrice","lavatrice",9,1,9,2.07944154167984,2,0
+"189","GC","naming","leone","le.o.ne","leone","correct",129,5,3,2,"OVVOV",11233,"leone","leone","leone",5,1,5,4.85981240436167,3,0
+"190","GC","naming","leopardo","le.o.par.do",NA,"no response",11,8,4,3,"OVVOV1OV",11233344,"leopardo",NA,"leopardo",8,0,0,2.39789527279837,2,0
+"191","GC","naming","lettera","lEt.te.ra",NA,"no response",403,7,3,1,"OV1OVOV",1112233,"lEttera",NA,"lEttera",7,0,0,5.99893656194668,3,0
+"192","GC","naming","letto","lEt.to","lEtto","correct",759,5,2,1,"OV1OV",11122,"lEtto","lEtto","lEtto",5,1,5,6.63200177739563,4,0
+"193","GC","naming","libro","li.bro","libro","correct",648,5,2,1,"OVOSV",11222,"libro","libro","libro",5,1,5,6.47389069635227,4,0
+"194","GC","naming","lucchetto","luk.ket.to",NA,"no response",5,8,3,2,"OV1OV1OV",11122233,"lukketto",NA,"lukketto",8,0,0,1.6094379124341,1,0
+"195","GC","naming","lumaca","lu.ma.ka",NA,"no response",14,6,3,2,"OVOVOV",112233,"lumaka",NA,"lumaka",6,0,0,2.63905732961526,2,0
+"196","GC","naming","luna","lu.na","luna","correct",236,4,2,1,"OVOV",1122,"luna","luna","luna",4,1,4,5.46383180502561,3,0
+"197","GC","naming","macchina","mak.ki.na","makkina","correct",522,7,3,1,"OV1OVOV",1112233,"makkina","makkina","makkina",7,1,7,6.25766758788264,4,0
+"198","GC","naming","maggiolino","mag.go.li.no",NA,"no response",3,9,4,3,"OV1OVOVOV",111223344,"maggolino",NA,"maggolino",9,0,0,1.09861228866811,1,0
+"199","GC","naming","maiale","ma.ja.le","majale","correct",33,6,3,2,"OVOVOV",112233,"majale","majale","majale",6,1,6,3.49650756146648,2,0
+"200","GC","naming","manette","ma.net.te",NA,"no response",56,7,3,2,"OVOV1OV",1122233,"manette",NA,"manette",7,0,0,4.02535169073515,2,0
+"201","GC","naming","mano","ma.no","mano","correct",1226,4,2,1,"OVOV",1122,"mano","mano","mano",4,1,4,7.11151211649616,4,0
+"202","GC","naming","marinaio","ma.ri.na.jo","marinajo","correct",23,8,4,3,"OVOVOVOV",11223344,"marinajo","marinajo","marinajo",8,1,8,3.13549421592915,2,0
+"203","GC","naming","martello","mar.tEl.lo","martEllo","correct",26,8,3,2,"OV1OV1OV",11122233,"martEllo","martEllo","martEllo",8,1,8,3.25809653802148,2,0
+"204","GC","naming","maschera","mas.ke.ra",NA,"no response",73,7,3,1,"OV1OVOV",1112233,"maskera",NA,"maskera",7,0,0,4.29045944114839,3,0
+"205","GC","naming","matita","ma.ti.ta","matita","correct",38,6,3,2,"OVOVOV",112233,"matita","matita","matita",6,1,6,3.63758615972639,2,0
+"206","GC","naming","mattarello","mat.ta.rEl.lo",NA,"no response",2,10,4,3,"OV1OVOV1OV",1112233344,"mattarEllo",NA,"mattarEllo",10,0,0,0.693147180559945,1,0
+"207","GC","naming","medaglia","me.daL.La",NA,"no response",56,7,3,2,"OVOV1OV",1122233,"medaLLa",NA,"medaLLa",7,0,0,4.02535169073515,2,0
+"208","GC","naming","mela","me.la","mela","correct",47,4,2,1,"OVOV",1122,"mela","mela","mela",4,1,4,3.85014760171006,2,0
+"209","GC","naming","mestolo","mes.to.lo",NA,"no response",5,7,3,1,"OV1OVOV",1112233,"mestolo",NA,"mestolo",7,0,0,1.6094379124341,1,0
+"210","GC","naming","microfono","mi.krO.fo.no",NA,"no response",35,9,4,2,"OVOSVOVOV",112223344,"mikrOfono",NA,"mikrOfono",9,0,0,3.55534806148941,2,0
+"211","GC","naming","microscopio","mi.kro.skO.pjo",NA,"no response",23,11,4,3,"OVOSVPOVOSV",11222333444,"mikroskOpjo",NA,"mikroskOpjo",11,0,0,3.13549421592915,2,0
+"212","GC","naming","molletta","mol.let.ta","piZZa","word",0,8,3,2,"OV1OV1OV",11122233,"molletta","piZZa","molletta",8,0,1,0,1,0
+"213","GC","naming","moneta","mo.ne.ta","nerone","word",107,6,3,2,"OVOVOV",112233,"moneta","nerone","moneta",6,0,3,4.67282883446191,3,0
+"214","GC","naming","montagna","mon.taN.Na",NA,"no response",227,8,3,2,"OV1OV1OV",11122233,"montaNNa",NA,"montaNNa",8,0,0,5.4249500174814,3,0
+"215","GC","naming","morsetto","mor.set.to",NA,"no response",0,8,3,2,"OV1OV1OV",11122233,"morsetto",NA,"morsetto",8,0,0,0,1,0
+"216","GC","naming","mosca","mos.ka","moska","correct",213,5,2,1,"OV1OV",11122,"moska","moska","moska",5,1,5,5.36129216570943,3,0
+"217","GC","naming","motocicletta","mO.to.ci.klet.ta","mOtocikletta","correct",20,12,5,4,"OVOVOVOSV1OV",112233444455,"mOtocikletta","mOtocikletta","mOtocikletta",12,1,12,2.99573227355399,2,0
+"218","GC","naming","mucca","muk.ka","mukka","correct",4,5,2,1,"OV1OV",11122,"mukka","mukka","mukka",5,1,5,1.38629436111989,1,0
+"219","GC","naming","mulino","mu.li.no","mulino","correct",22,6,3,2,"OVOVOV",112233,"mulino","mulino","mulino",6,1,6,3.09104245335832,2,0
+"220","GC","naming","muro","mu.ro",NA,"no response",214,4,2,1,"OVOV",1122,"muro",NA,"muro",4,0,0,5.36597601502185,3,0
+"221","GC","naming","naso","na.so","naso","correct",125,4,2,1,"OVOV",1122,"naso","naso","naso",4,1,4,4.8283137373023,3,0
+"222","GC","naming","nave","na.ve","nave","correct",126,4,2,1,"OVOV",1122,"nave","nave","nave",4,1,4,4.83628190695148,3,0
+"223","GC","naming","nido","ni.do",NA,"no response",44,4,2,1,"OVOV",1122,"nido",NA,"nido",4,0,0,3.78418963391826,2,0
+"224","GC","naming","noce","no.ce","noce","correct",40,4,2,1,"OVOV",1122,"noce","noce","noce",4,1,4,3.68887945411394,2,0
+"225","GC","naming","nodo","nO.do",NA,"no response",50,4,2,1,"OVOV",1122,"nOdo",NA,"nOdo",4,0,0,3.91202300542815,2,0
+"226","GC","naming","nuvola","nu.vo.la","nuvola","correct",28,6,3,1,"OVOVOV",112233,"nuvola","nuvola","nuvola",6,1,6,3.33220451017520,2,0
+"227","GC","naming","occhiali","ok.kja.li","okkjali","correct",82,7,3,2,"V1OSVOV",1122233,"okkjali","okkjali","okkjali",7,1,7,4.40671924726425,3,0
+"228","GC","naming","occhio","Ok.kjo",NA,"no response",345,5,2,1,"V1OSV",11222,"Okkjo",NA,"Okkjo",5,0,0,5.84354441703136,3,0
+"229","GC","naming","ombrello","om.brEl.lo","oprEllo","nonword",21,8,3,2,"V1OSV1OV",11222233,"ombrEllo","oprEllo","ombrEllo",8,0,6,3.04452243772342,2,0
+"230","GC","naming","orecchia","o.rek.kja",NA,"no response",1,7,3,2,"VOV1OSV",1222333,"orekkja",NA,"orekkja",7,0,0,0,1,0
+"231","GC","naming","orecchino","o.rek.ki.no",NA,"no response",7,8,4,3,"VOV1OVOV",12223344,"orekkino",NA,"orekkino",8,0,0,1.94591014905531,1,0
+"232","GC","naming","orologio","o.ro.lO.go","orolOgo","correct",105,7,4,3,"VOVOVOV",1223344,"orolOgo","orolOgo","orolOgo",7,1,7,4.65396035015752,3,0
+"233","GC","naming","orso","or.so","orso","correct",54,4,2,1,"V1OV",1122,"orso","orso","orso",4,1,4,3.98898404656427,2,0
+"234","GC","naming","osso","Os.so",NA,"no response",29,4,2,1,"V1OV",1122,"Osso",NA,"Osso",4,0,0,3.36729582998647,2,0
+"235","GC","naming","pacco","pak.ko",NA,"no response",25,5,2,1,"OV1OV",11122,"pakko",NA,"pakko",5,0,0,3.2188758248682,2,0
+"236","GC","naming","padella","pa.dEl.la",NA,"no response",38,7,3,2,"OVOV1OV",1122233,"padElla",NA,"padElla",7,0,0,3.63758615972639,2,0
+"237","GC","naming","pagliaccio","paL.Lac.co","klawn","correct",6,8,3,2,"OV1OV1OV",11122233,"paLLacco","klawn","paLLacco",8,1,1,1.79175946922805,1,0
+"238","GC","naming","pala","pa.la",NA,"no response",8,4,2,1,"OVOV",1122,"pala",NA,"pala",4,0,0,2.07944154167984,2,0
+"239","GC","naming","palla","pal.la","palla","correct",133,5,2,1,"OV1OV",11122,"palla","palla","palla",5,1,5,4.89034912822175,3,0
+"240","GC","naming","palloncino","pal.lon.ci.no",NA,"no response",3,10,4,3,"OV1OV1OVOV",1112223344,"palloncino",NA,"palloncino",10,0,0,1.09861228866811,1,0
+"241","GC","naming","palma","pal.ma",NA,"no response",60,5,2,1,"OV1OV",11122,"palma",NA,"palma",5,0,0,4.0943445622221,2,0
+"242","GC","naming","panchina","pan.ki.na",NA,"no response",87,7,3,2,"OV1OVOV",1112233,"pankina",NA,"pankina",7,0,0,4.46590811865458,3,0
+"243","GC","naming","panda","pan.da","panda","correct",36,5,2,1,"OV1OV",11122,"panda","panda","panda",5,1,5,3.58351893845611,2,0
+"244","GC","naming","pannocchia","pan.nOk.kja",NA,"no response",2,9,3,2,"OV1OV1OSV",111222333,"pannOkkja",NA,"pannOkkja",9,0,0,0.693147180559945,1,0
+"245","GC","naming","pantaloni","pan.ta.lo.ni",NA,"no response",112,9,4,3,"OV1OVOVOV",111223344,"pantaloni",NA,"pantaloni",9,0,0,4.71849887129509,3,0
+"246","GC","naming","pantofola","pan.tO.fo.la",NA,"no response",3,9,4,2,"OV1OVOVOV",111223344,"pantOfola",NA,"pantOfola",9,0,0,1.09861228866811,1,0
+"247","GC","naming","papera","pa.pe.ra","Oka","correct",8,6,3,1,"OVOVOV",112233,"papera","Oka","papera",6,1,1,2.07944154167984,2,0
+"248","GC","naming","pappagallo","pap.pa.Gal.lo","pappakallo","nonword",8,10,4,3,"OV1OVOV1OV",1112233344,"pappaGallo","pappakallo","pappaGallo",10,0,9,2.07944154167984,2,0
+"249","GC","naming","parrucca","par.ruk.ka",NA,"no response",14,8,3,2,"OV1OV1OV",11122233,"parrukka",NA,"parrukka",8,0,0,2.63905732961526,2,0
+"250","GC","naming","passeggino","pas.seg.gi.no",NA,"no response",3,10,4,3,"OV1OV1OVOV",1112223344,"passeggino",NA,"passeggino",10,0,0,1.09861228866811,1,0
+"251","GC","naming","pattino","pat.ti.no",NA,"no response",6,7,3,1,"OV1OVOV",1112233,"pattino",NA,"pattino",7,0,0,1.79175946922805,1,0
+"252","GC","naming","pavimento","pa.vi.men.to",NA,"no response",84,9,4,3,"OVOVOV1OV",112233344,"pavimento",NA,"pavimento",9,0,0,4.43081679884331,3,0
+"253","GC","naming","pavone","pa.vo.ne",NA,"no response",14,6,3,2,"OVOVOV",112233,"pavone",NA,"pavone",6,0,0,2.63905732961526,2,0
+"254","GC","naming","pecora","pE.ko.ra","pEkora","correct",38,6,3,1,"OVOVOV",112233,"pEkora","pEkora","pEkora",6,1,6,3.63758615972639,2,0
+"255","GC","naming","pellicano","pel.li.ka.no","pellikano","correct",1,9,4,3,"OV1OVOVOV",111223344,"pellikano","pellikano","pellikano",9,1,9,0,1,0
+"256","GC","naming","penna","pen.na",NA,"no response",54,5,2,1,"OV1OV",11122,"penna",NA,"penna",5,0,0,3.98898404656427,2,0
+"257","GC","naming","pennello","pen.nEl.lo",NA,"no response",21,8,3,2,"OV1OV1OV",11122233,"pennEllo",NA,"pennEllo",8,0,0,3.04452243772342,2,0
+"258","GC","naming","pentola","pEn.to.la","pEntola","correct",35,7,3,1,"OV1OVOV",1112233,"pEntola","pEntola","pEntola",7,1,7,3.55534806148941,2,0
+"259","GC","naming","pera","pe.ra","pera","correct",26,4,2,1,"OVOV",1122,"pera","pera","pera",4,1,4,3.25809653802148,2,0
+"260","GC","naming","pesca","pEs.ka","pEska","correct",107,5,2,1,"OV1OV",11122,"pEska","pEska","pEska",5,1,5,4.67282883446191,3,0
+"261","GC","naming","pesce","peS.Se","peSSe","correct",190,5,2,1,"OV1OV",11122,"peSSe","peSSe","peSSe",5,1,5,5.24702407216049,3,0
+"262","GC","naming","pettine","pEt.ti.ne",NA,"no response",19,7,3,1,"OV1OVOV",1112233,"pEttine",NA,"pEttine",7,0,0,2.94443897916644,2,0
+"263","GC","naming","piatto","pjat.to",NA,"no response",160,6,2,1,"OSV1OV",111122,"pjatto",NA,"pjatto",6,0,0,5.07517381523383,3,0
+"264","GC","naming","piccione","pic.co.ne","piccone","correct",7,7,3,2,"OV1OVOV",1112233,"piccone","piccone","piccone",7,1,7,1.94591014905531,1,0
+"265","GC","naming","piede","pjE.de","pjEde","correct",159,5,2,1,"OSVOV",11122,"pjEde","pjEde","pjEde",5,1,5,5.06890420222023,3,0
+"266","GC","naming","pietra","pjE.tra","pjEtra","correct",135,6,2,1,"OSVOSV",111222,"pjEtra","pjEtra","pjEtra",6,1,6,4.90527477843843,3,0
+"267","GC","naming","pinguino","pin.Gwi.no","pin","nonword",0,8,3,2,"OV1OSVOV",11122233,"pinGwino","pin","pinGwino",8,0,3,0,1,1
+"268","GC","naming","pinze","pin.Ze","pinZe","correct",7,5,2,1,"OV1OV",11122,"pinZe","pinZe","pinZe",5,1,5,1.94591014905531,1,0
+"269","GC","naming","pinzette","pin.Zet.te","piZZa","word",1,8,3,2,"OV1OV1OV",11122233,"pinZette","piZZa","pinZette",8,0,3,0,1,1
+"270","GC","naming","pioggia","pjOg.ga","pjOgga","correct",161,6,2,1,"OSV1OV",111122,"pjOgga","pjOgga","pjOgga",6,1,6,5.08140436498446,3,0
+"271","GC","naming","pipa","pi.pa","pipa","correct",17,4,2,1,"OVOV",1122,"pipa","pipa","pipa",4,1,4,2.83321334405622,2,0
+"272","GC","naming","pipistrello","pi.pis.trEl.lo",NA,"no response",11,11,4,3,"OVOV1OSV1OV",11222333344,"pipistrEllo",NA,"pipistrEllo",11,0,0,2.39789527279837,2,0
+"273","GC","naming","pirata","pi.ra.ta",NA,"no response",20,6,3,2,"OVOVOV",112233,"pirata",NA,"pirata",6,0,0,2.99573227355399,2,0
+"274","GC","naming","piscina","piS.Si.na",NA,"no response",60,7,3,2,"OV1OVOV",1112233,"piSSina",NA,"piSSina",7,0,0,4.0943445622221,2,0
+"275","GC","naming","piselli","pi.sEl.li",NA,"no response",11,7,3,2,"OVOV1OV",1122233,"pisElli",NA,"pisElli",7,0,0,2.39789527279837,2,0
+"276","GC","naming","pistola","pis.tO.la","pistOla","correct",215,7,3,1,"OV1OVOV",1112233,"pistOla","pistOla","pistOla",7,1,7,5.37063802812766,3,0
+"277","GC","naming","piuma","pju.ma","folja","w+nonword",11,5,2,1,"OSVOV",11122,"pjuma","folja","pjuma",5,0,2,2.39789527279837,2,0
+"278","GC","naming","polipo","pO.li.po","pOlipo","correct",2,6,3,1,"OVOVOV",112233,"pOlipo","pOlipo","pOlipo",6,1,6,0.693147180559945,1,0
+"279","GC","naming","pollice","pOl.li.ce","pOllice","correct",28,7,3,1,"OV1OVOV",1112233,"pOllice","pOllice","pOllice",7,1,7,3.33220451017520,2,0
+"280","GC","naming","pollo","pol.lo","kallo","nonword",26,5,2,1,"OV1OV",11122,"pollo","kallo","pollo",5,0,3,3.25809653802148,2,0
+"281","GC","naming","pomodoro","po.mo.dO.ro","pomitoro","nonword",47,8,4,3,"OVOVOVOV",11223344,"pomodOro","pomitoro","pomodOro",8,0,6,3.85014760171006,2,0
+"282","GC","naming","pompiere","pom.pjE.re","pompjEre","correct",1,8,3,2,"OV1OSVOV",11122233,"pompjEre","pompjEre","pompjEre",8,1,8,0,1,0
+"283","GC","naming","ponte","pon.te",NA,"no response",202,5,2,1,"OV1OV",11122,"ponte",NA,"ponte",5,0,0,5.30826769740121,3,0
+"284","GC","naming","porcospino","pOr.ko.spi.no","iccice","nonword",2,10,4,3,"OV1OVPOVOV",1112233344,"pOrkospino","iccice","pOrkospino",10,0,1,0.693147180559945,1,0
+"285","GC","naming","porta","pOr.ta","pOrta","correct",1030,5,2,1,"OV1OV",11122,"pOrta","pOrta","pOrta",5,1,5,6.93731408122368,4,0
+"286","GC","naming","pozzo","poZ.Zo",NA,"no response",39,5,2,1,"OV1OV",11122,"poZZo",NA,"poZZo",5,0,0,3.66356164612965,2,0
+"287","GC","naming","prete","prE.te",NA,"no response",80,5,2,1,"OSVOV",11122,"prEte",NA,"prEte",5,0,0,4.38202663467388,3,0
+"288","GC","naming","puzzola","puZ.Zo.la","puZZola","correct",1,7,3,1,"OV1OVOV",1112233,"puZZola","puZZola","puZZola",7,1,7,0,1,0
+"289","GC","naming","quadrato","kwa.dra.to","pwadrato","nonword",36,8,3,2,"OSVOSVOV",11122233,"kwadrato","pwadrato","kwadrato",8,0,7,3.58351893845611,2,0
+"290","GC","naming","quadro","kwa.dro","fwatro","nonword",285,6,2,1,"OSVOSV",111222,"kwadro","fwatro","kwadro",6,0,4,5.65248918026865,3,0
+"291","GC","naming","racchetta","rak.ket.ta",NA,"no response",17,8,3,2,"OV1OV1OV",11122233,"rakketta",NA,"rakketta",8,0,0,2.83321334405622,2,0
+"292","GC","naming","ragnatela","raN.Na.te.la",NA,"no response",12,9,4,3,"OV1OVOVOV",111223344,"raNNatela",NA,"raNNatela",9,0,0,2.484906649788,2,0
+"293","GC","naming","ragno","raN.No","ranGo","word",34,5,2,1,"OV1OV",11122,"raNNo","ranGo","raNNo",5,0,3,3.52636052461616,2,0
+"294","GC","naming","ramo","ra.mo",NA,"no response",39,4,2,1,"OVOV",1122,"ramo",NA,"ramo",4,0,0,3.66356164612965,2,0
+"295","GC","naming","rana","ra.na","rana","correct",15,4,2,1,"OVOV",1122,"rana","rana","rana",4,1,4,2.70805020110221,2,0
+"296","GC","naming","rasoio","ra.so.jo",NA,"no response",18,6,3,2,"OVOVOV",112233,"rasojo",NA,"rasojo",6,0,0,2.89037175789616,2,0
+"297","GC","naming","rastrello","ras.trEl.lo",NA,"no response",3,9,3,2,"OV1OSV1OV",111222233,"rastrEllo",NA,"rastrEllo",9,0,0,1.09861228866811,1,0
+"298","GC","naming","ravanello","ra.va.nEl.lo","rapa","nonword",2,9,4,3,"OVOVOV1OV",112233344,"ravanEllo","rapa","ravanEllo",9,0,3,0.693147180559945,1,1
+"299","GC","naming","razzo","raz.zo",NA,"no response",32,5,2,1,"OV1OV",11122,"razzo",NA,"razzo",5,0,0,3.46573590279973,2,0
+"300","GC","naming","re","re","re","correct",461,2,1,1,"OV",11,"re","re","re",2,1,2,6.13339804299665,3,0
+"301","GC","naming","regalo","re.Ga.lo","rekalo","nonword",96,6,3,2,"OVOVOV",112233,"reGalo","rekalo","reGalo",6,0,5,4.56434819146784,3,0
+"302","GC","naming","regina","re.gi.na","regina","correct",283,6,3,2,"OVOVOV",112233,"regina","regina","regina",6,1,6,5.64544689764324,3,0
+"303","GC","naming","registratore","re.gis.tra.to.re","ladjo","nonword",15,12,5,4,"OVOV1OSVOVOV",112223334455,"registratore","ladjo","registratore",12,0,2,2.70805020110221,2,0
+"304","GC","naming","retino","re.ti.no",NA,"no response",4,6,3,2,"OVOVOV",112233,"retino",NA,"retino",6,0,0,1.38629436111989,1,0
+"305","GC","naming","righello","ri.GEl.lo",NA,"no response",1,7,3,2,"OVOV1OV",1122233,"riGEllo",NA,"riGEllo",7,0,0,0,1,0
+"306","GC","naming","rinoceronte","ri.no.ce.ron.te","rinoceronte","correct",3,11,5,4,"OVOVOVOV1OV",11223344455,"rinoceronte","rinoceronte","rinoceronte",11,1,11,1.09861228866811,1,0
+"307","GC","naming","rocchetto","rok.ket.to",NA,"no response",3,8,3,2,"OV1OV1OV",11122233,"rokketto",NA,"rokketto",8,0,0,1.09861228866811,1,0
+"308","GC","naming","rosa","rO.sa",NA,"no response",426,4,2,1,"OVOV",1122,"rOsa",NA,"rOsa",4,0,0,6.05443934626937,3,0
+"309","GC","naming","rossetto","ros.set.to","rossetto","correct",16,8,3,2,"OV1OV1OV",11122233,"rossetto","rossetto","rossetto",8,1,8,2.77258872223978,2,0
+"310","GC","naming","rotaia","ro.ta.ja","rotaja","correct",4,6,3,2,"OVOVOV",112233,"rotaja","rotaja","rotaja",6,1,6,1.38629436111989,1,0
+"311","GC","naming","rubinetto","ru.bi.net.to",NA,"no response",14,9,4,3,"OVOVOV1OV",112233344,"rubinetto",NA,"rubinetto",9,0,0,2.63905732961526,2,0
+"312","GC","naming","ruota","rwO.ta",NA,"no response",122,5,2,1,"OSVOV",11122,"rwOta",NA,"rwOta",5,0,0,4.80402104473326,3,0
+"313","GC","naming","ruota","rwO.ta",NA,"no response",122,5,2,1,"OSVOV",11122,"rwOta",NA,"rwOta",5,0,0,4.80402104473326,3,0
+"314","GC","naming","saliera","sa.ljE.ra",NA,"no response",0,7,3,2,"OVOSVOV",1122233,"saljEra",NA,"saljEra",7,0,0,0,1,0
+"315","GC","naming","salvadanaio","sal.va.da.na.jo",NA,"no response",5,11,5,4,"OV1OVOVOVOV",11122334455,"salvadanajo",NA,"salvadanajo",11,0,0,1.6094379124341,1,0
+"316","GC","naming","sassofono","sas.sO.fo.no","saZZOfono","nonword",6,9,4,2,"OV1OVOVOV",111223344,"sassOfono","saZZOfono","sassOfono",9,0,7,1.79175946922805,1,0
+"317","GC","naming","scala","ska.la","skala","correct",263,5,2,1,"POVOV",11122,"skala","skala","skala",5,1,5,5.57215403217776,3,0
+"318","GC","naming","scarpa","skar.pa",NA,"no response",30,6,2,1,"POV1OV",111122,"skarpa",NA,"skarpa",6,0,0,3.40119738166216,2,0
+"319","GC","naming","scatola","ska.to.la",NA,"no response",69,7,3,1,"POVOVOV",1112233,"skatola",NA,"skatola",7,0,0,4.23410650459726,3,0
+"320","GC","naming","scheletro","skE.le.tro","teskjo","word",15,8,3,1,"POVOVOSV",11122333,"skEletro","teskjo","skEletro",8,0,3,2.70805020110221,2,0
+"321","GC","naming","sci","Si","Si","correct",93,2,1,1,"OV",11,"Si","Si","Si",2,1,2,4.53259949315326,3,0
+"322","GC","naming","sciarpa","Sar.pa",NA,"no response",14,5,2,1,"OV1OV",11122,"Sarpa",NA,"Sarpa",5,0,0,2.63905732961526,2,0
+"323","GC","naming","scimmia","Sim.mja",NA,"no response",24,6,2,1,"OV1OSV",111222,"Simmja",NA,"Simmja",6,0,0,3.17805383034795,2,0
+"324","GC","naming","scivolo","Si.vo.lo",NA,"no response",2,6,3,1,"OVOVOV",112233,"Sivolo",NA,"Sivolo",6,0,0,0.693147180559945,1,0
+"325","GC","naming","scoiattolo","sko.jat.to.lo",NA,"no response",4,10,4,2,"POVOV1OVOV",1112223344,"skojattolo",NA,"skojattolo",10,0,0,1.38629436111989,1,0
+"326","GC","naming","scopa","sko.pa",NA,"no response",9,5,2,1,"POVOV",11122,"skopa",NA,"skopa",5,0,0,2.19722457733622,2,0
+"327","GC","naming","scorpione","skor.pjo.ne",NA,"no response",21,9,3,2,"POV1OSVOV",111122233,"skorpjone",NA,"skorpjone",9,0,0,3.04452243772342,2,0
+"328","GC","naming","scrivania","skri.va.ni.a",NA,"no response",67,9,4,3,"POSVOVOVV",111122334,"skrivania",NA,"skrivania",9,0,0,4.20469261939097,3,0
+"329","GC","naming","secchio","sek.kjo",NA,"no response",6,6,2,1,"OV1OSV",111222,"sekkjo",NA,"sekkjo",6,0,0,1.79175946922805,1,0
+"330","GC","naming","secchio","sek.kjo",NA,"no response",6,6,2,1,"OV1OSV",111222,"sekkjo",NA,"sekkjo",6,0,0,1.79175946922805,1,0
+"331","GC","naming","sedano","sE.da.no",NA,"no response",15,6,3,1,"OVOVOV",112233,"sEdano",NA,"sEdano",6,0,0,2.70805020110221,2,0
+"332","GC","naming","sedia","sE.dja","sEdja","correct",83,5,2,1,"OVOSV",11222,"sEdja","sEdja","sEdja",5,1,5,4.4188406077966,3,0
+"333","GC","naming","sega","se.Ga","seketto","nonword",9,4,2,1,"OVOV",1122,"seGa","seketto","seGa",4,0,2,2.19722457733622,2,0
+"334","GC","naming","seggiolone","seg.go.lo.ne",NA,"no response",3,9,4,3,"OV1OVOVOV",111223344,"seggolone",NA,"seggolone",9,0,0,1.09861228866811,1,0
+"335","GC","naming","sella","sEl.la",NA,"no response",59,5,2,1,"OV1OV",11122,"sElla",NA,"sElla",5,0,0,4.07753744390572,2,0
+"336","GC","naming","semaforo","se.ma.fo.ro",NA,"no response",28,8,4,2,"OVOVOVOV",11223344,"semaforo",NA,"semaforo",8,0,0,3.33220451017520,2,0
+"337","GC","naming","serpente","ser.pEn.te","serpEnte","correct",27,8,3,2,"OV1OV1OV",11122233,"serpEnte","serpEnte","serpEnte",8,1,8,3.29583686600433,2,0
+"338","GC","naming","sgabello","sGa.bEl.lo",NA,"no response",7,8,3,2,"POVOV1OV",11122233,"sGabEllo",NA,"sGabEllo",8,0,0,1.94591014905531,1,0
+"339","GC","naming","sigaretta","si.Ga.ret.ta","Zikaretta","nonword",69,9,4,3,"OVOVOV1OV",112233344,"siGaretta","Zikaretta","siGaretta",9,0,7,4.23410650459726,3,0
+"340","GC","naming","siringa","si.rin.Ga","sirinGa","correct",19,7,3,2,"OVOV1OV",1122233,"sirinGa","sirinGa","sirinGa",7,1,7,2.94443897916644,2,0
+"341","GC","naming","soldato","sol.da.to",NA,"no response",71,7,3,2,"OV1OVOV",1112233,"soldato",NA,"soldato",7,0,0,4.26267987704132,3,0
+"342","GC","naming","sole","so.le","sole","correct",627,4,2,1,"OVOV",1122,"sole","sole","sole",4,1,4,6.44094654063292,4,0
+"343","GC","naming","spada","spa.da",NA,"no response",52,5,2,1,"POVOV",11122,"spada",NA,"spada",5,0,0,3.95124371858143,2,0
+"344","GC","naming","spaghetti","spa.Get.ti","_","circumlocution",41,8,3,2,"POVOV1OV",11122233,"spaGetti","_","spaGetti",8,0,0,3.71357206670431,2,0
+"345","GC","naming","spalla","spal.la",NA,"no response",84,6,2,1,"POV1OV",111122,"spalla",NA,"spalla",6,0,0,4.43081679884331,3,0
+"346","GC","naming","spatola","spa.to.la",NA,"no response",2,7,3,1,"POVOVOV",1112233,"spatola",NA,"spatola",7,0,0,0.693147180559945,1,0
+"347","GC","naming","spazzola","spaZ.Zo.la","spaZZola","correct",9,8,3,1,"POV1OVOV",11112233,"spaZZola","spaZZola","spaZZola",8,1,8,2.19722457733622,2,0
+"348","GC","naming","spazzola","spaZ.Zo.la",NA,"no response",9,8,3,1,"POV1OVOV",11112233,"spaZZola",NA,"spaZZola",8,0,0,2.19722457733622,2,0
+"349","GC","naming","spazzolino","spaZ.Zo.li.no","spaZZolino","correct",4,10,4,3,"POV1OVOVOV",1111223344,"spaZZolino","spaZZolino","spaZZolino",10,1,10,1.38629436111989,1,0
+"350","GC","naming","specchio","spEk.kjo","spEkkjo","correct",118,7,2,1,"POV1OSV",1111222,"spEkkjo","spEkkjo","spEkkjo",7,1,7,4.77068462446567,3,0
+"351","GC","naming","spilla","spil.la",NA,"no response",4,6,2,1,"POV1OV",111122,"spilla",NA,"spilla",6,0,0,1.38629436111989,1,0
+"352","GC","naming","spina","spi.na",NA,"no response",40,5,2,1,"POVOV",11122,"spina",NA,"spina",5,0,0,3.68887945411394,2,0
+"353","GC","naming","sposa","spO.sa",NA,"no response",125,5,2,1,"POVOV",11122,"spOsa",NA,"spOsa",5,0,0,4.8283137373023,3,0
+"354","GC","naming","staccionata","stac.co.na.ta","kaccellata","w+nonword",1,10,4,3,"POV1OVOVOV",1111223344,"stacconata","kaccellata","stacconata",10,0,6,0,1,0
+"355","GC","naming","stampella","stam.pEl.la",NA,"no response",5,9,3,2,"POV1OV1OV",111122233,"stampElla",NA,"stampElla",9,0,0,1.6094379124341,1,0
+"356","GC","naming","statua","sta.twa",NA,"no response",53,6,3,1,"POVOSV",111222,"statwa",NA,"statwa",6,0,0,3.97029191355212,2,0
+"357","GC","naming","stella","stel.la",NA,"no response",132,6,2,1,"POV1OV",111122,"stella",NA,"stella",6,0,0,4.88280192258637,3,0
+"358","GC","naming","stetoscopio","ste.to.skO.pjo",NA,"no response",0,11,4,3,"POVOVPOVOSV",11122333444,"stetoskOpjo",NA,"stetoskOpjo",11,0,0,0,1,0
+"359","GC","naming","stivale","sti.va.le",NA,"no response",10,7,3,2,"POVOVOV",1112233,"stivale",NA,"stivale",7,0,0,2.30258509299405,2,0
+"360","GC","naming","strada","stra.da",NA,"no response",1020,6,2,1,"POSVOV",111122,"strada",NA,"strada",6,0,0,6.92755790627832,4,0
+"361","GC","naming","strega","stre.Ga",NA,"no response",38,6,2,1,"POSVOV",111122,"streGa",NA,"streGa",6,0,0,3.63758615972639,2,0
+"362","GC","naming","struzzo","struZ.Zo",NA,"no response",9,7,2,1,"POSV1OV",1111122,"struZZo",NA,"struZZo",7,0,0,2.19722457733622,2,0
+"363","GC","naming","tacchino","tak.ki.no","takkino","correct",13,7,3,2,"OV1OVOV",1112233,"takkino","takkino","takkino",7,1,7,2.56494935746154,2,0
+"364","GC","naming","tacco","tak.ko",NA,"no response",11,5,2,1,"OV1OV",11122,"takko",NA,"takko",5,0,0,2.39789527279837,2,0
+"365","GC","naming","tamburo","tam.bu.ro",NA,"no response",15,7,3,2,"OV1OVOV",1112233,"tamburo",NA,"tamburo",7,0,0,2.70805020110221,2,0
+"366","GC","naming","tappeto","tap.pe.to",NA,"no response",82,7,3,2,"OV1OVOV",1112233,"tappeto",NA,"tappeto",7,0,0,4.40671924726425,3,0
+"367","GC","naming","tappo","tap.po",NA,"no response",18,5,2,1,"OV1OV",11122,"tappo",NA,"tappo",5,0,0,2.89037175789616,2,0
+"368","GC","naming","tartaruga","tar.ta.ru.Ga","tartarurGa","nonword",22,9,4,3,"OV1OVOVOV",111223344,"tartaruGa","tartarurGa","tartaruGa",9,0,9,3.09104245335832,2,0
+"369","GC","naming","tavolo","ta.vo.lo","tavolo","correct",271,6,3,1,"OVOVOV",112233,"tavolo","tavolo","tavolo",6,1,6,5.6021188208797,3,0
+"370","GC","naming","tazza","taZ.Za","taZZa","correct",42,5,2,1,"OV1OV",11122,"taZZa","taZZa","taZZa",5,1,5,3.73766961828337,2,0
+"371","GC","naming","teiera","te.jE.ra",NA,"no response",3,6,3,2,"OVOVOV",112233,"tejEra",NA,"tejEra",6,0,0,1.09861228866811,1,0
+"372","GC","naming","telefono","te.lE.fo.no","telEfono","correct",300,8,4,2,"OVOVOVOV",11223344,"telEfono","telEfono","telEfono",8,1,8,5.7037824746562,3,0
+"373","GC","naming","telescopio","te.le.skO.pjo",NA,"no response",9,10,4,3,"OVOVPOVOSV",1122333444,"teleskOpjo",NA,"teleskOpjo",10,0,0,2.19722457733622,2,0
+"374","GC","naming","televisione","te.le.vi.sjo.ne","telefo","w+nonword",294,11,5,4,"OVOVOVPOVOV",11223344455,"televisjone","telefo","televisjone",11,0,5,5.68357976733868,3,1
+"375","GC","naming","tenda","tEn.da",NA,"no response",60,5,2,1,"OV1OV",11122,"tEnda",NA,"tEnda",5,0,0,4.0943445622221,2,0
+"376","GC","naming","tetto","tet.to","tetto","correct",121,5,2,1,"OV1OV",11122,"tetto","tetto","tetto",5,1,5,4.79579054559674,3,0
+"377","GC","naming","thermos","tEr.mos",NA,"no response",0,6,2,1,"OV1OV1",111222,"tErmos",NA,"tErmos",6,0,0,0,1,0
+"378","GC","naming","tigre","ti.Gre","tire","nonword",33,5,2,1,"OVOSV",11222,"tiGre","tire","tiGre",5,0,4,3.49650756146648,2,0
+"379","GC","naming","tomba","tom.ba",NA,"no response",153,5,2,1,"OV1OV",11122,"tomba",NA,"tomba",5,0,0,5.03043792139244,3,0
+"380","GC","naming","topo","tO.po","tOpo","correct",35,4,2,1,"OVOV",1122,"tOpo","tOpo","tOpo",4,1,4,3.55534806148941,2,0
+"381","GC","naming","torcia","tOr.ca","lampada","word",14,5,2,1,"OV1OV",11122,"tOrca","lampada","tOrca",5,0,1,2.63905732961526,2,0
+"382","GC","naming","torta","tor.ta","torta","correct",56,5,2,1,"OV1OV",11122,"torta","torta","torta",5,1,5,4.02535169073515,2,0
+"383","GC","naming","tramezzino","tra.mez.zi.no","tOst","correct",2,10,4,3,"OSVOV1OVOV",1112223344,"tramezzino","tOst","tramezzino",10,1,1,0.693147180559945,1,0
+"384","GC","naming","trapano","tra.pa.no",NA,"no response",8,7,3,1,"OSVOVOV",1112233,"trapano",NA,"trapano",7,0,0,2.07944154167984,2,0
+"385","GC","naming","trappola","trap.po.la","trappola","correct",55,8,3,1,"OSV1OVOV",11112233,"trappola","trappola","trappola",8,1,8,4.00733318523247,2,0
+"386","GC","naming","trattore","trat.to.re",NA,"no response",2,8,3,2,"OSV1OVOV",11112233,"trattore",NA,"trattore",8,0,0,0.693147180559945,1,0
+"387","GC","naming","treno","trE.no","trEno","correct",191,5,2,1,"OSVOV",11122,"trEno","trEno","trEno",5,1,5,5.25227342804663,3,0
+"388","GC","naming","triangolo","tri.an.Go.lo","ti","nonword",32,9,3,2,"OSVV1OVOV",111223344,"trianGolo","ti","trianGolo",9,0,2,3.46573590279973,2,1
+"389","GC","naming","tricheco","tri.kE.ko",NA,"no response",0,7,3,2,"OSVOVOV",1112233,"trikEko",NA,"trikEko",7,0,0,0,1,0
+"390","GC","naming","tripode","tri.pO.de",NA,"no response",0,7,3,2,"OSVOVOV",1112233,"tripOde",NA,"tripOde",7,0,0,0,1,0
+"391","GC","naming","tromba","trom.ba","tromba","correct",18,6,2,1,"OSV1OV",111122,"tromba","tromba","tromba",6,1,6,2.89037175789616,2,0
+"392","GC","naming","tronco","tron.ko",NA,"no response",36,6,2,1,"OSV1OV",111122,"tronko",NA,"tronko",6,0,0,3.58351893845611,2,0
+"393","GC","naming","trottola","trOt.to.la","trOttola","correct",6,8,3,1,"OSV1OVOV",11112233,"trOttola","trOttola","trOttola",8,1,8,1.79175946922805,1,0
+"394","GC","naming","uccello","uc.cEl.lo","uccEllo","correct",44,7,3,2,"V1OV1OV",1122233,"uccEllo","uccEllo","uccEllo",7,1,7,3.78418963391826,2,0
+"395","GC","naming","unicorno","u.ni.kOr.no",NA,"no response",0,8,4,3,"VOVOV1OV",12233344,"unikOrno",NA,"unikOrno",8,0,0,0,1,0
+"396","GC","naming","uovo","wO.vo",NA,"no response",49,4,2,1,"OVOV",1122,"wOvo",NA,"wOvo",4,0,0,3.89182029811063,2,0
+"397","GC","naming","uva","u.va",NA,"no response",25,3,2,1,"VOV",122,"uva",NA,"uva",3,0,0,3.2188758248682,2,0
+"398","GC","naming","valigia","va.li.ga","maliga","nonword",56,6,3,2,"OVOVOV",112233,"valiga","maliga","valiga",6,0,5,4.02535169073515,2,0
+"399","GC","naming","vasca","vas.ka",NA,"no response",54,5,2,1,"OV1OV",11122,"vaska",NA,"vaska",5,0,0,3.98898404656427,2,0
+"400","GC","naming","vaso","va.so","baso","nonword",54,4,2,1,"OVOV",1122,"vaso","baso","vaso",4,0,3,3.98898404656427,2,0
+"401","GC","naming","ventilatore","ven.ti.la.to.re",NA,"no response",5,11,5,4,"OV1OVOVOVOV",11122334455,"ventilatore",NA,"ventilatore",11,0,0,1.6094379124341,1,0
+"402","GC","naming","vestito","ves.ti.to",NA,"no response",144,7,3,2,"OV1OVOV",1112233,"vestito",NA,"vestito",7,0,0,4.969813299576,3,0
+"403","GC","naming","violino","vjo.li.no",NA,"no response",29,7,3,3,"OSVOVOV",1112233,"vjolino",NA,"vjolino",7,0,0,3.36729582998647,2,0
+"404","GC","naming","vite","vi.te","vite","correct",101,4,2,1,"OVOV",1122,"vite","vite","vite",4,1,4,4.61512051684126,3,0
+"405","GC","naming","volante","vo.lan.te",NA,"no response",114,7,3,2,"OVOV1OV",1122233,"volante",NA,"volante",7,0,0,4.7361984483945,3,0
+"406","GC","naming","volpe","vol.pe","lupo","correct",22,5,2,1,"OV1OV",11122,"volpe","lupo","volpe",5,1,2,3.09104245335832,2,0
+"407","GC","naming","vulcano","vul.ka.no","pulkano","nonword",31,7,3,2,"OV1OVOV",1112233,"vulkano","pulkano","vulkano",7,0,6,3.43398720448515,2,0
+"408","GC","naming","zaino","zaj.no",NA,"no response",12,5,3,1,"OV1OV",11122,"zajno",NA,"zajno",5,0,0,2.484906649788,2,0
+"409","GC","naming","zanzara","zan.za.ra","ape","word",10,7,3,2,"OV1OVOV",1112233,"zanzara","ape","zanzara",7,0,1,2.30258509299405,2,1
+"410","GC","naming","zebra","zE.bra","zEra","nonword",3,5,2,1,"OVOSV",11222,"zEbra","zEra","zEbra",5,0,4,1.09861228866811,1,0
+"411","GC","naming","zoccolo","ZOk.ko.lo",NA,"no response",15,7,3,1,"OV1OVOV",1112233,"ZOkkolo",NA,"ZOkkolo",7,0,0,2.70805020110221,2,0
+"412","GC","naming","zucca","Zuk.ka",NA,"no response",27,5,2,1,"OV1OV",11122,"Zukka",NA,"Zukka",5,0,0,3.29583686600433,2,0
