@@ -2,6 +2,7 @@ rm(list=ls())
 library(tidyverse) # for data manipulation and plotting
 library(formatters) # to wrap strings for plot titles
 library(ggtext) # for rendering superscripts in plot titles
+library(ggpubr) # for ggarrange
 
 palette_values <- c(
   "#000000","#9b6f02", "#B13401", "#6a0b86","#8862F5", "#0038ae", "#175c12",
@@ -37,7 +38,7 @@ for(i in seq(1,num_plots)){
   # can access plots by name (see below where we set names for plot_list)
   
   # load data
-  ModelDatFilename<-paste0(RootDir,"/data/",CurPat,"/",CurPat,"_",CurTask,"_posdat_for_modelling.csv")
+  ModelDatFilename<-paste0(RootDir,"/data/",CurPat,"/",CurPat,"_",CurTask,"_posdat.csv")
   if(!file.exists(ModelDatFilename)){
     print("**ERROR** Input data file not found")
     print(sprintf("\tfile: ",ModelDatFilename))
@@ -92,7 +93,7 @@ nrow_plots <- get_nrow_plots(ncol_plots,length(phon_list))
 phon_plot<-ggarrange(plotlist = plot_list[phon_list],
                      ncol=ncol_plots,nrow=nrow_plots,common.legend = TRUE,legend="right")
 ggsave("phonological_patients_length_position.tif",plot=phon_plot,unit="cm",
-       width=ncol_plots * (15*.75),height=nrow_plots*(11*.75))
+       width=ncol_plots * (15*.75),height=nrow_plots*(11*.75),compression = "lzw")
 
 # mixed list
 mixed_list <- c("AG","CA","MS","PM")
@@ -100,7 +101,7 @@ nrow_plots <- get_nrow_plots(ncol_plots,length(mixed_list))
 mixed_plot<-ggarrange(plotlist = plot_list[mixed_list],
                      ncol=ncol_plots,nrow=nrow_plots,common.legend = TRUE,legend="right")
 ggsave("mixed_patients_length_position.tif",plot=mixed_plot,unit="cm",
-       width=ncol_plots * (15*.75),height=nrow_plots*(11*.75))
+       width=ncol_plots * (15*.75),height=nrow_plots*(11*.75),compression = "lzw")
 
 # apraxic patients
 apraxic_list <- c("AM","AP","AV","DC","DG","EM","GC","MI","OB","PV","SR")
@@ -108,5 +109,5 @@ nrow_plots <- get_nrow_plots(ncol_plots,length(apraxic_list))
 apraxic_plot<-ggarrange(plotlist = plot_list[apraxic_list],
                      ncol=ncol_plots,nrow=nrow_plots,common.legend = TRUE,legend="right")
 ggsave("apraxic_patients_length_position.tif",plot=apraxic_plot,unit="cm",
-       width=ncol_plots * (15*.75),height=nrow_plots*(11*.75))
+       width=ncol_plots * (15*.75),height=nrow_plots*(11*.75),compression = "lzw")
 
