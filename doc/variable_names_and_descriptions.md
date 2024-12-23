@@ -1,0 +1,42 @@
+**posdat files (position-level information)**
+- patient - participant ID
+- task - picture naming, reading, repetition
+- err_type - general category of error (e.g. correct, word, nonword)
+- surf_freq - surface frequency
+- log_freq - natural logarithm of surface frequency
+- stimlen - number of phonemes in the stimulus
+- num_sylls - number of syllable sin the stimulus
+- stim - stimulus phonemes
+- pos - position number of phoneme in the word
+- preserved - phoneme is preserved(=1)/not preserved(=0) in the response
+- fragment - phoneme is part of a fragment
+- syll_component - syllable component of the phoneme (vowel (V), onset core (O), onset satellite(S), coda (1), complex coda (2))
+- syll_number - syllable number in the word that contains this phoneme
+- CumPres - cumulative number of preserved phonemes
+- CCumPres - cumulative number of preserved consonant phonemes
+- VCumPres - cumulative number of preserved vowel phonemes
+- CumErr, CCumErr, VCumErr - cumulative number of error phonemes
+- CV - consonant (1) or vowel (-1)
+
+**Worddat files (word-level information)**
+- patient - participant ID
+- task - repetition, reading, picture naming
+- word - stimulus word orthography
+- phonemes - stimulus word phonemes ('.' = syllable separator)
+- resp - response phonemes
+- err_type - general type of error (e.g. correct, word, nonword)
+- surf_freq - surface frequency
+- plen - phoneme length
+- num_sylls - number of syllables
+- stressed_syll - position of primary stress
+- syllable component codes (one for each phoneme position - O=onset, S=satellite, 1=coda, 2=complex coda, V=vowel)
+- syll_numbers - one number for each phoneme that indicates which syllable the phoneme is in
+- phon_only - stimulus phonemes only, without syllable boundary indicators
+- resp_phon_only - response phonemes only
+- stim - stimulus phonemes
+- stimlen - stimulus phoneme lengths
+- correct - was the response correct? (0=no, 1=yes)
+- LCSpres - Number of preserved phonemes
+- log freq - natural log of the surface frequency
+- frequency bin - bin number for frequency bins
+- fragment - was the response to this item a word fragment (with missing end phonemes)? (0=no, 1=yes)
