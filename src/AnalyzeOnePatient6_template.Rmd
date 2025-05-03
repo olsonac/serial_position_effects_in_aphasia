@@ -15,6 +15,8 @@ params:
   ReportTitle: "-"
   RandomSamples: 1
   DoSimulations: FALSE
+  RemoveFracPres: FALSE
+  
 title: "`r params$ReportTitle`" 
 ---
 
@@ -51,32 +53,64 @@ opts_knit$set(echo = FALSE)
 ```
 
 ```{r}
-# for testing - set by calling script normally
-# ppt_parms <- read.csv(config$patient_param_file)
-# CurPat <- ppt_parms$patient
-# CurTask <- ppt_parms$task
-# MinLength <- ppt_parms$min_length
-# MaxLength <- ppt_parms$max_length
-# RemoveFinalPosition<-ppt_parms$remove_final_position
+# for testing
+CurPat <- "VS"
+CurTask <- "repetition"
+MinLength <- 4
+MaxLength <- 10
+BestModelIndexL1 <- 1
+BestModelIndexL2 <- 1
+BestModelIndexL3 <- 1
+ReportTitle <- paste(CurPat," - ",CurTask," - ",RunLabel," - Serial position analysis")
+RandomSamples <- 10
+DoSimulations <- FALSE
+RemoveFracPres <- TRUE
 ```
 
 ```{r}
-# create patient directory if it doesn't already exist
-if(!dir.exists(paste0(RootDir,"/output/",CurPat))){
-  dir.create(paste0(RootDir,"/output/",CurPat),showWarnings = TRUE)
-}
-TablesDir <- paste0(RootDir,"/output/",CurPat,"/tables/")
-if(!dir.exists(TablesDir)){
-  dir.create(TablesDir,showWarnings = TRUE)
-}
-FigDir <- paste0(RootDir,"/output/",CurPat,"/fig/")
-if(!dir.exists(FigDir)){
-  dir.create(FigDir,showWarnings = TRUE)
-}
-ReportsDir <- paste0(RootDir,"/output/",CurPat,"/reports/")
-if(!dir.exists(ReportsDir)){
-  dir.create(ReportsDir,showWarnings = TRUE)
-}
+CurPat <- params$CurPat
+CurTask <- params$CurTask
+MinLength <- params$MinLength
+MaxLength <- params$MaxLength
+BestModelIndexL1 <- params$BestModelIndexL1
+BestModelIndexL2 <- params$BestModelIndexL2
+BestModelIndexL3 <- params$BestModelIndexL3
+ReportTitle <- params$ReportTitle
+RandomSamples <- params$RandomSamples
+DoSimulations <- params$DoSimulations
+RemoveFracPres <- params$RemoveFracPres
+```
+
+
+```{r}
+# done in calling script
+# print(paste0("Using root dir: ",RootDir))
+# RunDir <- paste0(paste0(RootDir,"/output/",RunLabel))
+# if(!dir.exists(RunDir)){
+#   dir.create(RunDir,showWarnings = TRUE)
+#   print(paste0("created run directory: ",RunDir))
+# }
+# # create patient directory if it doesn't already exist
+# PatientDir <- paste0(RootDir,"/output/",RunLabel,"/",CurPat)
+# if(!dir.exists(PatientDir)){
+#   dir.create(PatientDir,showWarnings = TRUE)
+#   print(paste0("created participant directory: ",PatientDir))
+# }
+# TablesDir <- paste0(RootDir,"/output/",RunLabel,"/",CurPat,"/tables/")
+# if(!dir.exists(TablesDir)){
+#   dir.create(TablesDir,showWarnings = TRUE)
+#   print(paste0("created tables directory: ",TablesDir))
+# }
+# FigDir <- paste0(RootDir,"/output/",RunLabel,"/",CurPat,"/fig/")
+# if(!dir.exists(FigDir)){
+#   dir.create(FigDir,showWarnings = TRUE)
+#   print(paste0("created figures directory: ",FigDir))
+# }
+# ReportsDir <- paste0(RootDir,"/output/",RunLabel,"/",CurPat,"/reports/")
+# if(!dir.exists(ReportsDir)){
+#   dir.create(ReportsDir,showWarnings = TRUE)
+#   print(paste0("created reports directory: ",ReportsDir))
+# }
 results_report_DF <- data.frame(Description=character(), ParameterValue=double())
 ```
 
@@ -104,6 +138,15 @@ PosDat <- PosDat[(PosDat$pos) != (PosDat$stimlen), ]
 PosDat$stim_number <- NumberStimuli(PosDat)
 PosDat$raw_log_freq <- PosDat$log_freq
 PosDat$log_freq <- PosDat$log_freq - mean(PosDat$log_freq) # centre frequency
+OrigDataLen <- nrow(PosDat)
+print(sprintf ("Original data has %d values",OrigDataLen))
+if(RemoveFracPres){ # eliminate fractional preserved values?
+  PosDat <- PosDat[(PosDat$preserved == 0) | (PosDat$preserved == 1),]
+  DataLen<- nrow(PosDat)
+  print(sprintf("Data without fractional preserved values has %d values",DataLen))
+  print(sprintf("%d values eliminated.",OrigDataLen - DataLen))
+}
+PosDat$CumPres <- CalcCumPres(PosDat)
 PosDat$CumErr <- CalcCumErrFromPreserved(PosDat)
 ```
 
@@ -142,7 +185,7 @@ syll_comp_plot <- ggplot(syll_comp_plot_data,
   geom_line() + geom_point() + scale_color_manual(name="Syllable component", values = palette_values) + scale_x_continuous(name = "Word position", breaks = seq(1,9, by = 1))
 syll_comp_plot <- syll_comp_plot + scale_y_continuous(name="Percent of segment types") + scale_linetype_manual(name="Syllable component",values = c("solid","dashed")) +
   scale_shape_discrete(name="Syllable component")
-ggsave(paste0(FigDir,CurPat,"_",CurTask,"_pos_of_syll_complexities_in_stimuli.png"),plot=syll_comp_plot,device="png",unit="cm",width=15,height=11)
+ggsave(paste0(FigDir,CurPat,"_",RunLabel,"_",CurTask,"_pos_of_syll_complexities_in_stimuli.png"),plot=syll_comp_plot,device="png",unit="cm",width=15,height=11)
 syll_comp_plot
 ```
 
@@ -156,7 +199,7 @@ preserved_range <- (max_preserved_raw - min_preserved_raw)
 min_preserved <- min_preserved_raw - (0.1 * preserved_range)
 max_preserved <- max_preserved_raw + (0.1 * preserved_range)
 pos_len_table <- pos_len_summary %>% pivot_wider(names_from = pos, values_from = preserved)
-write.csv(pos_len_table,paste0(TablesDir,CurPat,"_",CurTask,"_preserved_percentages_by_len_position.csv"))
+write.csv(pos_len_table,paste0(TablesDir,CurPat,"_",RunLabel,"_",CurTask,"_preserved_percentages_by_len_position.csv"))
 pos_len_table
 ```
 
@@ -164,7 +207,8 @@ pos_len_table
 # len/pos table
 pos_len_N <- PosDat %>% group_by(stimlen,pos) %>% summarise(preserved = mean(preserved),N=n()) %>% dplyr::select(-preserved)
 pos_len_N_table <- pos_len_N %>% pivot_wider(names_from = pos, values_from = N)
-write.csv(pos_len_N_table,paste0(TablesDir,CurPat,"_",CurTask,"_N_by_len_position.csv"))
+write.csv(pos_len_N_table,paste0(TablesDir,CurPat,"_",RunLabel,"_",CurTask,
+                                 "_N_by_len_position.csv"))
 pos_len_N_table
 ```
 
@@ -183,7 +227,8 @@ len_pos_plot <- plot_len_pos_obs_predicted(PosDat,
                                            shape_values,
                                            obs_linetypes, 
                                            pred_linetypes)
-ggsave(paste0(FigDir,CurPat,"_",CurTask,"_percent_preserved_by_length_pos.png"),
+ggsave(paste0(FigDir,CurPat,"_",RunLabel,"_",CurTask,
+              "_percent_preserved_by_length_pos.png"),
        plot=len_pos_plot,device="png",unit="cm",width=15,height=11)
 len_pos_plot
 ```
@@ -210,6 +255,7 @@ BestLPModelFormula<-LPRes$Model[[1]]
 LPAICSummary<-data.frame(Model=LPRes$Model,
                        AIC=LPRes$AIC,
                        row.names = LPRes$Model)
+LPAICSummary <- LPAICSummary %>% arrange(AIC)
 LPAICSummary$DeltaAIC<-LPAICSummary$AIC-LPAICSummary$AIC[1]
 LPAICSummary$AICexp<-exp(-0.5*LPAICSummary$DeltaAIC)
 LPAICSummary$AICwt<-LPAICSummary$AICexp/sum(LPAICSummary$AICexp)
@@ -218,7 +264,8 @@ LPAICSummary$NagR2<-LPRes$NagR2
 LPAICSummary <- merge(LPAICSummary,LPRes$CoefficientValues, by='row.names',sort=FALSE)
 LPAICSummary <- subset(LPAICSummary, select = -c(Row.names))
 
-write.csv(LPAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_len_pos_model_summary.csv"),row.names = FALSE)
+write.csv(LPAICSummary,paste0(TablesDir,CurPat,"_",RunLabel,"_",CurTask,
+                              "_len_pos_model_summary.csv"),row.names = FALSE)
 kable(LPAICSummary)
 ```
 
@@ -256,7 +303,7 @@ fitted_len_pos_plot <- plot_len_pos_obs_predicted(PosDat,
                                           pred_linetypes = c("longdash")
                                           )
 
-ggsave(paste0(FigDir,CurPat,"_",CurTask,"_percent_preserved_by_length_pos_wfit.png"),plot=fitted_len_pos_plot,device="png",unit="cm",width=15,height=11)
+ggsave(paste0(FigDir,CurPat,"_",RunLabel,"_",CurTask,"_percent_preserved_by_length_pos_wfit.png"),plot=fitted_len_pos_plot,device="png",unit="cm",width=15,height=11)
 fitted_len_pos_plot
 ```
 
@@ -289,7 +336,8 @@ num_frag
 num_frag$percent_with_frag[1] <- (num_frag$frag_sum[1] / num_frag$N[1])*100
 print(sprintf("The number of responses with fragments was %d / %d = %.2f percent",
               num_frag$frag_sum[1],num_frag$N[1],num_frag$percent_with_frag[1]))
-write.csv(num_frag,paste0(TablesDir,CurPat,"_",CurTask,"_percent_fragments.csv"),row.names = FALSE)
+write.csv(num_frag,paste0(TablesDir,CurPat,"_",RunLabel,"_",
+                          CurTask,"_percent_fragments.csv"),row.names = FALSE)
 ```
 
 ```{r}
@@ -311,7 +359,13 @@ NoFragLPAICSummary$NagR2<-NoFrag_LPRes$NagR2
 NoFragLPAICSummary <- merge(NoFragLPAICSummary,NoFrag_LPRes$CoefficientValues, by='row.names',sort=FALSE)
 NoFragLPAICSummary <- subset(NoFragLPAICSummary, select = -c(Row.names))
 
-write.csv(NoFragLPAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_no_fragments_len_pos_model_summary.csv"),row.names = FALSE)
+NoFragLPAICSummary <- NoFragLPAICSummary %>% arrange(AIC) # insure order by AIC
+
+write.csv(NoFragLPAICSummary,paste0(TablesDir,
+                                    CurPat,"_",RunLabel,"_",
+                                    CurTask,
+                                    "_no_fragments_len_pos_model_summary.csv"),
+          row.names = FALSE)
 kable(NoFragLPAICSummary)
 ```
 
@@ -343,7 +397,11 @@ nofrag_fitted_len_pos_plot <- plot_len_pos_obs_predicted(NoFragData,
                                           pred_linetypes = c("longdash")
                                           )
 
-ggsave(paste0(FigDir,CurPat,"_",CurTask,"no_fragments_percent_preserved_by_length_pos_wfit.png"),plot=nofrag_fitted_len_pos_plot,device="png",unit="cm",width=15,height=11)
+ggsave(paste0(FigDir,CurPat,"_",RunLabel,"_",CurTask,
+              "no_fragments_percent_preserved_by_length_pos_wfit.png"),
+       plot=nofrag_fitted_len_pos_plot,
+       device="png",unit="cm",
+       width=15,height=11)
 nofrag_fitted_len_pos_plot
 ```
 
@@ -540,7 +598,9 @@ FLPAICSummary <- merge(FLPAICSummary,FLPRes$CoefficientValues,
                           by='row.names',sort=FALSE)
 FLPAICSummary <- subset(FLPAICSummary, select = -c(Row.names))
 
-write.csv(FLPAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_freq_len_pos_model_summary.csv"),row.names = FALSE)
+write.csv(FLPAICSummary,paste0(TablesDir,CurPat,"_",
+                               RunLabel,"_",CurTask,
+                               "_freq_len_pos_model_summary.csv"),row.names = FALSE)
 kable(FLPAICSummary)
 ```
 
@@ -567,11 +627,13 @@ PosDat$FLPFitted<-fitted(BestFLPModel)
 HFDat <- PosDat[PosDat$freq_bin == "hf",]
 LFDat <- PosDat[PosDat$freq_bin == "lf",]
 
-HF_Plot <- plot_len_pos_obs_predicted(HFDat,paste0(CurPat," - High frequency"),"FLPFitted",c(min_preserved,max_preserved),palette_values,shape_values, obs_linetypes,NULL)
-LF_Plot <- plot_len_pos_obs_predicted(LFDat,paste0(CurPat, " - Low frequency"),"FLPFitted",c(min_preserved,max_preserved),palette_values,shape_values,obs_linetypes,NULL)
+HF_Plot <- plot_len_pos_obs_predicted(HFDat,paste0(CurPat," - ",RunLabel," - High frequency"),"FLPFitted",c(min_preserved,max_preserved),palette_values,shape_values, obs_linetypes,NULL)
+LF_Plot <- plot_len_pos_obs_predicted(LFDat,paste0(CurPat," - ",RunLabel," - Low frequency"),"FLPFitted",c(min_preserved,max_preserved),palette_values,shape_values,obs_linetypes,NULL)
 library(ggpubr)
 Both_Plots <- ggarrange(LF_Plot,HF_Plot) # labels=c("LF","HF",ncol=2)
-ggsave(paste0(FigDir,CurPat,"_",CurTask,"_frequency_effect_length_pos_wfit.png"),device="png",unit="cm",width=30,height=11)
+ggsave(paste0(FigDir,CurPat,"_",RunLabel,"_",
+              CurTask,"_frequency_effect_length_pos_wfit.png"),
+       device="png",unit="cm",width=30,height=11)
 print(Both_Plots)
 ```
 
@@ -599,8 +661,11 @@ MEAICSummary$NagR2<-MERes$NagR2
 MEAICSummary <- merge(MEAICSummary,MERes$CoefficientValues,
                           by='row.names',sort=FALSE)
 MEAICSummary <- subset(MEAICSummary, select = -c(Row.names))
+MEAICSummary <- MEAICSummary %>% arrange(AIC)
 
-write.csv(MEAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_main_effects_model_summary.csv"),row.names = FALSE)
+write.csv(MEAICSummary,paste0(TablesDir,CurPat,"_",RunLabel,"_",
+                              CurTask,"_main_effects_model_summary.csv"),
+          row.names = FALSE)
 kable(MEAICSummary)
 ```
 
@@ -635,7 +700,7 @@ if(DoSimulations){
                                          AIC=c(sd(RndModelAIC))))
     
     write.csv(BestMEModelRndDF,
-              paste0(TablesDir,CurPat,"_",CurTask,
+              paste0(TablesDir,CurPat,"_",RunLabel,"_",CurTask,
                      "_best_main_effects_model_with_random_cum_term.csv"),
               row.names = FALSE)
 }
@@ -646,7 +711,9 @@ if(DoSimulations){
 syll_component_summary <- PosDat %>%
   group_by(syll_component) %>% summarise(MeanPres = mean(preserved),
                                          N = n())
-write.csv(syll_component_summary,paste0(TablesDir,CurPat,"_",CurTask,"_syllable_component_summary.csv"),row.names = FALSE)
+write.csv(syll_component_summary,paste0(TablesDir,CurPat,"_",
+                                        RunLabel,"_",CurTask,
+                                        "_syllable_component_summary.csv"),row.names = FALSE)
 kable(syll_component_summary)
 ```
 
@@ -664,8 +731,10 @@ OV1Data$CumErr <- CalcCumErrFromPreserved(OV1Data)
 
 SimpSyllMEAICSummary <- EvaluateSubsetData(OV1Data,MEModelEquations)
 write.csv(SimpSyllMEAICSummary,
-          paste0(TablesDir,CurPat,"_",CurTask,
-                 "_OV1_main_effects_model_summary.csv"),row.names = FALSE)
+          paste0(TablesDir,CurPat,"_",RunLabel,"_",
+                 CurTask,
+                 "_OV1_main_effects_model_summary.csv"),
+          row.names = FALSE)
 kable(SimpSyllMEAICSummary)
 ```
 
@@ -684,7 +753,7 @@ OVData$CumErr <- CalcCumErrFromPreserved(OVData)
 
 SimpSyllMEAICSummary2<-EvaluateSubsetData(OVData,MEModelEquations)
 write.csv(SimpSyllMEAICSummary2,
-          paste0(TablesDir,CurPat,"_",CurTask,
+          paste0(TablesDir,CurPat,"_",RunLabel,"_",CurTask,
                  "_OV_main_effects_model_summary.csv"),row.names = FALSE)
 kable(SimpSyllMEAICSummary2)
 ```
@@ -697,10 +766,10 @@ print(PrevCorPlot)
 PrevErrPlot<-PlotObsPreviousError(PosDat,palette_values,shape_values)
 print(PrevErrPlot)
 
-PlotName<-paste0(FigDir,CurPat,"_",CurTask,"_PrevCorPlot_Obs")
+PlotName<-paste0(FigDir,CurPat,"_",RunLabel,"_",CurTask,"_PrevCorPlot_Obs")
 ggsave(filename=paste0(PlotName,".tif"),plot=PrevCorPlot,device="tiff",compression = "lzw")
 
-PlotName<-paste0(FigDir,CurPat,"_",CurTask,"_PrevErrPlot_Obs")
+PlotName<-paste0(FigDir,CurPat,"_",RunLabel,"_",CurTask,"_PrevErrPlot_Obs")
 ggsave(filename=paste0(PlotName,".tif"),plot=PrevErrPlot,device="tiff",compression = "lzw")
 ```
 
@@ -714,10 +783,12 @@ print(PrevCorPlot)
 PrevErrPlot<-PlotObsPredPreviousError(PosDat,"preserved","MEPred",palette_values,shape_values)
 print(PrevErrPlot)
 
-PlotName<-paste0(FigDir,CurPat,"_",CurTask,"PrevCorPlot_ObsPredME")
+PlotName<-paste0(FigDir,CurPat,"_",RunLabel,"_",
+                 CurTask,"PrevCorPlot_ObsPredME")
 ggsave(filename=paste0(PlotName,".tif"),plot=PrevCorPlot,device="tiff",compression = "lzw")
 
-PlotName<-paste0(FigDir,CurPat,"_",CurTask,"PrevErrPlot_ObsPredME")
+PlotName<-paste0(FigDir,CurPat,"_",RunLabel,"_",
+                 CurTask,"PrevErrPlot_ObsPredME")
 ggsave(filename=paste0(PlotName,".tif"),plot=PrevErrPlot,device="tiff",compression = "lzw")
 ```
 
@@ -780,6 +851,21 @@ if(!grepl(OtherFactor,BestMEFactor,fixed = TRUE)){
 
 ```{r}
 ########
+# level 2 -- add cumulative preserved
+########
+
+BestMEFactor<-BestMEModelFormula
+OtherFactor<-"CumErr"
+
+if(!grepl(OtherFactor,BestMEFactor,fixed = TRUE)){
+  AICSummary<-TestLevel2Models(PosDat,BestMEFactor,OtherFactor)
+  CumAICSummary <- ConcatAndAddMissingColumns(CumAICSummary,AICSummary)  
+  kable(AICSummary)
+}
+```
+
+```{r}
+########
 # level 2 -- Add linear position (NOT quadratic)
 ########
 
@@ -795,8 +881,11 @@ if(!grepl(OtherFactor,BestMEFactor,fixed = TRUE)){
 
 ```{r}
 CumAICSummary <- CumAICSummary %>% arrange(AIC)
+CumAICSummary$DeltaAIC <- CumAICSummary$AIC - CumAICSummary$AIC[[1]]
 BestModelFormulaL2 <- CumAICSummary$Model[BestModelIndexL2]
-write.csv(CumAICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_main_effects_plus_one_model_summary.csv"),row.names = FALSE)
+write.csv(CumAICSummary,paste0(TablesDir,CurPat,"_",
+                            RunLabel,"_",CurTask,
+                            "_main_effects_plus_one_model_summary.csv"),row.names = FALSE)
 kable(CumAICSummary)
 ```
 
@@ -842,7 +931,9 @@ AICSummary <- merge(AICSummary,Level3Res$CoefficientValues,
                           by='row.names',sort=FALSE)
 AICSummary <- subset(AICSummary, select = -c(Row.names))
 
-write.csv(AICSummary,paste0(TablesDir,CurPat,"_",CurTask,"_main_effects_plus_one_len_freq_summary.csv"),row.names = FALSE)
+write.csv(AICSummary,paste0(TablesDir,CurPat,"_",RunLabel,"_",
+                            CurTask,"_main_effects_plus_one_len_freq_summary.csv"),
+          row.names = FALSE)
 
 kable(AICSummary)
 ```
@@ -866,7 +957,10 @@ BestModelDeletions
 # Single deletions from best model
 ################################
 
-write.csv(BestModelDeletions,paste0(TablesDir,CurPat,"_",CurTask,"_best_model_single_term_deletions.csv"),row.names = TRUE)
+write.csv(BestModelDeletions,paste0(TablesDir,CurPat,"_",
+                                    RunLabel,"_",CurTask,
+                                    "_best_model_single_term_deletions.csv"),
+          row.names = TRUE)
 ```
 
 ```{r} 
@@ -878,7 +972,9 @@ print(PrevCorPlot)
 PrevErrPlot<-PlotObsPredPreviousError(PosDat,"preserved","OAPred",palette_values,shape_values)
 print(PrevErrPlot)
 
-PlotName<-paste0(FigDir,CurPat,"_",CurTask,"_ObsPred_BestFullModel")
+PlotName<-paste0(FigDir,CurPat,"_",
+                 RunLabel,"_",CurTask,
+                 "_ObsPred_BestFullModel")
 ggsave(filename=paste(PlotName,"_prev_correct.tif",sep=""),plot=PrevCorPlot,device="tiff",compression = "lzw")
 
 ggsave(filename=paste(PlotName,"_prev_error.tif",sep=""),plot=PrevErrPlot,device="tiff",compression = "lzw")
@@ -915,7 +1011,7 @@ if(DoSimulations){
   BestModelRndDF <- rbind(BestModelRndDF, 
                           data.frame(Name=c("Random SD"),
                                      AIC=c(sd(RndModelAIC))))
-  write.csv(BestModelRndDF,paste0(TablesDir,CurPat,"_",CurTask,
+  write.csv(BestModelRndDF,paste0(TablesDir,CurPat,"_",RunLabel,"_",CurTask,
                                   "_best_model_with_random_cum_term.csv"),
             row.names = FALSE)
 }
@@ -938,7 +1034,7 @@ FinalModelSet<-ModelSetFromDeletions(BestModelFormulaL3,
                                      BestModelDeletions,
                                      last_model_num)
 
-PlotName<-paste0(FigDir,CurPat,"_",CurTask,"_FactorPlots")
+PlotName<-paste0(FigDir,CurPat,"_",RunLabel,"_",CurTask,"_FactorPlots")
 
 FactorPlot<-PlotModelSetWithFreq(PosDat,FinalModelSet,
                                  palette_values,FinalModelSet,PptID=CurPat)
@@ -951,7 +1047,9 @@ FactorPlot
 ```{r}
 DA.Result<-dominanceAnalysis(BestModel)
 DAContributionAverage<-ConvertDominanceResultToTable(DA.Result)
-write.csv(DAContributionAverage,paste0(TablesDir,CurPat,"_",CurTask,"_dominance_analysis_table.csv"),row.names = TRUE)
+write.csv(DAContributionAverage,paste0(TablesDir,CurPat,"_",RunLabel,"_",
+                                       CurTask,"_dominance_analysis_table.csv"),
+          row.names = TRUE)
 kable(DAContributionAverage)
 ```
 
@@ -961,7 +1059,9 @@ kable(DAContributionAverage)
 
 ```{r}
 deviance_differences_df<-GetDevianceSet(FinalModelSet,PosDat)
-write.csv(deviance_differences_df,paste0(TablesDir,CurPat,"_",CurTask,"_deviance_differences_table.csv"),row.names = FALSE)
+write.csv(deviance_differences_df,paste0(TablesDir,CurPat,"_",RunLabel,"_",
+                                         CurTask,"_deviance_differences_table.csv"),
+          row.names = FALSE)
 deviance_differences_df
 ```
 
@@ -983,7 +1083,8 @@ NagTotal<-sum(NagContributions)
 NagPercents <- NagContributions / NagTotal
 NagResultTable <- data.frame(NagContributions = NagContributions, NagPercents = NagPercents)
 names(NagResultTable)<-c("NagContributions","NagPercents")
-write.csv(NagResultTable,paste0(TablesDir,CurPat,"_",CurTask,"_nagelkerke_contributions_table.csv"),row.names = TRUE)
+write.csv(NagResultTable,paste0(TablesDir,CurPat,"_",RunLabel,"_",CurTask,
+                                "_nagelkerke_contributions_table.csv"),row.names = TRUE)
 NagPercents
 ```
 
@@ -993,7 +1094,8 @@ NagPercents
 ```{r}
 sse_results_list<-compare_SS_accounted_for(FinalModelSet,"preserved ~ 1",PosDat,N_cutoff=10)
 sse_table<-sse_results_table(sse_results_list)
-write.csv(sse_table,paste0(TablesDir,CurPat,"_",CurTask,"_sse_results_table.csv"),row.names = TRUE)
+write.csv(sse_table,paste0(TablesDir,CurPat,"_",RunLabel,"_",
+                           CurTask,"_sse_results_table.csv"),row.names = TRUE)
 sse_table
 ```
 
@@ -1003,12 +1105,14 @@ kable(sse_table[,1:3], format="latex", booktabs=TRUE) %>%
 ```
 
 ```{r}
-write.csv(results_report_DF,paste0(TablesDir,CurPat,"_",CurTask,"_results_report_df.csv"),row.names = FALSE)
+write.csv(results_report_DF,paste0(TablesDir,CurPat,"_",RunLabel,"_",
+                                   CurTask,"_results_report_df.csv"),row.names = FALSE)
 ```
 
 
 ```{r}
-kable(sse_table[,c(1,4:6)], format="latex", booktabs=TRUE) %>% 
+ncols_in_table <- ncol(sse_table)
+kable(sse_table[,c(1,4:ncols_in_table)], format="latex", booktabs=TRUE) %>% 
   kable_styling(latex_options="scale_down")
 ```
 

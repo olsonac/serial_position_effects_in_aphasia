@@ -1,0 +1,4 @@
+"model","deviance","deviance_explained","percent_explained","percent_of_explained_deviance","increment_in_explained"
+"CumErr + CumPres",4504.99694104884,177.733701490158,3.79551409332802,100,12.1244107570006
+"CumErr",4526.54610507113,156.18453746787,3.33533037431309,87.8755892429994,87.8755892429994
+"null",4682.730642539,0,0,NA,0

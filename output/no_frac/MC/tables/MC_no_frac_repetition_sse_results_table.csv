@@ -1,0 +1,3 @@
+"","model","p_accounted_for","model_deviance","diff_CumErr","diff_CumErr+CumPres"
+"1","preserved ~ CumErr",0.694910389371003,4526.54610507113,0,-0.017346074268663
+"2","preserved ~ CumErr+CumPres",0.712256463639666,4504.99694104884,0.017346074268663,0

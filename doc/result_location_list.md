@@ -38,3 +38,5 @@ Supplementary materials F - plots of models based on previous errors, previous c
 - plot for previous correct is found in `./output/[ppt]/fig/[ppt]_repetitionPrevCorPlot_ObsPredME.tif`
 - plot for the full final model is found in `./output/[ppt]/fig/[ppt]_repetition_ObsPred_BestFullModel_prev_correct.tif` or in `./output/[ppt]/fig/[ppt]_reptition_ObsPred_BestFullModel_prev_error.tif`
 
+Simulation demonstrating that fractional values produce results equivalent to 0/1 values in logistic binary regression are in ./src/simulation/simulate_binary_logistic_data_for_factional_responses.Rmd
+

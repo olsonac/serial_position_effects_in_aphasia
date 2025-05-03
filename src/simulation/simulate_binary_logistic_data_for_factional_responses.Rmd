@@ -1,0 +1,113 @@
+---
+title: "Simulate binary logistic data for prob responses"
+author: "Andrew Olson"
+date: "2025-01-15"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+For an analysis of serial position information using data that
+lists the segments from targets that are preserved in responses.
+These data can be inherently ambiguous:e.g. plibebas > plibas
+Is the position for the "b" in the response preserved from position
+4 or position 7 from the target?  Our approach has been to assign 0.5 to
+each ambiguous position in this case.  Based on how binary logistic regression works, this should be the same as simulating a number of responses with the preserved value 1 in position 4 half of the time (position 7 = 0) and the preserved value 1 in position 7 half of the time (position 4 = 0).  A simulation should be able to show that this is correct and the fit is the same.
+
+In sum: The question is whether assigning a value
+of 0.5 (not 0/1) to two positions when there is ambiguity is
+the same as assigning 1 to one position half of the time and 1
+to the other position half of the time.
+
+```{r}
+# first create a logistic curve to verify our method for that
+x_values <- seq(0,8,length.out=500)
+```
+
+```{r}
+mean_x <- mean(x_values)
+# value of the probability function based on x
+prob <- 1/(1+ exp(-(x_values-mean_x)))
+```
+
+```{r}
+# plot probability as a function of x
+p_func_df <- data.frame(x=x_values, prob=prob)
+pplt <- ggplot(p_func_df,aes(x=x,y=prob)) + geom_line()
+pplt
+```
+```{r}
+# simulate data -- make most of the values 0/1 
+# and a smaller number fractional
+num_zero_one <- 500
+num_fractional_values <- 20 # we will set success=0.5 for these below
+# our simulated fractional values
+# must be divisible by four because we 
+# divide between position 4 and 6 below
+# and each position must have 1/2 successes in our binary data below
+# and the binary data will have 1/2 the position 4/6 values
+num_values <- num_zero_one + num_fractional_values
+x_values <- seq(0,10,length.out=num_zero_one)
+mean_x <- mean(x_values)
+frac_x1 <- rep(4,num_fractional_values/2) # position 4
+frac_x2 <- rep(6,num_fractional_values/2) # position 6
+prob_first_x <- rep(0.5,num_fractional_values)
+frac_data <- data.frame(x=c(frac_x1,frac_x2,x_values))
+initial_probs <- rep(0.5,num_fractional_values)
+probs_from_logistic <- 1/(1 + exp(-(frac_data$x[num_fractional_values+1:num_zero_one]-mean_x)))
+frac_data$prob <- c(initial_probs,probs_from_logistic)
+frac_data$random <- runif(num_values)
+frac_data$success <- ifelse(frac_data$prob > frac_data$random,1,0)
+# replace 0/1 for first values with prob
+frac_data$success[1:num_fractional_values] <-
+  frac_data$prob[1:num_fractional_values]
+frac_data$weights <- c(rep(1,num_fractional_values),rep(1,num_zero_one))
+frac_data
+```
+
+```{r}
+prob_function_data <- frac_data[num_fractional_values+1:num_zero_one,]
+dplt <- ggplot(frac_data,aes(x=x,y=success)) + geom_point() +
+  geom_line(data=prob_function_data, aes(x=x,y=prob),color="blue")
+dplt
+```
+
+```{r}
+Mfrac <- glm(success ~ x,data=frac_data,family="binomial",weights=weights
+             )
+Mfrac
+```
+
+```{r}
+# Now we model the 20 position 4 and 6 values using just 0/1 and no fractional values
+# As above, 10 values are in position 4 and 10 in position 6
+# half of the position 4 values are 1 and half are 0
+# half of the position 6 values are 1 and half are 0
+# This simulates an ambiguity where we assign 1 to position 4 and 0 to position 6
+# (so putting the preserved item in position 4) half of the time
+# and do the opposite, to put the preserved item in position 6, the other half of the time
+num_fractional_zero_one <- num_fractional_values
+num_values <- num_zero_one + num_fractional_zero_one
+frac_x <- c(rep(4,num_fractional_zero_one/2),
+            rep(6,num_fractional_zero_one/2))
+binary_data <- data.frame(x=c(frac_x,
+     frac_data$x[num_fractional_values+1:num_zero_one]))
+binary_data$prob <- c(rep(0.5,num_fractional_zero_one),
+     frac_data$prob[num_fractional_values+1:num_zero_one])
+binary_data$success <- c(rep(0,num_fractional_zero_one/4), # each pos should have 1/2 success 1/2 fail
+                         rep(1,num_fractional_zero_one/4),
+                         rep(0,num_fractional_zero_one/4),
+                         rep(1,num_fractional_zero_one/4),
+     frac_data$success[num_fractional_values+1:num_zero_one])
+binary_data$random <- c(rep(-1,num_fractional_zero_one),
+     frac_data$random[num_fractional_values+1:num_zero_one])
+binary_data
+```
+
+```{r}
+Mbinary <- glm(success ~ x,data=binary_data,family="binomial")
+Mbinary
+```

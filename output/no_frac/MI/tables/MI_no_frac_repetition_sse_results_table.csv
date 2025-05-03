@@ -1,0 +1,4 @@
+"","model","p_accounted_for","model_deviance","diff_CumErr","diff_CumErr+CumPres","diff_CumErr+CumPres+log_freq"
+"1","preserved ~ CumErr",0.380757409249714,2626.7465568409,0,-0.116642750646146,-0.127376852911646
+"2","preserved ~ CumErr+CumPres",0.49740015989586,2613.89186629453,0.116642750646146,0,-0.0107341022655003
+"3","preserved ~ CumErr+CumPres+log_freq",0.50813426216136,2602.58480629903,0.127376852911646,0.0107341022655003,0

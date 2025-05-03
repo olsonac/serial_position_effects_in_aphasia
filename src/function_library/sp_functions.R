@@ -1,8 +1,8 @@
 CalcCumErrFromPreserved <- function(PosDat){
   AllCumErr <- NULL
-  NumWords <- max(PosDat$stim_number)
-  for(i in seq(1,NumWords)){
-    CurrentPreserved <- PosDat[PosDat$stim_number == i,"preserved"]
+  WordNumbers <- unique(PosDat$stim_number) # some number may have been removed
+  for(current_word_number in WordNumbers){
+    CurrentPreserved <- PosDat[PosDat$stim_number == current_word_number,"preserved"]
     CurrentErrScore <- 1 - CurrentPreserved
     if(length(CurrentErrScore) == 1){
       CurrentErrScore <- 0
@@ -11,7 +11,7 @@ CalcCumErrFromPreserved <- function(PosDat){
     }
     # shift by one because we want PREVIOUS errors, not current errors
     if(length(CurrentPreserved) != length(CurrentErrScore)){
-      print(paste0("**ERROR** error on stim number ",i))
+      print(paste0("**ERROR** error on stim number ",current_word_number))
     }
     CurrentCumErr <- cumsum(CurrentErrScore)
     AllCumErr <- c(AllCumErr,CurrentCumErr)
@@ -21,17 +21,17 @@ CalcCumErrFromPreserved <- function(PosDat){
 
 CalcCumPres<-function(PosDat){
   AllCumPres <- NULL
-  NumWords <- max(PosDat$stim_number)
-  for(i in seq(1,NumWords)){
-    CurrentPreserved <- PosDat[PosDat$stim_number == i,"preserved"]
+  WordNumbers <- unique(PosDat$stim_number) # some number may have been removed
+  for(current_word_number in WordNumbers){
+    CurrentPreserved <- PosDat[PosDat$stim_number == current_word_number,"preserved"]
     if(length(CurrentPreserved) == 1){
       CurrentPresScore <- 0
     }else{
       CurrentPresScore <- c(0,CurrentPreserved[1:(length(CurrentPreserved)-1)])
     }
-    # shift by one because we want PREVIOUS errors, not current errors
+    # shift by one because we want PREVIOUS preserved, not current preserved
     if(length(CurrentPreserved) != length(CurrentPresScore)){
-      print(paste0("**ERROR** error on stim number ",i,
+      print(paste0("**ERROR** error on stim number ",current_word_number,
                    " \nCurrentPreserved: ",CurrentPreserved,
                    "\nCurrentPresScore: ",CurrentPresScore))
     }    
@@ -134,7 +134,7 @@ TestLevel2Models <- function(PosDat, BestFactor, OtherFactor, OtherFactorName=NU
   if(is.null(OtherFactorName)){
     OtherFactorName<-OtherFactor
   }
-  write.csv(AICSummary,paste0(RootDir,"/output/",CurPat,"/tables/",CurPat,"_",CurTask,
+  write.csv(AICSummary,paste0(RootDir,"/output/",RunLabel,"/",CurPat,"/tables/",CurPat,"_",CurTask,
                               "_best_plus_",OtherFactorName,"_models.csv"),row.names = FALSE) 
   return(AICSummary)
 }

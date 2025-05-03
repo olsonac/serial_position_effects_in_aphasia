@@ -61,6 +61,13 @@ Sys.setenv(R_CONFIG_ACTIVE = "default")
 - In the last section, `Test models,` adjust by hand to choose the simulated dataset to examine for interactions (these will occur by chance because simulations always have only one principle data generating factor: word length, previous correct, previous error).  E.g. if examining the simulated data and model fits when the generating function is based on previous correct, choose previous correct for the tables and plots here.  The main (and only) generating factor should be clear, but best models also often include some minor subordinate influences from other factors due to overfitting and this process allows us to see that that is the case.
 - In the menu bar just above the script, choose `Run` > `Run All`
 
+##### Simulate binary logistic regression results using 0/1 assigned probablistically compared to fractional values
+- start R studio
+- Run the script ./src/simulation/simulate_binary_logistic_data_for_fractional_responses.Rmd
+- The model using fractional data is reported in Mfrac
+- The model using 0/1 only data is reported in Mbinary
+
+
 # Organization of the repository
 
 There are four directories in the repository:
@@ -70,8 +77,8 @@ There are four directories in the repository:
 	- 
 1) **[root_dir]/doc:** Documentation, currently just a copy of this README file <br>
 
-2) **[root_dir]/output:** Results for each participant organized into folders and .csv files for summaries <br>
-	- Within each output folder there is:
+2) **[root_dir]/output:** Below _output_ there are two folders: _no\_frac_ includes results with fractional present/absent values excluded;  _frac\_included_ includes results from the main analyses, where fractional present/absent values are present.  Under these folders, results for each participant are organized into folders and .csv files for summaries <br>
+	- Within each participant output folder there is:
 		- A folder for figures (fig).
 		- A folder with the full R output in a .pdf file (reports).
 		- A folder with .csv files that have results in tabular format (tables)<br>
@@ -97,16 +104,19 @@ In the `default:` section:
 - `random_samples:` The number of permutations to use for permutation testing of cumulative error and cumulative preserved values (currently 100)
 - `do_simulations:` TRUE/FALSE value.  If TRUE do permutation testing of cumulative error and cumulative preserved models (simulations take more time, so there are times when this should be FALSE -- e.g. testing something that doesn't impact the simulations section)
 
-In the `test:` section a different set of the parameters listed above can be set.  One common use is to set a different `patient_param_file:` This is typically used, for example, if a single participant needs to be analyzed without doing all of the other participants.  A file that has just a line for the single participant can be added and then the 'test' option can be set in the file `AnalyzePatientList.R` in the following section:
+If the `test` configuration is chosen below, a different set of the parameters listed above can be set.  One common use is to set a different `patient_param_file:` This is typically used, for example, if a single participant needs to be analyzed without doing all of the other participants.  A file that has just a line for the single participant can be added and then the 'test' option can be set in the file `AnalyzePatientList.R` in the following section:
 
 ```
 #Sys.setenv(R_CONFIG_ACTIVE = "test")  # uncomment to test
 #Sys.setenv(R_CONFIG_ACTIVE = "naming")
 Sys.setenv(R_CONFIG_ACTIVE = "default") 
+#Sys.setenv(R_CONFIG_ACTIVE = "no_fractional_values") 
 ```
 
 
-In the `naming:` section a different set of parameters can be set.  This is typically used to choose a different `patient_parm_file` including just those participants who did the naming task.
+The `naming` configuration can be chosen to analyze results from the naming task.  A different set of parameters will be set and, in particular, a different `patient_parm_file` will be used that includes only those participants who did the naming task.
+
+If the 'no_fractional_values' configuration is chosen, fractional values in the present/absent field, that were included when the position of origin for a phoneme was ambiguous, are removed before analysis, so the analysis is based on 0/1 values only.  Results from these analyses are in folders under ./output/no_frac.
 
 In the `patient_parm_file:` (e.g. repetition_patient_list_csv), the following parameters are set:
 - `patient` Participant identifier (name of the directory under the data directory that has raw data for this participant, currently a two-letter identifier for each participant)
